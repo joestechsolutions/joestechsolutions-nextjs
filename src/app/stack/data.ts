@@ -1,19 +1,13 @@
 // Stack data — updated when the real tool stack changes.
 // Source: ~/.hermes/config.yaml, ~/free-claude-code/.env, ollama list, ~/.gitnexus/registry.json
-// Last updated: 2026-07-22
+// Last updated: 2026-08-16
 
-export const lastUpdated = "July 22, 2026";
+export const lastUpdated = "August 16, 2026";
 
 export const models = [
   {
-    name: "Step 3.5 Flash",
-    role: "Primary — main conversation + interactive tasks",
-    provider: "NVIDIA NIM",
-    capabilities: ["tools", "thinking"],
-  },
-  {
     name: "GLM-5.2",
-    role: "Cron jobs + background tasks + code",
+    role: "Primary — main conversation + interactive tasks",
     provider: "Ollama Cloud",
     capabilities: ["tools", "thinking"],
   },
@@ -24,15 +18,21 @@ export const models = [
     capabilities: ["vision", "tools", "thinking"],
   },
   {
+    name: "DeepSeek V4 Flash",
+    role: "Fallback — coding + robust tasks",
+    provider: "Ollama Cloud",
+    capabilities: ["tools", "thinking"],
+  },
+  {
     name: "Gemma 4",
     role: "Vision + image analysis + goal-mode judge",
     provider: "Ollama Cloud",
     capabilities: ["vision", "tools", "thinking", "audio"],
   },
   {
-    name: "DeepSeek V4 Flash",
-    role: "Fallback — coding + robust tasks",
-    provider: "NVIDIA NIM",
+    name: "Minimax M3",
+    role: "Content drafting + creative tasks",
+    provider: "Ollama Cloud",
     capabilities: ["tools", "thinking"],
   },
   {
@@ -59,7 +59,7 @@ export const services = [
   {
     name: "Ollama",
     port: "11434",
-    purpose: "Local + cloud model inference",
+    purpose: "Local + cloud model inference (24 models)",
     tech: "Go, systemd",
   },
   {
@@ -71,7 +71,7 @@ export const services = [
   {
     name: "GitNexus",
     port: "—",
-    purpose: "Code knowledge graph (60K+ nodes indexed)",
+    purpose: "Code knowledge graph (68K+ nodes indexed)",
     tech: "Node.js, CLI",
   },
   {
@@ -86,16 +86,28 @@ export const services = [
     purpose: "Design AI stack + daemon",
     tech: "Node.js, systemd",
   },
+  {
+    name: "Penpot",
+    port: "9001",
+    purpose: "Self-hosted design platform (Figma alt)",
+    tech: "Docker",
+  },
+  {
+    name: "Postiz",
+    port: "4007",
+    purpose: "Social media scheduling (14 platforms)",
+    tech: "Docker",
+  },
 ];
 
 export const tools = [
   {
     category: "Orchestration",
-    items: ["Hermes Agent", "delegate_task subagents", "Loop + Goal Mode"],
+    items: ["Hermes Agent v0.20.1", "delegate_task subagents", "Loop + Goal Mode", "33 cron jobs"],
   },
   {
     category: "Coding",
-    items: ["Claude Code (via FCC proxy)", "GitNexus code graph", "Agent-Skills (24 SDLC skills)"],
+    items: ["Claude Code (via FCC proxy)", "GitNexus code graph", "Agent-Skills (24 SDLC skills)", "Cline CLI"],
   },
   {
     category: "Memory",
@@ -103,19 +115,19 @@ export const tools = [
   },
   {
     category: "Models",
-    items: ["24 Ollama Cloud models", "NVIDIA NIM (primary)", "6-model fallback chain"],
+    items: ["24 Ollama Cloud models", "Ollama Cloud (primary)", "16-model fallback chain", "Granite 4.1 (local)"],
   },
   {
     category: "Infrastructure",
-    items: ["WSL2 Ubuntu", "Systemd services", "Docker containers", "iptables firewall"],
+    items: ["WSL2 Ubuntu", "Systemd services", "16 Docker containers", "iptables firewall"],
   },
 ];
 
 export const stats = [
-  { label: "AI Agents", value: "14" },
-  { label: "Scheduled Automations", value: "30" },
+  { label: "AI Agents", value: "25" },
+  { label: "Scheduled Automations", value: "33" },
   { label: "Cloud Models", value: "24" },
-  { label: "Indexed Code Nodes", value: "60K+" },
-  { label: "Active Services", value: "7" },
+  { label: "Indexed Code Nodes", value: "68K+" },
+  { label: "Active Services", value: "9" },
   { label: "Skills Library", value: "100+" },
 ];

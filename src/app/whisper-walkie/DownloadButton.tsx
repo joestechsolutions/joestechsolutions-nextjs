@@ -70,7 +70,7 @@ export function HeroDownloadButton() {
         <MagneticButton strength={0.2}>
           <Button
             size="lg"
-            className="bg-primary hover:bg-primary/85 text-foreground text-lg px-10 py-7 rounded-none group shadow-lg shadow-primary/20 transition-all"
+            className="bg-primary hover:bg-primary/85 text-foreground text-lg px-10 py-7 rounded-none group shadow-lg shadow-primary/20 transition-[color,background-color,border-color,box-shadow,transform] duration-300"
           >
             <Download className="mr-2 h-5 w-5" aria-hidden="true" />
             Download for {info.label}
@@ -103,7 +103,7 @@ export function HeroDownloadButton() {
               key={key}
               href={plat.url}
               rel="noopener noreferrer"
-              className="text-sm text-primary hover:text-primary/80 border border-foreground/10 hover:border-primary/30 rounded-none px-4 py-2 transition-all flex items-center gap-2"
+              className="text-sm text-primary hover:text-primary/80 border border-foreground/10 hover:border-primary/30 rounded-none px-4 py-2 transition-[color,border-color] flex items-center gap-2"
             >
               <Download className="w-3.5 h-3.5" aria-hidden="true" />
               {plat.label}
@@ -113,7 +113,7 @@ export function HeroDownloadButton() {
             href={GITHUB_RELEASES}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-foreground/40 hover:text-foreground/60 border border-foreground/10 hover:border-foreground/20 rounded-none px-4 py-2 transition-all"
+            className="text-sm text-foreground/40 hover:text-foreground/60 border border-foreground/10 hover:border-foreground/20 rounded-none px-4 py-2 transition-[color,background-color,border-color,box-shadow,transform] duration-300"
           >
             All releases
           </a>
@@ -162,7 +162,7 @@ export function PlatformDownloadCards() {
             aria-label={`Download Whisper Walkie for ${card.name}`}
           >
             <div
-              className="bg-card border border-foreground/10 hover:border-primary/50 transition-all duration-500 h-full rounded-xl cursor-pointer p-8 text-center space-y-5"
+              className="bg-card border border-foreground/10 hover:border-primary/50 transition-[color,border-color,box-shadow,transform] duration-500 h-full rounded-xl cursor-pointer p-8 text-center space-y-5"
             >
               <div
                 className="w-14 h-14 rounded-none flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300"
@@ -212,7 +212,7 @@ export function CtaDownloadButton() {
       <MagneticButton strength={0.15}>
         <Button
           size="lg"
-          className="bg-primary hover:bg-primary/85 text-foreground text-lg px-10 py-7 rounded-none group shadow-lg shadow-primary/20 transition-all"
+          className="bg-primary hover:bg-primary/85 text-foreground text-lg px-10 py-7 rounded-none group shadow-lg shadow-primary/20 transition-[color,background-color,border-color,box-shadow,transform]"
         >
           <Download className="mr-2 h-5 w-5" aria-hidden="true" />
           Download for {info.label}

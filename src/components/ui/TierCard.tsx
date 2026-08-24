@@ -55,7 +55,7 @@ export function TierCard({ tier }: { tier: Tier }) {
   return (
     <AnimatedCard className="h-full">
       <Card
-        className={`relative h-full flex flex-col bg-card ${accent.border} transition-all duration-500 overflow-hidden group p-8`}
+        className={`relative h-full flex flex-col bg-card ${accent.border} transition-[color,border-color,background-color] duration-500 overflow-hidden group p-8`}
       >
         {tier.badge && (
           <div

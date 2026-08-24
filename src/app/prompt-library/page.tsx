@@ -121,7 +121,7 @@ export default function PromptLibrary() {
               return (
                 <StaggerItem key={category.name} className="h-full">
                   <AnimatedCard className="h-full">
-                    <Card className="h-full bg-card border-foreground/10 hover:border-primary/40 transition-all duration-500 group p-8">
+                    <Card className="h-full bg-card border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 group p-8">
                       <div className="space-y-4">
                         <div
                           className={`w-14 h-14 ${category.iconBg} rounded-none flex items-center justify-center group-hover:scale-110 transition-transform`}

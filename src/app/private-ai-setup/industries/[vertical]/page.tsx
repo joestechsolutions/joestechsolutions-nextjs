@@ -175,7 +175,7 @@ export default async function VerticalDetailPage({
             {vertical.samplePrompts.map((prompt, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/30 transition-all duration-300 h-full">
+                  <Card className="bg-card border-foreground/10 hover:border-primary/30 transition-[color,border-color,background-color] duration-300 h-full">
                     <CardContent className="p-6">
                       <ChatCircle weight="duotone" className="h-6 w-6 text-primary mb-3" />
                       <p className="text-foreground/80 leading-relaxed">&ldquo;{prompt}&rdquo;</p>
@@ -206,7 +206,7 @@ export default async function VerticalDetailPage({
             {vertical.recommendedModels.map((model, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/30 transition-all duration-300 h-full">
+                  <Card className="bg-card border-foreground/10 hover:border-primary/30 transition-[color,border-color,background-color] duration-300 h-full">
                     <CardContent className="p-6 text-center">
                       <Cpu weight="duotone" className="h-8 w-8 text-primary mx-auto mb-3" />
                       <p className="text-primary font-semibold mb-1">{model.ram} RAM</p>

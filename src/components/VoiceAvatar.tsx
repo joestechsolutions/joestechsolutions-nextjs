@@ -107,7 +107,7 @@ export function VoiceAvatar() {
         )}
 
         {/* Avatar image */}
-        <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-none overflow-hidden border-2 border-primary/40 group-hover:border-primary/70 transition-all duration-500 shadow-xl shadow-primary/10">
+        <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-none overflow-hidden border-2 border-primary/40 group-hover:border-primary/70 transition-colors duration-500 shadow-xl shadow-primary/10">
           <Image
             src="/images/joe-profile.jpg"
             alt="Joe Blas — Joe's Tech Solutions"
@@ -119,7 +119,7 @@ export function VoiceAvatar() {
         </div>
 
         {/* Play/Pause overlay */}
-        <div className={`absolute inset-0 flex items-center justify-center rounded-none transition-all duration-300 ${isPlaying ? "bg-black/40" : "bg-black/20 group-hover:bg-black/30"}`}>
+        <div className={`absolute inset-0 flex items-center justify-center rounded-none transition-colors duration-300 ${isPlaying ? "bg-black/40" : "bg-black/20 group-hover:bg-black/30"}`}>
           {isPlaying ? (
             <svg className="w-8 h-8 sm:w-10 sm:h-10 text-foreground" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <rect x="6" y="5" width="4" height="14" rx="1" />
@@ -135,7 +135,7 @@ export function VoiceAvatar() {
         {/* Progress ring */}
         {isPlaying && progress > 0 && (
           <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100" aria-hidden="true">
-            <circle cx="50" cy="50" r="48" fill="none" stroke="#d4541e" strokeWidth="2" strokeDasharray="301.6" strokeDashoffset={301.6 - (301.6 * progress) / 100} strokeLinecap="round" className="transition-all duration-150" />
+            <circle cx="50" cy="50" r="48" fill="none" stroke="#d4541e" strokeWidth="2" strokeDasharray="301.6" strokeDashoffset={301.6 - (301.6 * progress) / 100} strokeLinecap="round" className="transition-[stroke-dashoffset] duration-150" />
           </svg>
         )}
       </div>
@@ -154,7 +154,7 @@ export function VoiceAvatar() {
             <button
               key={clip.id}
               onClick={() => handlePlay(clip)}
-              className={`px-4 py-2 rounded-none text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-2 rounded-none text-sm font-medium transition-[color,background-color,border-color] duration-300 ${
                 activeClip === clip.id
                   ? "bg-primary text-foreground border-primary"
                   : "bg-card text-foreground/70 border-foreground/10 hover:border-primary/40 hover:text-foreground"

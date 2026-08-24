@@ -80,9 +80,9 @@ export default function Services() {
 
               <Link href="/whisper-walkie" className="block">
                 <AnimatedCard>
-                  <Card className="bg-card/60 border-foreground/10 hover:border-primary/40 transition-all duration-500 group overflow-hidden">
+                  <Card className="bg-card/60 border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 group overflow-hidden">
                     <div className="relative grid sm:grid-cols-[auto_1fr_auto] items-center gap-6 p-8">
-                      <div className="w-16 h-16 bg-primary/10 rounded-none flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300 mx-auto sm:mx-0">
+                      <div className="w-16 h-16 bg-primary/10 rounded-none flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-[color,background-color,transform] duration-300 mx-auto sm:mx-0">
                         <Mic className="h-8 w-8 text-primary" />
                       </div>
 

@@ -26,6 +26,10 @@ export function ParticleBackground() {
     };
   });
 
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   return (
     <div
       className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none"
@@ -64,7 +68,9 @@ export function ParticleBackground() {
             height: p.size,
             backgroundColor: p.isTeal ? '#d4541e' : '#475569',
             opacity: p.isTeal ? 0.4 : 0.15,
-            animation: `particle-drift ${p.duration}s ease-in-out ${p.delay}s infinite`,
+            animation: prefersReducedMotion
+              ? undefined
+              : `particle-drift ${p.duration}s ease-in-out ${p.delay}s infinite`,
             contain: 'layout style',
           }}
         />

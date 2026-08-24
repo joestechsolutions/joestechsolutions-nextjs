@@ -134,7 +134,7 @@ export default function AgentSystem() {
                 </MagneticButton>
                 <Button
                   onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-                  className="bg-card/50 border border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary rounded-none px-8 py-6 text-lg font-mono font-semibold transition-all"
+                  className="bg-card/50 border border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary rounded-none px-8 py-6 text-lg font-mono font-semibold transition-[color,background-color,border-color,box-shadow]"
                 >
                   See Pricing
                 </Button>
@@ -291,7 +291,7 @@ export default function AgentSystem() {
             ].map((layer, i) => (
               <StaggerItem key={i}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-[color]/30 transition-all duration-300 h-full p-8 relative overflow-hidden group">
+                  <Card className="bg-card border-foreground/10 hover:border-[color]/30 transition-[color,border-color,background-color,box-shadow] duration-300 h-full p-8 relative overflow-hidden group">
                     <div
                       className="absolute top-0 left-0 right-0 h-[2px]"
                       style={{ background: `linear-gradient(to right, ${layer.color}, transparent)` }}
@@ -382,7 +382,7 @@ export default function AgentSystem() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <Card className="bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 hover:border-primary/40 transition-all duration-500 overflow-hidden relative max-w-2xl mx-auto">
+            <Card className="bg-gradient-to-br from-card via-card to-primary/5 border-primary/20 hover:border-primary/40 transition-[color,border-color,background-color,box-shadow] duration-500 overflow-hidden relative max-w-2xl mx-auto">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary to-primary" />
               <div className="absolute top-5 right-5 px-3 py-1 bg-gradient-to-r from-primary/20 to-primary/20 rounded-none text-foreground text-xs font-bold uppercase tracking-wider">
                 Full System

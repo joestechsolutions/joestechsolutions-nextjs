@@ -202,7 +202,7 @@ function QualifyForm() {
                     ].map((option) => (
                       <label
                         key={option.value}
-                        className={`flex items-center justify-center p-4 rounded-xl border cursor-pointer transition-all text-center ${
+                        className={`flex items-center justify-center p-4 rounded-xl border cursor-pointer transition-[color,border-color,background-color,box-shadow] text-center ${
                           qualifyData.ramAmount === option.value
                             ? option.warn
                               ? "border-amber-500 bg-amber-500/10"

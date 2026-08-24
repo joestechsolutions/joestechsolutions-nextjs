@@ -82,7 +82,7 @@ export function FAQ() {
             return (
               <Card
                 key={index}
-                className={`bg-card transition-all duration-300 ${
+                className={`bg-card transition-[color,border-color,box-shadow] duration-300 ${
                   isOpen
                     ? "border-primary/40 shadow-[0_0_30px_rgba(14,165,233,0.08)]"
                     : "border-foreground/10 hover:border-foreground/20"
@@ -121,7 +121,7 @@ export function FAQ() {
 
                     {/* Chevron */}
                     <ChevronDown
-                      className={`w-5 h-5 flex-shrink-0 transition-all duration-300 ${
+                      className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
                         isOpen
                           ? "text-primary rotate-180"
                           : "text-foreground/30 group-hover:text-foreground/60"
@@ -134,13 +134,14 @@ export function FAQ() {
                   <div
                     id={`faq-answer-${index}`}
                     role="region"
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                    }`}
+                    className="grid transition-[grid-template-rows] duration-300 ease-out"
+                    style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                   >
-                    <p className="px-6 pb-5 text-foreground/60 leading-relaxed text-sm pl-[4.5rem]">
-                      {faq.answer}
-                    </p>
+                    <div className={`overflow-hidden ${isOpen ? "opacity-100" : "opacity-0"} transition-opacity duration-300 ease-out`}>
+                      <p className="px-6 pb-5 text-foreground/60 leading-relaxed text-sm pl-[4.5rem]">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>

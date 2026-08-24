@@ -168,7 +168,7 @@ export default function PrivateAISetup() {
                     asChild
                     variant="outline"
                     size="lg"
-                    className="bg-card/50 border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary text-lg px-8 py-7 rounded-none group shadow-2xl shadow-transparent hover:shadow-primary/10 font-mono font-semibold transition-all duration-300 backdrop-blur-sm"
+                    className="bg-card/50 border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary text-lg px-8 py-7 rounded-none group shadow-2xl shadow-transparent hover:shadow-primary/10 font-mono font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-300 backdrop-blur-sm"
                   >
                     <a href="#pricing">
                       See Pricing
@@ -311,7 +311,7 @@ export default function PrivateAISetup() {
             ].map((step, index) => (
               <StaggerItem key={index}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-all duration-500 text-center h-full p-6 sm:p-8 relative group">
+                  <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 text-center h-full p-6 sm:p-8 relative group">
                     <div className={twMerge(
                       "w-16 h-16 rounded-none flex items-center justify-center font-mono text-2xl font-bold mx-auto mb-7 relative z-10 transition-shadow duration-300",
                       index === 0 && "bg-primary/10 text-primary border-2 border-primary/30 shadow-[0_0_28px_rgba(14,165,233,0.18)] group-hover:shadow-[0_0_50px_#d4541e]",
@@ -362,7 +362,7 @@ export default function PrivateAISetup() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <Card className="bg-background border-primary/20 hover:border-primary/40 transition-all duration-300 overflow-hidden rounded-xl shadow-[0_0_40px_rgba(14,165,233,0.08)]">
+            <Card className="bg-background border-primary/20 hover:border-primary/40 transition-[color,border-color,background-color,box-shadow] duration-300 overflow-hidden rounded-xl shadow-[0_0_40px_rgba(14,165,233,0.08)]">
               <CardContent className="p-6 sm:p-8">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 rounded-none bg-[#ff5f57]" />
@@ -409,7 +409,7 @@ export default function PrivateAISetup() {
             {/* Tier 1: Local AI Setup */}
             <StaggerItem>
               <AnimatedCard>
-                <Card className="bg-card border-foreground/10 hover:border-primary/30 transition-all duration-300 overflow-hidden h-full p-8 relative flex flex-col hover:translate-y-[-5px]">
+                <Card className="bg-card border-foreground/10 hover:border-primary/30 transition-[color,border-color,background-color,transform] duration-300 overflow-hidden h-full p-8 relative flex flex-col hover:translate-y-[-5px]">
                   <p className="text-xs font-bold uppercase tracking-wider text-foreground/40 mb-2">Local AI Setup</p>
                   <h3 className="text-5xl font-bold text-foreground font-mono tracking-[-0.03em] leading-none mb-1.5">
                     $199 <span className="text-lg font-light text-foreground/40">one-time</span>
@@ -436,7 +436,7 @@ export default function PrivateAISetup() {
                   <MagneticButton strength={0.2} className="w-full">
                     <Button
                       onClick={() => handleGetStarted("local")}
-                      className="w-full bg-card/50 border border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary rounded-none group shadow-lg shadow-transparent hover:shadow-primary/10 py-6 text-lg font-mono font-semibold transition-all duration-300 backdrop-blur-sm"
+                      className="w-full bg-card/50 border border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary rounded-none group shadow-lg shadow-transparent hover:shadow-primary/10 py-6 text-lg font-mono font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-300 backdrop-blur-sm"
                     >
                       Get Started — $199
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -449,7 +449,7 @@ export default function PrivateAISetup() {
             {/* Tier 2: Cloud AI Server */}
             <StaggerItem>
               <AnimatedCard>
-                <Card className="bg-gradient-to-br from-card via-card to-primary/5 border-foreground/10 hover:border-primary/40 transition-all duration-300 overflow-hidden h-full p-8 relative flex flex-col hover:translate-y-[-5px]">
+                <Card className="bg-gradient-to-br from-card via-card to-primary/5 border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color,transform] duration-300 overflow-hidden h-full p-8 relative flex flex-col hover:translate-y-[-5px]">
                   <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-primary" />
                   <div className="absolute top-5 right-5 px-3 py-1 bg-gradient-to-r from-primary/20 to-primary/20 rounded-none text-foreground text-xs font-bold uppercase tracking-wider">
                     Most Popular
@@ -493,7 +493,7 @@ export default function PrivateAISetup() {
             {/* Tier 3: Managed AI + Automation */}
             <StaggerItem>
               <AnimatedCard>
-                <Card className="bg-gradient-to-br from-card via-card to-primary/5 border-foreground/10 hover:border-primary/40 transition-all duration-300 overflow-hidden h-full p-8 relative flex flex-col hover:translate-y-[-5px]">
+                <Card className="bg-gradient-to-br from-card via-card to-primary/5 border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color,transform] duration-300 overflow-hidden h-full p-8 relative flex flex-col hover:translate-y-[-5px]">
                   <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-primary" />
                   <div className="absolute top-5 right-5 px-3 py-1 bg-gradient-to-r from-primary/20 to-primary/20 rounded-none text-foreground text-xs font-bold uppercase tracking-wider">
                     Best Value
@@ -567,7 +567,7 @@ export default function PrivateAISetup() {
           <StaggerContainer className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto" staggerDelay={0.15}>
             <StaggerItem>
               <AnimatedCard>
-                <Card className="bg-card border-foreground/10 hover:border-primary/20 transition-all duration-300 text-center h-full p-6 sm:p-8 hover:translate-y-[-4px]">
+                <Card className="bg-card border-foreground/10 hover:border-primary/20 transition-[color,border-color,background-color,transform] duration-300 text-center h-full p-6 sm:p-8 hover:translate-y-[-4px]">
                   <div className="w-15 h-15 bg-primary/10 border border-primary/18 rounded-lg flex items-center justify-center text-2xl text-primary mx-auto mb-5">
                     <HardDrive weight="duotone" />
                   </div>
@@ -579,7 +579,7 @@ export default function PrivateAISetup() {
 
             <StaggerItem>
               <AnimatedCard>
-                <Card className="bg-card border-foreground/10 hover:border-primary/20 transition-all duration-300 text-center h-full p-6 sm:p-8 hover:translate-y-[-4px]">
+                <Card className="bg-card border-foreground/10 hover:border-primary/20 transition-[color,border-color,background-color,transform] duration-300 text-center h-full p-6 sm:p-8 hover:translate-y-[-4px]">
                   <div className="w-15 h-15 bg-primary/10 border border-primary/18 rounded-lg flex items-center justify-center text-2xl text-primary mx-auto mb-5">
                     <ShieldCheck weight="duotone" />
                   </div>
@@ -591,7 +591,7 @@ export default function PrivateAISetup() {
 
             <StaggerItem>
               <AnimatedCard>
-                <Card className="bg-card border-foreground/10 hover:border-primary/20 transition-all duration-300 text-center h-full p-6 sm:p-8 hover:translate-y-[-4px]">
+                <Card className="bg-card border-foreground/10 hover:border-primary/20 transition-[color,border-color,background-color,transform] duration-300 text-center h-full p-6 sm:p-8 hover:translate-y-[-4px]">
                   <div className="w-15 h-15 bg-primary/10 border border-primary/18 rounded-lg flex items-center justify-center text-2xl text-primary mx-auto mb-5">
                     <GitBranch weight="duotone" />
                   </div>
@@ -626,7 +626,7 @@ export default function PrivateAISetup() {
             {verticals.map((v, i) => (
               <StaggerItem key={i}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/20 transition-all duration-300 p-5 sm:p-6 text-center hover:translate-y-[-3px]">
+                  <Card className="bg-card border-foreground/10 hover:border-primary/20 transition-[color,border-color,background-color,transform] duration-300 p-5 sm:p-6 text-center hover:translate-y-[-3px]">
                     <div className="w-10 h-10 bg-primary/10 border border-primary/18 rounded-lg flex items-center justify-center text-lg text-primary mx-auto mb-3">
                       <v.icon weight="duotone" />
                     </div>

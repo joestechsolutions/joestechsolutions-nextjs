@@ -39,7 +39,14 @@ function Node({
 }) {
   const dims = size === "lg" ? { w: 160, h: 52, r: 14 } : size === "md" ? { w: 140, h: 44, r: 12 } : { w: 120, h: 38, r: 10 };
   return (
-    <motion.g custom={index} variants={nodeVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+    <motion.g
+      custom={index}
+      variants={nodeVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+    >
       <rect
         x={x - dims.w / 2}
         y={y - dims.h / 2}

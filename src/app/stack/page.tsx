@@ -91,7 +91,7 @@ export default function StackPage() {
             {models.map((model) => (
               <StaggerItem key={model.name}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-all duration-500 h-full">
+                  <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 h-full">
                     <CardContent className="pt-6 pb-6">
                       <div className="flex items-start justify-between mb-4">
                         <div>
@@ -134,7 +134,7 @@ export default function StackPage() {
           <StaggerContainer className="grid md:grid-cols-2 gap-6" staggerDelay={0.1}>
             {services.map((service) => (
               <StaggerItem key={service.name}>
-                <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-all duration-500 h-full">
+                <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 h-full">
                   <CardContent className="pt-6 pb-6">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-foreground font-mono">{service.name}</h3>
@@ -171,7 +171,7 @@ export default function StackPage() {
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.1}>
             {tools.map((tool) => (
               <StaggerItem key={tool.category}>
-                <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-all duration-500 h-full">
+                <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 h-full">
                   <CardContent className="pt-6 pb-6">
                     <h3 className="text-lg font-bold text-primary mb-4 font-mono">{tool.category}</h3>
                     <ul className="space-y-2">

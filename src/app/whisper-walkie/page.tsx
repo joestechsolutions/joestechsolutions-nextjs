@@ -172,7 +172,7 @@ export default function WhisperWalkiePage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="text-lg px-10 py-7 rounded-none border-foreground/20 hover:bg-foreground/5 hover:border-foreground/30 backdrop-blur-sm transition-all"
+                    className="text-lg px-10 py-7 rounded-none border-foreground/20 hover:bg-foreground/5 hover:border-foreground/30 backdrop-blur-sm transition-[color,background-color,border-color]"
                   >
                     <ExternalLink className="mr-2 h-5 w-5" aria-hidden="true" />
                     View Source
@@ -233,7 +233,7 @@ export default function WhisperWalkiePage() {
             ].map((item) => (
               <StaggerItem key={item.step}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-all duration-500 text-center h-full p-8 relative group">
+                  <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 text-center h-full p-8 relative group">
                     {/* Step number circle */}
                     <div
                       className="w-16 h-16 rounded-none flex items-center justify-center font-mono text-xl font-bold mx-auto mb-6 border-2 transition-shadow duration-300 group-hover:shadow-[0_0_40px_var(--step-glow)]"
@@ -309,7 +309,7 @@ export default function WhisperWalkiePage() {
                   </div>
                   {/* Content */}
                   <AnimatedCard>
-                    <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-all duration-500 flex-1">
+                    <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 flex-1">
                       <CardContent className="p-6">
                         <h3 className="text-lg font-bold text-foreground font-mono mb-2">Download</h3>
                         <p className="text-foreground/60 leading-relaxed text-sm">
@@ -333,7 +333,7 @@ export default function WhisperWalkiePage() {
                     </span>
                   </div>
                   <AnimatedCard>
-                    <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-all duration-500 flex-1">
+                    <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 flex-1">
                       <CardContent className="p-6">
                         <h3 className="text-lg font-bold text-foreground font-mono mb-3">Install &amp; Open</h3>
                         <div className="space-y-3">
@@ -416,7 +416,7 @@ export default function WhisperWalkiePage() {
                     </span>
                   </div>
                   <AnimatedCard>
-                    <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-all duration-500 flex-1">
+                    <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 flex-1">
                       <CardContent className="p-6">
                         <h3 className="text-lg font-bold text-foreground font-mono mb-2">Choose Your Mic</h3>
                         <p className="text-foreground/60 leading-relaxed text-sm">
@@ -440,7 +440,7 @@ export default function WhisperWalkiePage() {
                     </span>
                   </div>
                   <AnimatedCard>
-                    <Card className="bg-gradient-to-br from-primary/8 via-card to-primary/8 border-primary/25 hover:border-primary/50 transition-all duration-500 flex-1">
+                    <Card className="bg-gradient-to-br from-primary/8 via-card to-primary/8 border-primary/25 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 flex-1">
                       <CardContent className="p-6">
                         <h3 className="text-lg font-bold text-foreground font-mono mb-2">Try It!</h3>
                         <p className="text-foreground/60 leading-relaxed text-sm">
@@ -505,7 +505,7 @@ export default function WhisperWalkiePage() {
 
             {/* Whisper Walkie — positive */}
             <FadeIn delay={0.2} direction="left">
-              <Card className="bg-gradient-to-br from-primary/8 via-card to-primary/8 border-primary/25 hover:border-primary/50 transition-all duration-500 h-full">
+              <Card className="bg-gradient-to-br from-primary/8 via-card to-primary/8 border-primary/25 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 h-full">
                 <CardContent className="p-8">
                   <div className="mb-6">
                     <span className="text-xs font-bold uppercase tracking-wider text-primary">Whisper Walkie</span>
@@ -553,7 +553,7 @@ export default function WhisperWalkiePage() {
             {features.map((feature) => (
               <StaggerItem key={feature.title}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-all duration-500 h-full group">
+                  <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 h-full group">
                     <CardContent className="p-6 sm:p-8 space-y-4">
                       <div
                         className="w-12 h-12 rounded-none flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
@@ -767,7 +767,7 @@ export default function WhisperWalkiePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-10 py-7 rounded-none border-foreground/20 hover:bg-foreground/5 hover:border-foreground/30 backdrop-blur-sm transition-all"
+                  className="text-lg px-10 py-7 rounded-none border-foreground/20 hover:bg-foreground/5 hover:border-foreground/30 backdrop-blur-sm transition-[color,background-color,border-color]"
                 >
                   Star on GitHub
                 </Button>

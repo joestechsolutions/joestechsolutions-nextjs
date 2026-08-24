@@ -27,10 +27,16 @@ export function CountUp({
     const el = ref.current;
     if (!el) return;
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           observer.unobserve(el);
+          if (prefersReducedMotion) {
+            setValue(to);
+            return;
+          }
           const start = performance.now();
           const tick = (now: number) => {
             const t = Math.min((now - start) / (duration * 1000), 1);

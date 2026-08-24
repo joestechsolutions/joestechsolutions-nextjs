@@ -268,7 +268,7 @@ function SuccessContent() {
                         ].map((option) => (
                           <label
                             key={option.value}
-                            className={`flex flex-col items-center p-3 rounded-xl border cursor-pointer transition-all text-center ${
+                            className={`flex flex-col items-center p-3 rounded-xl border cursor-pointer transition-[color,border-color,background-color,box-shadow] text-center ${
                               formData.modelSizePreference === option.value
                                 ? "border-primary bg-primary/10"
                                 : "border-foreground/10 hover:border-foreground/20"

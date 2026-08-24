@@ -65,7 +65,7 @@ export default function IndustriesPage() {
                 <StaggerItem key={vertical.slug}>
                   <AnimatedCard>
                     <Link href={`/private-ai-setup/industries/${vertical.slug}`} className="block h-full">
-                      <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-all duration-500 h-full group cursor-pointer overflow-hidden relative">
+                      <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 h-full group cursor-pointer overflow-hidden relative">
                         <div className="absolute top-0 right-0 w-48 h-48 bg-linear-to-br from-primary/5 to-transparent rounded-none blur-3xl" />
                         <CardContent className="p-8 relative">
                           <div className="flex items-start justify-between mb-6">
@@ -88,7 +88,7 @@ export default function IndustriesPage() {
                             {vertical.description}
                           </p>
 
-                          <div className="flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all">
+                          <div className="flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-[gap]">
                             Learn More
                             <ArrowRight className="h-4 w-4" />
                           </div>

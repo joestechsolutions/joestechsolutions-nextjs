@@ -89,7 +89,7 @@ export default function BlogPage() {
                 {posts.map((post, i) => (
                   <FadeIn key={post.slug} delay={i * 0.1} direction="left">
                     <Link href={`/blog/${post.slug}`} className="group block">
-                      <article className="py-6 border-b border-foreground/5 hover:border-primary/30 transition-all duration-300 hover:pl-2">
+                      <article className="py-6 border-b border-foreground/5 hover:border-primary/30 transition-[border-color,transform] duration-300 hover:pl-2">
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
                           <time dateTime={post.date} className="text-sm text-foreground/30 font-[family-name:var(--font-jetbrains-mono)] shrink-0 tabular-nums">
                             {formatDate(post.date)}

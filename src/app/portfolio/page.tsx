@@ -92,7 +92,7 @@ export default function Portfolio() {
             {projects.map((project) => (
               <StaggerItem key={project.id}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-all duration-300 overflow-hidden group h-full">
+                  <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color,transform] duration-300 overflow-hidden group h-full">
                 <div className={`relative aspect-video overflow-hidden ${project.imageContain ? 'bg-card' : ''}`}>
                   <Image
                     src={project.image}

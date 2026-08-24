@@ -52,7 +52,7 @@ export default function Contact() {
             {/* Email */}
             <StaggerItem>
               <AnimatedCard>
-                <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-all duration-500 group h-full">
+                <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 group h-full">
                   <CardHeader>
                     <div className="w-16 h-16 bg-primary/10 rounded-none flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                       <Image src="/icons/mail-dynamic/premium.png" alt="Email" width={32} height={32} className="object-contain" />

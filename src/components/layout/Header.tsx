@@ -30,13 +30,13 @@ export function Header() {
             <Link href="/" className="flex items-center gap-3 group">
               <Image
                 src="/logo-icon.png"
-                alt="Joe's Tech Solutions"
+                alt="Joe&apos;s Tech Solutions"
                 width={56}
                 height={56}
                 className="transition-transform group-hover:scale-105"
               />
               <span className="text-lg font-bold text-foreground group-hover:text-primary transition-colors font-mono hidden sm:inline">
-                Joe's Tech Solutions
+                Joe&apos;s Tech Solutions
               </span>
             </Link>
           </div>

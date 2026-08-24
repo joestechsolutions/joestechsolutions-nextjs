@@ -211,13 +211,13 @@ export default function NvidiaGtc2026Page() {
                       Generative AI Full-Stack Developer based in San Diego and founder of Joe&apos;s Tech Solutions LLC. He builds AI-powered applications and private AI systems for businesses that want to own their intelligence stack — not rent it.
                     </p>
                     <div className="flex items-center gap-4">
-                      <a
+                      <Link
                         href="/"
                         className="flex items-center gap-1.5 text-foreground/50 hover:text-[var(--ok)] text-sm transition-colors"
                       >
                         <Globe className="w-4 h-4" />
                         Website
-                      </a>
+                      </Link>
                       <a
                         href="https://github.com/joblas"
                         target="_blank"

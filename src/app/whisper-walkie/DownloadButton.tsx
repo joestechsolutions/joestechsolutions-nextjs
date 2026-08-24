@@ -56,7 +56,7 @@ export function HeroDownloadButton() {
   const [showOthers, setShowOthers] = useState(false);
 
   useEffect(() => {
-    setPlatform(detectPlatform());
+    requestAnimationFrame(() => setPlatform(detectPlatform()));
   }, []);
 
   const info = PLATFORMS[platform];
@@ -202,7 +202,7 @@ export function CtaDownloadButton() {
   const [platform, setPlatform] = useState<Platform>("unknown");
 
   useEffect(() => {
-    setPlatform(detectPlatform());
+    requestAnimationFrame(() => setPlatform(detectPlatform()));
   }, []);
 
   const info = PLATFORMS[platform];

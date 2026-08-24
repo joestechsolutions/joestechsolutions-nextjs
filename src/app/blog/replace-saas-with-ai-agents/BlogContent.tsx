@@ -94,7 +94,7 @@ export function BlogContent() {
           {/* Comparison Table */}
           <FadeIn>
             <h2 id="what-it-replaced" className="pt-16 text-foreground text-3xl sm:text-4xl font-bold mb-6">The SaaS Tools I Never Had to Buy</h2>
-            <p className="text-gray-200 text-lg leading-loose mb-10">Here's what running a solo dev business typically costs. I skipped all of it:</p>
+            <p className="text-gray-200 text-lg leading-loose mb-10">Here&apos;s what running a solo dev business typically costs. I skipped all of it:</p>
           </FadeIn>
 
           <SaasComparisonTable />

@@ -1,12 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Desktop, Cloud, Copy, Check, EnvelopeSimple, Lock } from "@phosphor-icons/react/dist/ssr";
 
 // Simple client-side gate — set NEXT_PUBLIC_ADMIN_PASSWORD in your .env.local
 const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD ?? "";
+
+// A stable no-op storage listener for useSyncExternalStore
+const subscribeToSessionStorage = () => () => {};
+const getSessionStorageSnapshot = (key: string, expected: string) => () => {
+  if (typeof sessionStorage === "undefined") return false;
+  return sessionStorage.getItem(key) === expected;
+};
 
 const PAYMENT_LINKS = {
   local: {
@@ -118,17 +125,14 @@ function CopyButton({ text, label }: { text: string; label: string }) {
 }
 
 export default function PaymentLinksAdmin() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const sessionAuthenticated = useSyncExternalStore(
+    subscribeToSessionStorage,
+    getSessionStorageSnapshot("admin_auth", "true"),
+    () => false
+  );
+  const [isAuthenticated, setIsAuthenticated] = useState(sessionAuthenticated);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  // Check if already authenticated (stored in sessionStorage)
-  useEffect(() => {
-    const stored = sessionStorage.getItem("admin_auth");
-    if (stored === "true") {
-      setIsAuthenticated(true);
-    }
-  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();

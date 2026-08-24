@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
-import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 
 export const metadata: Metadata = {
@@ -97,8 +94,8 @@ export default function About() {
             <FadeIn delay={0.2}>
               <div className="space-y-6 text-lg text-foreground/70 leading-relaxed font-light">
                 <p>
-                  I spent years watching small businesses get sold "AI solutions" by people who&apos;d
-                  never run a business. Strategy decks. Retainers. "Alignment sessions." Six weeks in,
+                  I spent years watching small businesses get sold &quot;AI solutions&quot; by people who&apos;d
+                  never run a business. Strategy decks. Retainers. &quot;Alignment sessions.&quot; Six weeks in,
                   the client has a PowerPoint and no working software.
                 </p>
                 <p>
@@ -180,7 +177,7 @@ export default function About() {
         <div className="relative mx-auto max-w-4xl px-6 lg:px-8 text-center">
           <FadeIn>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 font-mono">
-              If you&apos;ve read this far and you&apos;re thinking "yeah, this guy gets it" — let&apos;s talk.
+              If you&apos;ve read this far and you&apos;re thinking &quot;yeah, this guy gets it&quot; — let&apos;s talk.
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>

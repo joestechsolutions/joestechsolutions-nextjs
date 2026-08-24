@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { ArrowRight, CaretDown, Check, Briefcase, ShieldCheck, Rocket, HardDrive, GitBranch, CalendarCheck, CheckCircle, Robot, Desktop, CurrencyDollarSimple, Cloud, Globe, Wrench } from "@phosphor-icons/react/dist/ssr";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, CaretDown, Check, Briefcase, ShieldCheck, Rocket, HardDrive, GitBranch, CalendarCheck, CheckCircle, Robot, Desktop, CurrencyDollarSimple, Globe, Wrench } from "@phosphor-icons/react/dist/ssr";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { MagneticButton } from "@/components/animations/MagneticButton";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import { privateAiFaqs } from "./faqs";
 import { twMerge } from 'tailwind-merge';
 
@@ -20,9 +20,11 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (contentRef.current) {
-      setHeight(isOpen ? contentRef.current.scrollHeight : 0);
+      requestAnimationFrame(() => {
+        setHeight(isOpen ? contentRef.current!.scrollHeight : 0);
+      });
     }
   }, [isOpen]);
 
@@ -67,46 +69,46 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
   );
 }
 
+const HeroBlob = ({ className }: { className?: string }) => (
+  <div className={twMerge("absolute rounded-none blur-[130px] opacity-0 animate-blob-show pointer-events-none", className)}></div>
+);
+
+const StatCell = ({ value, label, note, colorClass, delay }: { value: string; label: string; note: string; colorClass: string; delay: number }) => (
+  <FadeIn delay={delay} className="flex-1 text-center py-5 px-4 relative after:absolute after:top-[20%] after:right-0 after:h-[60%] after:w-[1px] after:bg-foreground/20 last:after:hidden md:after:block max-md:after:hidden even:max-md:after:hidden max-sm:after:block max-sm:even:after:hidden">
+    <div className={twMerge("font-mono text-5xl font-bold leading-none tracking-[-0.03em] mb-1", colorClass)}>
+      {value}
+    </div>
+    <div className="text-lg font-semibold text-foreground/80 mb-0.5">{label}</div>
+    <div className="text-sm text-foreground/40">{note}</div>
+  </FadeIn>
+);
+
+const PersonaCard = ({ icon: Icon, pillColorClass, pillText, title, role, description }: { icon: React.ElementType; pillColorClass: string; pillText: string; title: string; role: string; description: string }) => (
+  <StaggerItem>
+    <AnimatedCard>
+      <Card className="bg-card border-foreground/10 rounded-none p-6 sm:p-8 relative overflow-hidden transition-transform duration-300 hover:translate-y-[-7px] hover:border-primary/30">
+        <div className={twMerge("absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl", pillColorClass === 'pill-blue' ? 'bg-gradient-to-r from-primary to-primary' : pillColorClass === 'pill-cyan' ? 'bg-gradient-to-r from-primary to-primary' : 'bg-gradient-to-r from-primary to-primary')} />
+        <div className="w-13 h-13 rounded-xl flex items-center justify-center text-xl mb-6" style={{ background: pillColorClass === 'pill-blue' ? 'rgba(14,165,233,0.08)' : pillColorClass === 'pill-cyan' ? 'rgba(6,182,212,0.08)' : 'rgba(139,92,246,0.08)', color: pillColorClass === 'pill-blue' ? '#d4541e' : pillColorClass === 'pill-cyan' ? '#e8703f' : '#8B5CF6', border: pillColorClass === 'pill-blue' ? '1px solid rgba(14,165,233,0.2)' : pillColorClass === 'pill-cyan' ? '1px solid rgba(6,182,212,0.2)' : '1px solid rgba(139,92,246,0.2)' }}>
+          <Icon weight="duotone" />
+        </div>
+        <div className={twMerge("inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none text-xs font-bold uppercase tracking-wider mb-3")}
+          style={{ background: pillColorClass === 'pill-blue' ? 'rgba(14,165,233,0.12)' : pillColorClass === 'pill-cyan' ? 'rgba(6,182,212,0.12)' : 'rgba(139,92,246,0.12)', color: pillColorClass === 'pill-blue' ? '#d4541e' : pillColorClass === 'pill-cyan' ? '#e8703f' : '#8B5CF6', border: pillColorClass === 'pill-blue' ? '1px solid rgba(14,165,233,0.25)' : pillColorClass === 'pill-cyan' ? '1px solid rgba(6,182,212,0.25)' : '1px solid rgba(139,92,246,0.25)' }}>
+          {pillText}
+        </div>
+        <h3 className="text-xl font-bold text-foreground font-mono mb-0.5">{title}</h3>
+        <p className="text-sm text-foreground/40 font-medium mb-4">{role}</p>
+        <p className="text-base text-foreground/60 leading-relaxed">{description}</p>
+      </Card>
+    </AnimatedCard>
+  </StaggerItem>
+);
+
 export default function PrivateAISetup() {
   const handleGetStarted = (type: "local" | "cloud" | "managed") => {
     window.location.href = `/private-ai-setup/qualify?type=${type}`;
   };
 
   const calendlyLink = "/contact";
-
-  const HeroBlob = ({ className }: { className?: string }) => (
-    <div className={twMerge("absolute rounded-none blur-[130px] opacity-0 animate-blob-show pointer-events-none", className)}></div>
-  );
-
-  const StatCell = ({ value, label, note, colorClass, delay }: { value: string; label: string; note: string; colorClass: string; delay: number }) => (
-    <FadeIn delay={delay} className="flex-1 text-center py-5 px-4 relative after:absolute after:top-[20%] after:right-0 after:h-[60%] after:w-[1px] after:bg-foreground/20 last:after:hidden md:after:block max-md:after:hidden even:max-md:after:hidden max-sm:after:block max-sm:even:after:hidden">
-      <div className={twMerge("font-mono text-5xl font-bold leading-none tracking-[-0.03em] mb-1", colorClass)}>
-        {value}
-      </div>
-      <div className="text-lg font-semibold text-foreground/80 mb-0.5">{label}</div>
-      <div className="text-sm text-foreground/40">{note}</div>
-    </FadeIn>
-  );
-
-  const PersonaCard = ({ icon: Icon, pillColorClass, pillText, title, role, description }: { icon: React.ElementType; pillColorClass: string; pillText: string; title: string; role: string; description: string }) => (
-    <StaggerItem>
-      <AnimatedCard>
-        <Card className="bg-card border-foreground/10 rounded-none p-6 sm:p-8 relative overflow-hidden transition-transform duration-300 hover:translate-y-[-7px] hover:border-primary/30">
-          <div className={twMerge("absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl", pillColorClass === 'pill-blue' ? 'bg-gradient-to-r from-primary to-primary' : pillColorClass === 'pill-cyan' ? 'bg-gradient-to-r from-primary to-primary' : 'bg-gradient-to-r from-primary to-primary')} />
-          <div className="w-13 h-13 rounded-xl flex items-center justify-center text-xl mb-6" style={{ background: pillColorClass === 'pill-blue' ? 'rgba(14,165,233,0.08)' : pillColorClass === 'pill-cyan' ? 'rgba(6,182,212,0.08)' : 'rgba(139,92,246,0.08)', color: pillColorClass === 'pill-blue' ? '#d4541e' : pillColorClass === 'pill-cyan' ? '#e8703f' : '#8B5CF6', border: pillColorClass === 'pill-blue' ? '1px solid rgba(14,165,233,0.2)' : pillColorClass === 'pill-cyan' ? '1px solid rgba(6,182,212,0.2)' : '1px solid rgba(139,92,246,0.2)' }}>
-            <Icon weight="duotone" />
-          </div>
-          <div className={twMerge("inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none text-xs font-bold uppercase tracking-wider mb-3")}
-            style={{ background: pillColorClass === 'pill-blue' ? 'rgba(14,165,233,0.12)' : pillColorClass === 'pill-cyan' ? 'rgba(6,182,212,0.12)' : 'rgba(139,92,246,0.12)', color: pillColorClass === 'pill-blue' ? '#d4541e' : pillColorClass === 'pill-cyan' ? '#e8703f' : '#8B5CF6', border: pillColorClass === 'pill-blue' ? '1px solid rgba(14,165,233,0.25)' : pillColorClass === 'pill-cyan' ? '1px solid rgba(6,182,212,0.25)' : '1px solid rgba(139,92,246,0.25)' }}>
-            {pillText}
-          </div>
-          <h3 className="text-xl font-bold text-foreground font-mono mb-0.5">{title}</h3>
-          <p className="text-sm text-foreground/40 font-medium mb-4">{role}</p>
-          <p className="text-base text-foreground/60 leading-relaxed">{description}</p>
-        </Card>
-      </AnimatedCard>
-    </StaggerItem>
-  );
 
   const verticals = [
     { icon: ShieldCheck, title: "Healthcare", desc: "HIPAA-aware medical AI" },

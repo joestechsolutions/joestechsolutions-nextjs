@@ -32,7 +32,7 @@ export function VoiceAvatar() {
   const [activeClip, setActiveClip] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [audioReady, setAudioReady] = useState(false);
+  const [, setAudioReady] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Check if audio files exist (dev mode flag — set to true once files are generated)

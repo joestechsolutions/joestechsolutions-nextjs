@@ -37,7 +37,7 @@ export default function Contact() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="text-xl sm:text-2xl text-foreground/80 leading-relaxed font-light">
-                No pitch, no pressure, no "discovery call." Just tell me what you&apos;re dealing with and
+                No pitch, no pressure, no &quot;discovery call.&quot; Just tell me what you&apos;re dealing with and
                 I&apos;ll tell you if I can help. If I can&apos;t, I&apos;ll tell you that too.
               </p>
             </FadeIn>

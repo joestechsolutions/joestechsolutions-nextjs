@@ -219,7 +219,7 @@ export default function StackPage() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
           <FadeIn>
             <p className="text-xl text-foreground/80 mb-8 font-light">
-              This is what's running right now. Want to see what it can do for your business?
+              This is what&apos;s running right now. Want to see what it can do for your business?
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>

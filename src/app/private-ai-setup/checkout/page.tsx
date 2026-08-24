@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Desktop, Cloud, Spinner, ArrowLeft, LockSimple } from "@phosphor-icons/react/dist/ssr";
 import { FadeIn } from "@/components/animations/FadeIn";
 
@@ -109,7 +109,7 @@ function CheckoutForm() {
         <FadeIn delay={0.1}>
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold text-foreground font-mono mb-3">
-              Let's Get Started
+              Let&apos;s Get Started
             </h1>
             <p className="text-xl text-foreground/70">
               Quick form so I can prepare for your {isVPS ? "VPS" : "local"} setup session.
@@ -198,7 +198,7 @@ function CheckoutForm() {
                       className="w-full px-4 py-3 bg-background border border-foreground/10 rounded-xl text-foreground placeholder:text-muted-foreground/40 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                       placeholder="myai.yourdomain.com or leave blank for suggestions"
                     />
-                    <p className="text-foreground/50 text-sm mt-1">We'll set up SSL and DNS for you</p>
+                    <p className="text-foreground/50 text-sm mt-1">We&apos;ll set up SSL and DNS for you</p>
                   </div>
                 )}
 

@@ -126,7 +126,7 @@ export default function CbarrgsCaseStudy() {
               </p>
               <p className="text-foreground/70 text-lg leading-relaxed">
                 The site needed to integrate with Spotify, Apple Music, YouTube, SoundCloud, and Instagram
-                while providing an elegant, fast-loading experience that reflects the artist's brand.
+                while providing an elegant, fast-loading experience that reflects the artist&apos;s brand.
               </p>
             </div>
 
@@ -210,7 +210,7 @@ export default function CbarrgsCaseStudy() {
               },
               {
                 title: "Artist Branding",
-                description: "Clean, professional design that reflects the artist's electronic/ambient music aesthetic.",
+                description: "Clean, professional design that reflects the artist&apos;s electronic/ambient music aesthetic.",
                 icon: Globe
               }
             ].map((feature, index) => (
@@ -265,7 +265,7 @@ export default function CbarrgsCaseStudy() {
             Need a Professional Website?
           </h2>
           <p className="text-xl text-foreground/80 mb-10">
-            Let's build your online presence
+            Let&apos;s build your online presence
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">

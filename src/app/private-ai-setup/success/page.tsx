@@ -24,8 +24,8 @@ function SuccessContent() {
 
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo | null>(null);
   const [step, setStep] = useState<"verifying" | "intake" | "scheduling">("verifying");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting] = useState(false);
+  const [error] = useState<string | null>(null);
 
   // Form data for intake
   const [formData, setFormData] = useState({
@@ -43,28 +43,34 @@ function SuccessContent() {
 
   // Verify payment on mount (or bypass in demo mode)
   useEffect(() => {
-    if (!sessionId) {
-      setPaymentInfo({ valid: false, error: "No payment session found" });
-      return;
-    }
+    let cancelled = false;
 
-    // Demo mode: bypass payment verification
-    if (isDemo) {
-      setPaymentInfo({
-        valid: true,
-        email: "demo@example.com",
-        name: "Demo User",
-        type: urlType || "local",
-        sessionId: sessionId,
-      });
-      setStep("intake");
-      return;
-    }
+    async function runVerification() {
+      if (!sessionId) {
+        if (!cancelled) setPaymentInfo({ valid: false, error: "No payment session found" });
+        return;
+      }
 
-    async function verifyPayment() {
+      // Demo mode: bypass payment verification
+      if (isDemo) {
+        if (!cancelled) {
+          setPaymentInfo({
+            valid: true,
+            email: "demo@example.com",
+            name: "Demo User",
+            type: urlType || "local",
+            sessionId: sessionId,
+          });
+          setStep("intake");
+        }
+        return;
+      }
+
       try {
         const response = await fetch(`/api/verify-payment?session_id=${sessionId}`);
         const data = await response.json();
+
+        if (cancelled) return;
 
         if (data.valid) {
           setPaymentInfo(data);
@@ -80,11 +86,17 @@ function SuccessContent() {
           setPaymentInfo({ valid: false, error: data.error || "Payment verification failed" });
         }
       } catch {
-        setPaymentInfo({ valid: false, error: "Unable to verify payment" });
+        if (!cancelled) {
+          setPaymentInfo({ valid: false, error: "Unable to verify payment" });
+        }
       }
     }
 
-    verifyPayment();
+    runVerification();
+
+    return () => {
+      cancelled = true;
+    };
   }, [sessionId, urlType, isDemo]);
 
   // Load qualification data from session storage
@@ -137,7 +149,7 @@ function SuccessContent() {
                   Payment Verification Failed
                 </h1>
                 <p className="text-foreground/70">
-                  {paymentInfo.error || "We couldn't verify your payment. Please try again or contact support."}
+                  {paymentInfo.error || "We couldn&apos;t verify your payment. Please try again or contact support."}
                 </p>
               </CardHeader>
               <CardContent className="text-center">
@@ -250,7 +262,7 @@ function SuccessContent() {
                         className="w-full px-4 py-3 bg-background border border-foreground/10 rounded-xl text-foreground placeholder:text-muted-foreground/40 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                         placeholder="myai.yourdomain.com or leave blank for suggestions"
                       />
-                      <p className="text-foreground/50 text-sm mt-1">We'll set up SSL and DNS for you</p>
+                      <p className="text-foreground/50 text-sm mt-1">We&apos;ll set up SSL and DNS for you</p>
                     </div>
                   )}
 
@@ -380,7 +392,7 @@ function SuccessContent() {
             <CardHeader className="text-center">
               <CheckCircle weight="duotone" className="h-16 w-16 text-primary mx-auto mb-4" />
               <h1 className="text-3xl font-bold text-foreground font-mono mb-2">
-                You're All Set!
+                You&apos;re All Set!
               </h1>
               <p className="text-foreground/70">
                 One last step — pick a time for your setup call.
@@ -404,7 +416,7 @@ function SuccessContent() {
                 <CalendarCheck weight="duotone" className="h-12 w-12 text-primary mx-auto mb-4" />
                 <h2 className="text-xl font-semibold text-foreground mb-2">Get in touch →</h2>
                 <p className="text-foreground/60 mb-6">
-                  Pick a time that works for you. I'll walk you through everything.
+                  Pick a time that works for you. I&apos;ll walk you through everything.
                 </p>
                 <a
                   href="/contact"
@@ -428,15 +440,15 @@ function SuccessContent() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">2.</span>
-                    <span>I'll review your setup details before our call</span>
+                    <span>I&apos;ll review your setup details before our call</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">3.</span>
-                    <span>We'll do the installation together via screen share</span>
+                    <span>We&apos;ll do the installation together via screen share</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">4.</span>
-                    <span>You'll have your private AI running by the end of the call!</span>
+                    <span>You&apos;ll have your private AI running by the end of the call!</span>
                   </li>
                 </ol>
               </div>

@@ -13,7 +13,6 @@ import {
   Globe,
   Lock,
   Cpu,
-  ArrowRight,
   ArrowLeft,
   Terminal,
   Settings,
@@ -24,7 +23,6 @@ import { HeroDownloadButton, PlatformDownloadCards, CtaDownloadButton } from "./
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
-import { MagneticButton } from "@/components/animations/MagneticButton";
 
 export const metadata: Metadata = {
   title: "Whisper Walkie — Local Push-to-Talk Transcription | Joe's Tech Solutions",
@@ -627,7 +625,7 @@ export default function WhisperWalkiePage() {
 
           <FadeIn delay={0.25}>
             <p className="mt-8 text-center text-foreground/40 text-sm">
-              &mdash; Joe, <a href="/" className="text-primary hover:underline">Joe&apos;s Tech Solutions</a>
+              &mdash; Joe, <Link href="/" className="text-primary hover:underline">Joe&apos;s Tech Solutions</Link>
             </p>
           </FadeIn>
         </div>

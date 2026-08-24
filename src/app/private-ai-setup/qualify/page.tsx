@@ -33,18 +33,15 @@ function QualifyForm() {
   const isManaged = qualifyData.setupType === "managed";
   const needsVPS = isCloud || isManaged;
 
-  const checkQualification = () => {
-    if (needsVPS) return "qualified";
-
-    const ram = qualifyData.ramAmount;
-    if (ram === "less-than-8" || ram === "4gb") return "needs-review";
-    if (ram === "8gb" || ram === "16gb" || ram === "32gb-plus") return "qualified";
-    return "pending";
-  };
-
   useEffect(() => {
     if (qualifyData.operatingSystem && (needsVPS || qualifyData.ramAmount)) {
-      setQualificationStatus(checkQualification());
+      const status = needsVPS ? "qualified" : (() => {
+        const ram = qualifyData.ramAmount;
+        if (ram === "less-than-8" || ram === "4gb") return "needs-review";
+        if (ram === "8gb" || ram === "16gb" || ram === "32gb-plus") return "qualified";
+        return "pending";
+      })();
+      setQualificationStatus(status);
     }
   }, [qualifyData.operatingSystem, qualifyData.ramAmount, needsVPS]);
 

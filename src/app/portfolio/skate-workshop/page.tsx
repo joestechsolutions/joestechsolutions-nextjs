@@ -266,7 +266,7 @@ export default function SkateWorkshopCaseStudy() {
             Ready to Build Your App?
           </h2>
           <p className="text-xl text-foreground/90 mb-10">
-            Let's discuss your mobile or web platform project
+            Let&apos;s discuss your mobile or web platform project
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">

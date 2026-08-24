@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   ArrowRight,
   Check,
@@ -10,9 +10,7 @@ import {
   Brain,
   CalendarCheck,
   Plug,
-  Code,
   ShieldCheck,
-  CurrencyDollarSimple,
   Lightning,
   Stack,
   ChatTeardropDots,
@@ -26,7 +24,7 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { MagneticButton } from "@/components/animations/MagneticButton";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import { agentFaqs } from "./faqs";
 import { twMerge } from "tailwind-merge";
 
@@ -37,9 +35,11 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (contentRef.current) {
-      setHeight(isOpen ? contentRef.current.scrollHeight : 0);
+      requestAnimationFrame(() => {
+        setHeight(isOpen ? contentRef.current!.scrollHeight : 0);
+      });
     }
   }, [isOpen]);
 
@@ -80,17 +80,17 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
   );
 }
 
+const HeroBlob = ({ className }: { className?: string }) => (
+  <div
+    className={twMerge(
+      "absolute rounded-none blur-[130px] opacity-0 animate-blob-show pointer-events-none",
+      className
+    )}
+  />
+);
+
 export default function AgentSystem() {
   const calendlyLink = "/contact";
-
-  const HeroBlob = ({ className }: { className?: string }) => (
-    <div
-      className={twMerge(
-        "absolute rounded-none blur-[130px] opacity-0 animate-blob-show pointer-events-none",
-        className
-      )}
-    />
-  );
 
   return (
     <div className="min-h-screen">
@@ -212,7 +212,7 @@ export default function AgentSystem() {
           <FadeIn>
             <div className="text-center mb-16">
               <span className="block text-primary font-bold text-xs tracking-wider uppercase mb-3">
-                What's Included
+                What&apos;s Included
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground font-mono leading-tight">
                 Six layers. One system.
@@ -466,7 +466,7 @@ export default function AgentSystem() {
             >
               Get in touch →
             </a>{" "}
-            — we'll figure it out together.
+            — we&apos;ll figure it out together.
           </FadeIn>
         </div>
       </section>

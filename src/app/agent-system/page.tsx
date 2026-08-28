@@ -136,7 +136,7 @@ export default function AgentSystem() {
                   onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
                   className="bg-card/50 border border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary rounded-none px-8 py-6 text-lg font-mono font-semibold transition-[color,background-color,border-color,box-shadow]"
                 >
-                  See Pricing
+                  See What&apos;s Included
                 </Button>
               </div>
             </FadeIn>
@@ -364,19 +364,19 @@ export default function AgentSystem() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* What's included */}
       <section className="relative py-24 sm:py-32" id="pricing">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
               <span className="block text-primary font-bold text-xs tracking-wider uppercase mb-3">
-                Pricing
+                What&apos;s Included
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-mono leading-tight">
-                One setup. One monthly. Everything included.
+                Everything included. No tiers to navigate.
               </h2>
               <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light leading-relaxed">
-                No tiers to navigate. No upsells. The full system, configured for your business.
+                No upsells. The full system, configured for your business.
               </p>
             </div>
           </FadeIn>
@@ -402,15 +402,14 @@ export default function AgentSystem() {
                   <div className="bg-background rounded-xl p-5">
                     <p className="text-xs font-bold uppercase tracking-wider text-foreground/40 mb-1">Setup</p>
                     <p className="text-4xl font-bold text-foreground font-mono">
-                      $2,500
+                      One-time
                     </p>
-                    <p className="text-sm text-foreground/40 mt-1">One-time · configured for your business</p>
+                    <p className="text-sm text-foreground/40 mt-1">Configured for your business</p>
                   </div>
                   <div className="bg-background rounded-xl p-5">
                     <p className="text-xs font-bold uppercase tracking-wider text-foreground/40 mb-1">Monthly</p>
                     <p className="text-4xl font-bold text-foreground font-mono">
-                      $149
-                      <span className="text-lg font-light text-foreground/40">/mo</span>
+                      Optional
                     </p>
                     <p className="text-sm text-foreground/40 mt-1">Managed hosting + maintenance</p>
                   </div>
@@ -425,7 +424,7 @@ export default function AgentSystem() {
                     "Memory system (semantic search + knowledge graph)",
                     "Telegram, Gmail, Instagram, Stripe integrations",
                     "24/7 cron automation (30 scheduled jobs)",
-                    "Ollama Cloud model routing — $100/mo, no caps",
+                    "Ollama Cloud model routing — no usage caps",
                     "Dedicated VPS with daily backups",
                     "Weekly health checks + monthly updates",
                     "Priority same-day support",
@@ -440,7 +439,7 @@ export default function AgentSystem() {
                 </ul>
 
                 <p className="text-sm text-foreground/40 mb-6">
-                  Ollama Cloud subscription ($100/mo) billed separately. VPS costs (~$10-20/mo) not included.
+                  Ollama Cloud subscription billed separately. VPS costs not included.
                 </p>
 
                 <MagneticButton strength={0.2} className="w-full">

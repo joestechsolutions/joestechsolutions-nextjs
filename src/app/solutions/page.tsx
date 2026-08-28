@@ -34,7 +34,6 @@ export const metadata: Metadata = {
 const solutions = [
   {
     name: "Setup",
-    price: "$199",
     icon: Robot,
     accent: "#d4541e",
     description:
@@ -44,7 +43,6 @@ const solutions = [
   },
   {
     name: "Operations",
-    price: "$499/mo",
     icon: Gear,
     accent: "#d4541e",
     description:
@@ -54,7 +52,6 @@ const solutions = [
   },
   {
     name: "Custom Build",
-    price: "from $2,500",
     icon: Rocket,
     accent: "#d4541e",
     description:
@@ -139,7 +136,6 @@ export default function Solutions() {
                         <h2 className="text-2xl font-bold text-foreground font-mono">
                           {solution.name}
                         </h2>
-                        <p className={`font-semibold text-lg ${accent.iconText}`}>{solution.price}</p>
                         <p className="text-foreground/70 leading-relaxed">{solution.description}</p>
                         <Link
                           href={solution.href}

@@ -78,7 +78,7 @@ ollama pull llama3.1
 
 <p>ChatGPT Team is $25 per seat per month. For a 10-person firm, that's <strong>$3,000 per year</strong>. Ongoing. Every year. And you still don't own your data.</p>
 
-<p>A private AI setup — proper hardware, configured and ready to go — runs around <strong>$199 one-time</strong> for the setup service, plus the cost of hardware (which you already own or can purchase once). No monthly fees. No per-seat licensing. No renewal conversations.</p>
+<p>A private AI setup — proper hardware, configured and ready to go — is a one-time setup service, plus the cost of hardware (which you already own or can purchase once). No monthly fees. No per-seat licensing. No renewal conversations.</p>
 
 <p>The hardware pays for itself fast. A solid mini PC or repurposed workstation runs $300–800 and handles most business AI workloads without breaking a sweat. Add the setup cost and you're looking at under $1,000 total — less than a third of what you'd spend on ChatGPT in a single year.</p>
 

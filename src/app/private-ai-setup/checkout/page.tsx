@@ -133,7 +133,7 @@ function CheckoutForm() {
                       {isVPS ? "VPS Hosting Setup" : "Local Install"}
                     </span>
                     <span className="text-foreground/50 text-sm">
-                      {isVPS ? "$499 setup + $29/mo" : "$199 one-time"}
+                      {isVPS ? "One-time setup · optional monthly plan" : "One-time setup"}
                     </span>
                   </div>
                   <button
@@ -332,7 +332,7 @@ function CheckoutForm() {
                   ) : (
                     <span className="flex items-center justify-center gap-2">
                       <LockSimple weight="bold" className="h-5 w-5" />
-                      Continue to Payment — {isVPS ? "$499 + $29/mo" : "$199"}
+                      Continue to Payment
                     </span>
                   )}
                 </Button>

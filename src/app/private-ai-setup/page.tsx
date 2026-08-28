@@ -173,7 +173,7 @@ export default function PrivateAISetup() {
                     className="bg-card/50 border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary text-lg px-8 py-7 rounded-none group shadow-2xl shadow-transparent hover:shadow-primary/10 font-mono font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-300 backdrop-blur-sm"
                   >
                     <a href="#pricing">
-                      See Pricing
+                      See Options
                       <CaretDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
                     </a>
                   </Button>
@@ -394,13 +394,13 @@ export default function PrivateAISetup() {
 
       <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-16" />
 
-      {/* Pricing Cards — 3 Tiers */}
+      {/* Options — 3 Tiers */}
       <section className="relative py-24 sm:py-32" id="pricing">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
-              <span className="block text-primary font-bold text-xs tracking-wider uppercase mb-3">Pricing</span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-mono leading-tight">Simple, Transparent Pricing</h2>
+              <span className="block text-primary font-bold text-xs tracking-wider uppercase mb-3">Options</span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 font-mono leading-tight">Three Ways to Run Private AI</h2>
               <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light leading-relaxed">
                 Choose the setup that fits your needs. No hidden fees. No surprises.
               </p>
@@ -414,7 +414,7 @@ export default function PrivateAISetup() {
                 <Card className="bg-card border-foreground/10 hover:border-primary/30 transition-[color,border-color,background-color,transform] duration-300 overflow-hidden h-full p-8 relative flex flex-col hover:translate-y-[-5px]">
                   <p className="text-xs font-bold uppercase tracking-wider text-foreground/40 mb-2">Local AI Setup</p>
                   <h3 className="text-5xl font-bold text-foreground font-mono tracking-[-0.03em] leading-none mb-1.5">
-                    $199 <span className="text-lg font-light text-foreground/40">one-time</span>
+                    One-time <span className="text-lg font-light text-foreground/40">setup</span>
                   </h3>
                   <p className="text-sm text-foreground/40 mb-8">No recurring charges &middot; Yours forever</p>
                   <div className="h-px bg-foreground/10 mb-7" />
@@ -440,7 +440,7 @@ export default function PrivateAISetup() {
                       onClick={() => handleGetStarted("local")}
                       className="w-full bg-card/50 border border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary rounded-none group shadow-lg shadow-transparent hover:shadow-primary/10 py-6 text-lg font-mono font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-300 backdrop-blur-sm"
                     >
-                      Get Started — $199
+                      Get Started
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </MagneticButton>
@@ -458,9 +458,9 @@ export default function PrivateAISetup() {
                   </div>
                   <p className="text-xs font-bold uppercase tracking-wider text-foreground/40 mb-2">Cloud AI Server</p>
                   <h3 className="text-5xl font-bold text-foreground font-mono tracking-[-0.03em] leading-none mb-1.5">
-                    $499 <span className="text-lg font-light text-foreground/40">setup</span>
+                    One-time <span className="text-lg font-light text-foreground/40">setup</span>
                   </h3>
-                  <p className="text-sm text-foreground/40 mb-8">+ $29/month &middot; Fully managed</p>
+                  <p className="text-sm text-foreground/40 mb-8">Optional monthly plan &middot; Fully managed</p>
                   <div className="h-px bg-foreground/10 mb-7" />
                   <ul className="space-y-3 mb-8 flex-1">
                     {[
@@ -484,7 +484,7 @@ export default function PrivateAISetup() {
                       onClick={() => handleGetStarted("cloud")}
                       className="w-full bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary text-foreground rounded-none group shadow-lg shadow-primary/20 py-6 text-lg font-mono font-semibold"
                     >
-                      Get Started — $499 + $29/mo
+                      Get Started
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </MagneticButton>
@@ -502,9 +502,9 @@ export default function PrivateAISetup() {
                   </div>
                   <p className="text-xs font-bold uppercase tracking-wider text-foreground/40 mb-2">Managed AI + Automation</p>
                   <h3 className="text-5xl font-bold text-foreground font-mono tracking-[-0.03em] leading-none mb-1.5">
-                    $999 <span className="text-lg font-light text-foreground/40">setup</span>
+                    One-time <span className="text-lg font-light text-foreground/40">setup</span>
                   </h3>
-                  <p className="text-sm text-foreground/40 mb-8">+ $79/month &middot; Full service</p>
+                  <p className="text-sm text-foreground/40 mb-8">Optional monthly plan &middot; Full service</p>
                   <div className="h-px bg-foreground/10 mb-7" />
                   <ul className="space-y-3 mb-8 flex-1">
                     {[
@@ -529,7 +529,7 @@ export default function PrivateAISetup() {
                       onClick={() => handleGetStarted("managed")}
                       className="w-full bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary text-foreground rounded-none group shadow-lg shadow-primary/30 py-6 text-lg font-mono font-semibold"
                     >
-                      Get Started — $999 + $79/mo
+                      Get Started
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </MagneticButton>

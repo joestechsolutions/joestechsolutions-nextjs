@@ -132,11 +132,6 @@ export function OfferCatalogSchema() {
       "name": tier.name,
       "description": tier.blurb,
       "url": `${baseUrl}${tier.href.startsWith("/") ? tier.href : `/${tier.href}`}`,
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "price": tier.price,
-        "priceCurrency": "USD",
-      },
       "itemOffered": {
         "@type": "Service",
         "name": tier.name,

@@ -36,7 +36,7 @@ const tierHref = (t: Tier) =>
 
 const featuredSpecs = [
   { k: "privacy", v: "100%" },
-  { k: "ongoing", v: "$0/mo" },
+  { k: "ongoing", v: "none" },
   { k: "session", v: "75 min" },
   { k: "models", v: "24" },
 ];
@@ -168,10 +168,6 @@ export default function Home() {
                     <span className="text-primary">▸ </span>
                     {t.name}
                   </h3>
-                  <p className="mb-3 font-mono text-[22px] font-bold text-primary">
-                    {t.price}
-                    {t.cadence === "monthly" ? "/mo" : ""}
-                  </p>
                   <p className="mb-3 max-w-[600px] text-[13.5px] text-foreground/80">
                     {t.blurb}
                   </p>

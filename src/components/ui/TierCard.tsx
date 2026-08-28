@@ -37,12 +37,6 @@ const accentStyles: Record<
 // Tier detail pages that exist today. /morning-brief and /business-os ship in Phase 3.
 const liveDetailPages = new Set(["/private-ai-setup", "/agent-system"]);
 
-export function tierPriceLabel(tier: Tier) {
-  if (tier.cadence === "monthly") return `${tier.price}/mo`;
-  if (tier.cadence === "one-time") return `${tier.price} one-time`;
-  return tier.price;
-}
-
 export function tierCtaHref(tier: Tier) {
   return tier.stripeReady ? tier.href : `/contact?tier=${tier.id}`;
 }
@@ -70,7 +64,6 @@ export function TierCard({ tier }: { tier: Tier }) {
           <div>
             <p className={`text-sm font-semibold mb-1 ${accent.text}`}>{tier.category}</p>
             <h3 className="text-2xl font-bold text-foreground font-mono">{tier.name}</h3>
-            <p className={`font-semibold text-lg ${accent.text}`}>{tierPriceLabel(tier)}</p>
           </div>
 
           <p className="text-foreground/80 leading-relaxed font-light">{tier.blurb}</p>

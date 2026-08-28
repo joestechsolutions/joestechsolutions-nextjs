@@ -1,12 +1,10 @@
 // Marketing tier ladder — the canonical 3-tier model for homepage, /solutions, /services.
 // NOT lib/pricing.ts — that's the live Stripe funnel for /private-ai-setup.
-// Overlap: Quick Start ($199) = pricing.ts `local`.
+// Prices intentionally not shown on marketing pages — quote via /contact.
 
 export type Tier = {
   id: "quick-start" | "back-office" | "custom-build";
   name: string;
-  price: string;
-  cadence: "monthly" | "one-time" | "from";
   href: string;
   category: string;
   blurb: string;
@@ -20,8 +18,6 @@ export const TIERS: Tier[] = [
   {
     id: "quick-start",
     name: "Setup",
-    price: "$199",
-    cadence: "one-time",
     href: "/private-ai-setup",
     category: "One-time setup",
     blurb:
@@ -39,8 +35,6 @@ export const TIERS: Tier[] = [
   {
     id: "back-office",
     name: "Operations",
-    price: "$499",
-    cadence: "monthly",
     href: "/services#back-office",
     category: "Monthly retainer",
     blurb:
@@ -57,8 +51,6 @@ export const TIERS: Tier[] = [
   {
     id: "custom-build",
     name: "Custom Build",
-    price: "$2,500+",
-    cadence: "from",
     href: "/services#custom-build",
     category: "Project-based",
     blurb:

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Desktop, Cloud, Rocket, Spinner, ArrowLeft, ArrowRight, CheckCircle, Warning } from "@phosphor-icons/react/dist/ssr";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { SetupType, TIER_LABELS, TIER_PRICES } from "@/lib/pricing";
+import { SetupType, TIER_LABELS } from "@/lib/pricing";
 
 function QualifyForm() {
   const searchParams = useSearchParams();
@@ -89,10 +89,6 @@ function QualifyForm() {
   }
 
   const tierLabel = TIER_LABELS[qualifyData.setupType];
-  const tierPrice = TIER_PRICES[qualifyData.setupType];
-  const priceDisplay = tierPrice.monthly
-    ? `${tierPrice.setup} setup + ${tierPrice.monthly}`
-    : `${tierPrice.setup} one-time`;
 
   const TierIcon = isManaged ? Rocket : needsVPS ? Cloud : Desktop;
   const accentColor = isManaged ? "#8B5CF6" : isCloud ? "#e8703f" : "#d4541e";
@@ -134,7 +130,7 @@ function QualifyForm() {
                 <TierIcon weight="duotone" className="h-6 w-6" style={{ color: accentColor }} />
                 <div className="flex-1">
                   <span className="text-foreground font-medium block">{tierLabel}</span>
-                  <span className="text-foreground/50 text-sm">{priceDisplay}</span>
+                  <span className="text-foreground/50 text-sm">One-time setup · managed options available</span>
                 </div>
                 <button
                   type="button"
@@ -288,7 +284,7 @@ function QualifyForm() {
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
-                    Proceed to Payment — {tierPrice.setup}
+                    Proceed to Payment
                     <ArrowRight className="h-5 w-5" />
                   </span>
                 )}

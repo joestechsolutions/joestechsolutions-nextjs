@@ -343,9 +343,9 @@ export const VERTICALS_DATA: Record<string, VerticalData> = {
     tagline: "Team AI with no per-user fees",
     icon: "Storefront",
     description:
-      "Private AI for small businesses and teams. Stop paying $20/user/month for ChatGPT — get the same capability for your whole team with a one-time setup.",
+      "Private AI for small businesses and teams. Skip the per-seat ChatGPT fees — get the same capability for your whole team with a one-time setup.",
     whyPrivate:
-      "Stop paying $20/user/month for ChatGPT. Get the same capability for your whole team with a one-time setup — no per-user fees, no data leaving your control, no monthly AI subscriptions.",
+      "Skip the per-seat ChatGPT fees. Get the same capability for your whole team with a one-time setup — no per-user fees, no data leaving your control, no monthly AI subscriptions.",
     samplePrompts: [
       "Draft a professional email responding to this customer complaint",
       "Write 5 social media posts promoting our spring sale",

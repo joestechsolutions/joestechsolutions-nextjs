@@ -14,14 +14,14 @@ import { TIERS } from "@/lib/tiers";
 export const metadata: Metadata = {
   title: "Services | Joe's Tech Solutions",
   description:
-    "Three ways I work with you — from a $199 Setup to a full Custom Build. From a one-time setup to a full operations layer. Start where you need to, move up when you're ready.",
+    "Three ways I work with you — from a one-time setup to a full operations layer to a custom build. Start where you need to, move up when you're ready.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
     title: "Services | Joe's Tech Solutions",
     description:
-      "Three ways I work with you — from a $199 Setup to a full Custom Build. Start where you need to, move up when you're ready.",
+      "Three ways I work with you — from a one-time setup to a full Custom Build. Start where you need to, move up when you're ready.",
     url: "https://www.joestechsolutions.com/services",
   },
 };

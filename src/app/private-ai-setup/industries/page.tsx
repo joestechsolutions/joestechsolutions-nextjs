@@ -116,7 +116,7 @@ export default function IndustriesPage() {
               Ready to Get Started?
             </h2>
             <p className="text-xl text-foreground/80 mb-10 leading-relaxed max-w-2xl mx-auto font-light">
-              All 9 industry assistants are included with every Private AI Setup — starting at $199.
+              All 9 industry assistants are included with every Private AI Setup.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>

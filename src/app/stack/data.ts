@@ -1,13 +1,19 @@
 // Stack data — updated when the real tool stack changes.
 // Source: ~/.hermes/config.yaml, ~/free-claude-code/.env, ollama list, ~/.gitnexus/registry.json
-// Last updated: 2026-08-16
+// Last updated: 2026-08-28
 
-export const lastUpdated = "August 16, 2026";
+export const lastUpdated = "August 28, 2026";
 
 export const models = [
   {
-    name: "GLM-5.2",
-    role: "Primary — main conversation + interactive tasks",
+    name: "GLM 5.3 Flash",
+    role: "Default — main conversation + cron fleet",
+    provider: "Ollama Cloud",
+    capabilities: ["tools", "thinking"],
+  },
+  {
+    name: "GLM 5.3",
+    role: "Heavy agentic coding — code-architect, debugger, security-auditor + FCC proxy",
     provider: "Ollama Cloud",
     capabilities: ["tools", "thinking"],
   },

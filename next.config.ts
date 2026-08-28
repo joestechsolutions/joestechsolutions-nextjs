@@ -60,6 +60,27 @@ const nextConfig: NextConfig = {
         destination: '/private-ai-setup',
         permanent: true,
       },
+      // Stripe checkout funnel removed (pricing hidden Aug 2026) — route old links to contact.
+      {
+        source: '/private-ai-setup/qualify',
+        destination: '/contact',
+        permanent: false,
+      },
+      {
+        source: '/private-ai-setup/checkout',
+        destination: '/contact',
+        permanent: false,
+      },
+      {
+        source: '/private-ai-setup/success',
+        destination: '/contact',
+        permanent: false,
+      },
+      {
+        source: '/checkout',
+        destination: '/contact',
+        permanent: false,
+      },
     ];
   },
   async headers() {

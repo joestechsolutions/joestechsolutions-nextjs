@@ -101,5 +101,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-
-/* Stripe webhook handler is at /api/webhooks/stripe/route.ts */

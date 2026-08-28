@@ -21,7 +21,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Contact() {
+// Pre-fill context when arriving from a service page (?interest=local|cloud|managed).
+const INTEREST_COPY: Record<string, string> = {
+  local: "Interested in Private AI on your own machine? Tell me about your setup and I'll take it from there.",
+  cloud: "Interested in your own Private AI server? Tell me about your team and I'll take it from there.",
+  managed: "Interested in Managed AI + automation? Tell me what you want off your plate and I'll take it from there.",
+};
+
+export default async function Contact({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
+  const interest = typeof params.interest === "string" ? params.interest : "";
+  const interestCopy = INTEREST_COPY[interest];
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -37,8 +52,8 @@ export default function Contact() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="text-xl sm:text-2xl text-foreground/80 leading-relaxed font-light">
-                No pitch, no pressure, no &quot;discovery call.&quot; Just tell me what you&apos;re dealing with and
-                I&apos;ll tell you if I can help. If I can&apos;t, I&apos;ll tell you that too.
+                {interestCopy ??
+                  "No pitch, no pressure, no \"discovery call.\" Just tell me what you're dealing with and I'll tell you if I can help. If I can't, I'll tell you that too."}
               </p>
             </FadeIn>
           </div>

@@ -105,7 +105,8 @@ const PersonaCard = ({ icon: Icon, pillColorClass, pillText, title, role, descri
 
 export default function PrivateAISetup() {
   const handleGetStarted = (type: "local" | "cloud" | "managed") => {
-    window.location.href = `/private-ai-setup/qualify?type=${type}`;
+    // Checkout funnel paused — all inquiries go through contact until pricing returns.
+    window.location.href = `/contact?interest=${type}`;
   };
 
   const calendlyLink = "/contact";

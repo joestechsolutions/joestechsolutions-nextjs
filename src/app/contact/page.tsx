@@ -26,6 +26,7 @@ const INTEREST_COPY: Record<string, string> = {
   local: "Interested in Private AI on your own machine? Tell me about your setup and I'll take it from there.",
   cloud: "Interested in your own Private AI server? Tell me about your team and I'll take it from there.",
   managed: "Interested in Managed AI + automation? Tell me what you want off your plate and I'll take it from there.",
+  gbp: "Free Google Business Profile audit — tell us your business name and city, plus the three competitors ranking above you on Maps. We'll send back what's broken, what's missing, and what we'd fix first.",
 };
 
 export default async function Contact({

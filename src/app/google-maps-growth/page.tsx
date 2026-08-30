@@ -193,7 +193,7 @@ export default function GoogleMapsGrowth() {
             </FadeIn>
             <FadeIn delay={0.3}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-                <Link href="/contact">
+                <Link href="/contact?interest=gbp">
                   <MagneticButton strength={0.3}>
                     <Button
                       size="lg"
@@ -408,7 +408,7 @@ export default function GoogleMapsGrowth() {
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <Link href="/contact">
+            <Link href="/contact?interest=gbp">
               <MagneticButton strength={0.3}>
                 <Button
                   size="lg"

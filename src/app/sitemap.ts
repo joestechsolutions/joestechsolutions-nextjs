@@ -61,6 +61,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    // Google Maps Growth — AI-managed GBP service
+    {
+      url: `${baseUrl}/google-maps-growth`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     // Prompt Library - Lead Magnet
     {
       url: `${baseUrl}/prompt-library`,

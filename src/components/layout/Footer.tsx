@@ -30,6 +30,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/google-maps-growth" className="text-foreground/60 hover:text-primary text-sm transition-colors">
+                  Google Maps Growth
+                </Link>
+              </li>
+              <li>
                 <Link href="/services#custom-build" className="text-foreground/60 hover:text-primary text-sm transition-colors">
                   Custom Build
                 </Link>

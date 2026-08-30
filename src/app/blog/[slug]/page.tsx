@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
         headline={post.title}
         description={post.seo.description}
         datePublished={post.date}
-        image={post.seo.ogImage || "https://www.joestechsolutions.com/logo-main.png"}
+        image={post.seo.ogImage || "https://www.joestechsolutions.com/og-image.png"}
         url={`https://www.joestechsolutions.com/blog/${post.slug}`}
         keywords={post.tags}
       />

@@ -46,10 +46,10 @@ export const metadata: Metadata = {
     siteName: "Joe's Tech Solutions",
     images: [
       {
-        url: '/logo-main.png',
-        width: 2400,
-        height: 1200,
-        alt: "Joe's Tech Solutions Logo",
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Joe's Tech Solutions — AI agents that run your backlog, your inbox, and your Google profile",
       },
     ],
     locale: 'en_US',

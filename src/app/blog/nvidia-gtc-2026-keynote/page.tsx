@@ -60,7 +60,7 @@ const jsonLd = {
     "@type": "Organization",
     name: "Joe's Tech Solutions",
     url: "https://www.joestechsolutions.com",
-    logo: { "@type": "ImageObject", url: "https://www.joestechsolutions.com/logo-main.png" },
+    logo: { "@type": "ImageObject", url: "https://www.joestechsolutions.com/og-image.png" },
   },
   datePublished: POST.date,
   dateModified: POST.date,

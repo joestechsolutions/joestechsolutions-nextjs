@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Joe's Tech Solutions | Boutique Development Studio",
     description: "Mobile apps, web platforms, and private AI infrastructure for ambitious SMBs.",
-    images: ['/logo-main.png'],
+    images: ['/og-image.png'],
   },
 };
 

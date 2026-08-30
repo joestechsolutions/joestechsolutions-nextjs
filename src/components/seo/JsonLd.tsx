@@ -11,8 +11,8 @@ export function OrganizationSchema() {
     "name": "Joe's Tech Solutions",
     "alternateName": "JTS",
     "url": "https://www.joestechsolutions.com",
-    "logo": "https://www.joestechsolutions.com/logo-main.png",
-    "image": "https://www.joestechsolutions.com/logo-main.png",
+    "logo": "https://www.joestechsolutions.com/og-image.png",
+    "image": "https://www.joestechsolutions.com/og-image.png",
     "description": "Private AI setup, AI agent systems, and custom automation for SMBs. Joe's Tech Solutions deploys private AI on your hardware — no cloud fees, no data leaks.",
     "founder": {
       "@type": "Person",
@@ -234,7 +234,7 @@ export function ArticleSchema({
     "description": description,
     "datePublished": datePublished,
     "dateModified": dateModified || datePublished,
-    "image": image || "https://www.joestechsolutions.com/logo-main.png",
+    "image": image || "https://www.joestechsolutions.com/og-image.png",
     "url": url,
     "author": {
       "@type": "Person",
@@ -246,7 +246,7 @@ export function ArticleSchema({
       "name": "Joe's Tech Solutions",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.joestechsolutions.com/logo-main.png"
+        "url": "https://www.joestechsolutions.com/og-image.png"
       }
     },
     ...(keywords && keywords.length > 0 ? { "keywords": keywords.join(", ") } : {})

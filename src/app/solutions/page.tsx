@@ -35,7 +35,7 @@ const solutions = [
   {
     name: "Setup",
     icon: Robot,
-    accent: "#d4541e",
+    accent: "#02a0a0",
     description:
       "Private AI on your machine or server. A 75-minute session, live, one on one. When we're done, you own it — no subscriptions, no data leaving your setup.",
     href: "/private-ai-setup",
@@ -44,7 +44,7 @@ const solutions = [
   {
     name: "Operations",
     icon: Gear,
-    accent: "#d4541e",
+    accent: "#02a0a0",
     description:
       "An AI assistant running on your server, handling the stuff you don't want to think about — scheduling, outreach, reporting, daily briefings. I tune it every month so it gets better.",
     href: "/services#back-office",
@@ -53,7 +53,7 @@ const solutions = [
   {
     name: "Custom Build",
     icon: Rocket,
-    accent: "#d4541e",
+    accent: "#02a0a0",
     description:
       "Mobile apps, web apps, full agent systems — built with the stack I use daily. React Native, Next.js, AI-assisted development, human-verified.",
     href: "/services#custom-build",
@@ -62,19 +62,19 @@ const solutions = [
 ] as const;
 
 const solutionAccent: Record<string, { iconBg: string; iconText: string; border: string; link: string }> = {
-  "#d4541e": {
+  "#02a0a0": {
     iconBg: "bg-primary/10",
     iconText: "text-primary",
     border: "border-foreground/10 hover:border-primary/50",
     link: "text-primary",
   },
-  "#e8703f": {
+  "#f5a94f": {
     iconBg: "bg-primary/10",
     iconText: "text-primary",
     border: "border-foreground/10 hover:border-primary/50",
     link: "text-primary",
   },
-  "#8B5CF6": {
+  "#ffbd65": {
     iconBg: "bg-primary/10",
     iconText: "text-primary",
     border: "border-foreground/10 hover:border-primary/50",

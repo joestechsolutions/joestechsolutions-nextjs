@@ -37,13 +37,13 @@ export const post: BlogPost = {
 .bl-s{fill:currentColor;opacity:.55;font:400 10.5px Inter,system-ui,sans-serif}
 .bl-lane{fill:currentColor;opacity:.45;font:600 10px Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 .bl-edge{stroke:currentColor;opacity:.4;fill:none;stroke-width:1.5;marker-end:url(#bl-arr)}
-.bl-flow{stroke:var(--color-accent,#e8703f);opacity:.95;fill:none;stroke-width:1.8;stroke-dasharray:5 7;marker-end:url(#bl-arr2);animation:bl-march 1.1s linear infinite}
+.bl-flow{stroke:var(--color-accent,#f5a94f);opacity:.95;fill:none;stroke-width:1.8;stroke-dasharray:5 7;marker-end:url(#bl-arr2);animation:bl-march 1.1s linear infinite}
 @keyframes bl-march{to{stroke-dashoffset:-12}}
 @media (prefers-reduced-motion:reduce){.bl-flow{animation:none}}
 </style>
 <defs>
 <marker id="bl-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="currentColor" opacity="0.5"/></marker>
-<marker id="bl-arr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--color-accent,#e8703f)"/></marker>
+<marker id="bl-arr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--color-accent,#f5a94f)"/></marker>
 </defs>
 <text x="375" y="12" class="bl-lane">ships itself</text>
 <text x="375" y="130" class="bl-lane">merge is mine</text>
@@ -131,7 +131,7 @@ export const post: BlogPost = {
 .bl2-t{fill:currentColor;font:600 12.5px Inter,system-ui,sans-serif}
 .bl2-s{fill:currentColor;opacity:.55;font:400 10.5px Inter,system-ui,sans-serif}
 .bl2-edge{stroke:currentColor;opacity:.4;fill:none;stroke-width:1.5;marker-end:url(#bl2-arr)}
-.bl2-flow{stroke:var(--color-accent,#e8703f);opacity:.95;fill:none;stroke-width:1.8;stroke-dasharray:5 7;marker-end:url(#bl2-arr2);animation:bl2-march 1.1s linear infinite}
+.bl2-flow{stroke:var(--color-accent,#f5a94f);opacity:.95;fill:none;stroke-width:1.8;stroke-dasharray:5 7;marker-end:url(#bl2-arr2);animation:bl2-march 1.1s linear infinite}
 .bl2-pulse{animation:bl2-beat 2.4s ease-in-out infinite;transform-origin:585px 46px}
 @keyframes bl2-march{to{stroke-dashoffset:-12}}
 @keyframes bl2-beat{0%,100%{opacity:.35}50%{opacity:.9}}
@@ -139,7 +139,7 @@ export const post: BlogPost = {
 </style>
 <defs>
 <marker id="bl2-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="currentColor" opacity="0.5"/></marker>
-<marker id="bl2-arr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--color-accent,#e8703f)"/></marker>
+<marker id="bl2-arr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--color-accent,#f5a94f)"/></marker>
 </defs>
 <rect class="bl2-node" x="10" y="20" width="130" height="52" rx="9"/>
 <text x="75" y="42" text-anchor="middle" class="bl2-t">Machine boots</text>

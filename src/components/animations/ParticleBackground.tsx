@@ -66,7 +66,7 @@ export function ParticleBackground() {
             top: `${p.y}%`,
             width: p.size,
             height: p.size,
-            backgroundColor: p.isTeal ? '#d4541e' : '#475569',
+            backgroundColor: p.isTeal ? '#02a0a0' : '#475569',
             opacity: p.isTeal ? 0.4 : 0.15,
             animation: prefersReducedMotion
               ? undefined

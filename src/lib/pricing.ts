@@ -34,7 +34,7 @@ export const PRICING = {
     monthly: 0,
     setupLabel: "$199 one-time",
     ctaLabel: "Get Started — $199",
-    color: "#d4541e",
+    color: "#02a0a0",
     hoverColor: "#b8451a",
     description:
       "Runs entirely on your computer — your data never leaves your machine. Perfect for professionals who want AI without subscriptions or data concerns.",
@@ -55,8 +55,8 @@ export const PRICING = {
     monthly: 29,
     setupLabel: "$499 setup + $29/mo",
     ctaLabel: "Get Started — $499 + $29/mo",
-    color: "#e8703f",
-    hoverColor: "#d4541e",
+    color: "#f5a94f",
+    hoverColor: "#02a0a0",
     recommended: true,
     description:
       "Your own private AI server, accessible from anywhere. I handle the hosting, updates, and maintenance so you can just use it.",
@@ -76,7 +76,7 @@ export const PRICING = {
     monthly: 79,
     setupLabel: "$999 setup + $79/mo",
     ctaLabel: "Get Started — $999 + $79/mo",
-    color: "#d4541e",
+    color: "#02a0a0",
     hoverColor: "#b8451a",
     description:
       "Full-service AI deployment for teams with compliance needs. Priority support, custom integrations, and dedicated infrastructure.",

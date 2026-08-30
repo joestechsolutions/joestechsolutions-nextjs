@@ -11,21 +11,21 @@ const accentStyles: Record<
   Tier["accent"],
   { border: string; text: string; check: string; badge: string; button: string }
 > = {
-  "#d4541e": {
+  "#02a0a0": {
     border: "border-primary/30 hover:border-primary/50",
     text: "text-primary",
     check: "text-primary",
     badge: "bg-primary/15 text-primary",
     button: "bg-primary hover:bg-primary/85 shadow-primary/20",
   },
-  "#e8703f": {
+  "#f5a94f": {
     border: "border-primary/30 hover:border-primary/50",
     text: "text-primary",
     check: "text-primary",
     badge: "bg-primary/20 text-primary",
     button: "bg-primary hover:bg-primary/85 shadow-primary/20",
   },
-  "#8B5CF6": {
+  "#ffbd65": {
     border: "border-primary/30 hover:border-primary/50",
     text: "text-primary",
     check: "text-primary",

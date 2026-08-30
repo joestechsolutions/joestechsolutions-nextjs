@@ -22,7 +22,7 @@ const PAYMENT_LINKS = {
     description: "One-time payment",
     url: "https://buy.stripe.com/9B6eVc58E5Fvb9reAJ0x200",
     icon: Desktop,
-    color: "#d4541e",
+    color: "#02a0a0",
   },
   vps: {
     name: "Private AI Cloud Server Setup",
@@ -30,7 +30,7 @@ const PAYMENT_LINKS = {
     description: "Setup + Monthly hosting",
     url: "https://buy.stripe.com/8x200i30w3xna5n2S10x201",
     icon: Cloud,
-    color: "#e8703f",
+    color: "#f5a94f",
   },
   vpsMonthly: {
     name: "Cloud AI Server Monthly",
@@ -38,7 +38,7 @@ const PAYMENT_LINKS = {
     description: "Monthly subscription only",
     url: "https://buy.stripe.com/4gM14mfNi2tjcdv0JT0x202",
     icon: Cloud,
-    color: "#8B5CF6",
+    color: "#ffbd65",
   },
 };
 

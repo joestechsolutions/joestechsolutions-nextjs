@@ -225,7 +225,7 @@ export default function AgentSystem() {
               {
                 icon: Robot,
                 title: "Agent Hierarchy",
-                color: "#d4541e",
+                color: "#02a0a0",
                 items: [
                   "Orchestrator AI (CTO-level)",
                   "6 C-Suite: CTO, Chief of Staff, CFO, COO, CMO + more",
@@ -236,7 +236,7 @@ export default function AgentSystem() {
               {
                 icon: Brain,
                 title: "Memory System",
-                color: "#8B5CF6",
+                color: "#ffbd65",
                 items: [
                   "Semantic search across all sessions",
                   "Knowledge graph of people & projects",
@@ -258,7 +258,7 @@ export default function AgentSystem() {
               {
                 icon: Plug,
                 title: "Integrations",
-                color: "#e8703f",
+                color: "#f5a94f",
                 items: [
                   "Telegram — text & voice control",
                   "Gmail — read, draft, send emails",

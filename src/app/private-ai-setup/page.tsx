@@ -88,11 +88,11 @@ const PersonaCard = ({ icon: Icon, pillColorClass, pillText, title, role, descri
     <AnimatedCard>
       <Card className="bg-card border-foreground/10 rounded-none p-6 sm:p-8 relative overflow-hidden transition-transform duration-300 hover:translate-y-[-7px] hover:border-primary/30">
         <div className={twMerge("absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl", pillColorClass === 'pill-blue' ? 'bg-gradient-to-r from-primary to-primary' : pillColorClass === 'pill-cyan' ? 'bg-gradient-to-r from-primary to-primary' : 'bg-gradient-to-r from-primary to-primary')} />
-        <div className="w-13 h-13 rounded-xl flex items-center justify-center text-xl mb-6" style={{ background: pillColorClass === 'pill-blue' ? 'rgba(14,165,233,0.08)' : pillColorClass === 'pill-cyan' ? 'rgba(6,182,212,0.08)' : 'rgba(139,92,246,0.08)', color: pillColorClass === 'pill-blue' ? '#d4541e' : pillColorClass === 'pill-cyan' ? '#e8703f' : '#8B5CF6', border: pillColorClass === 'pill-blue' ? '1px solid rgba(14,165,233,0.2)' : pillColorClass === 'pill-cyan' ? '1px solid rgba(6,182,212,0.2)' : '1px solid rgba(139,92,246,0.2)' }}>
+        <div className="w-13 h-13 rounded-xl flex items-center justify-center text-xl mb-6" style={{ background: pillColorClass === 'pill-blue' ? 'rgba(2,160,160,0.08)' : pillColorClass === 'pill-cyan' ? 'rgba(2,160,160,0.08)' : 'rgba(255,189,101,0.08)', color: pillColorClass === 'pill-blue' ? '#02a0a0' : pillColorClass === 'pill-cyan' ? '#f5a94f' : '#ffbd65', border: pillColorClass === 'pill-blue' ? '1px solid rgba(2,160,160,0.2)' : pillColorClass === 'pill-cyan' ? '1px solid rgba(2,160,160,0.2)' : '1px solid rgba(255,189,101,0.2)' }}>
           <Icon weight="duotone" />
         </div>
         <div className={twMerge("inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none text-xs font-bold uppercase tracking-wider mb-3")}
-          style={{ background: pillColorClass === 'pill-blue' ? 'rgba(14,165,233,0.12)' : pillColorClass === 'pill-cyan' ? 'rgba(6,182,212,0.12)' : 'rgba(139,92,246,0.12)', color: pillColorClass === 'pill-blue' ? '#d4541e' : pillColorClass === 'pill-cyan' ? '#e8703f' : '#8B5CF6', border: pillColorClass === 'pill-blue' ? '1px solid rgba(14,165,233,0.25)' : pillColorClass === 'pill-cyan' ? '1px solid rgba(6,182,212,0.25)' : '1px solid rgba(139,92,246,0.25)' }}>
+          style={{ background: pillColorClass === 'pill-blue' ? 'rgba(2,160,160,0.12)' : pillColorClass === 'pill-cyan' ? 'rgba(2,160,160,0.12)' : 'rgba(255,189,101,0.12)', color: pillColorClass === 'pill-blue' ? '#02a0a0' : pillColorClass === 'pill-cyan' ? '#f5a94f' : '#ffbd65', border: pillColorClass === 'pill-blue' ? '1px solid rgba(2,160,160,0.25)' : pillColorClass === 'pill-cyan' ? '1px solid rgba(2,160,160,0.25)' : '1px solid rgba(255,189,101,0.25)' }}>
           {pillText}
         </div>
         <h3 className="text-xl font-bold text-foreground font-mono mb-0.5">{title}</h3>
@@ -317,9 +317,9 @@ export default function PrivateAISetup() {
                   <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color] duration-500 text-center h-full p-6 sm:p-8 relative group">
                     <div className={twMerge(
                       "w-16 h-16 rounded-none flex items-center justify-center font-mono text-2xl font-bold mx-auto mb-7 relative z-10 transition-shadow duration-300",
-                      index === 0 && "bg-primary/10 text-primary border-2 border-primary/30 shadow-[0_0_28px_rgba(14,165,233,0.18)] group-hover:shadow-[0_0_50px_#d4541e]",
-                      index === 1 && "bg-primary/10 text-primary border-2 border-primary/30 shadow-[0_0_28px_rgba(6,182,212,0.18)] group-hover:shadow-[0_0_50px_#e8703f]",
-                      index === 2 && "bg-primary/10 text-primary border-2 border-primary/30 shadow-[0_0_28px_rgba(139,92,246,0.18)] group-hover:shadow-[0_0_50px_#8B5CF6]"
+                      index === 0 && "bg-primary/10 text-primary border-2 border-primary/30 shadow-[0_0_28px_rgba(2,160,160,0.18)] group-hover:shadow-[0_0_50px_#02a0a0]",
+                      index === 1 && "bg-primary/10 text-primary border-2 border-primary/30 shadow-[0_0_28px_rgba(2,160,160,0.18)] group-hover:shadow-[0_0_50px_#f5a94f]",
+                      index === 2 && "bg-primary/10 text-primary border-2 border-primary/30 shadow-[0_0_28px_rgba(255,189,101,0.18)] group-hover:shadow-[0_0_50px_#ffbd65]"
                     )}>
                       {step.number}
                     </div>
@@ -365,7 +365,7 @@ export default function PrivateAISetup() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <Card className="bg-background border-primary/20 hover:border-primary/40 transition-[color,border-color,background-color,box-shadow] duration-300 overflow-hidden rounded-xl shadow-[0_0_40px_rgba(14,165,233,0.08)]">
+            <Card className="bg-background border-primary/20 hover:border-primary/40 transition-[color,border-color,background-color,box-shadow] duration-300 overflow-hidden rounded-xl shadow-[0_0_40px_rgba(2,160,160,0.08)]">
               <CardContent className="p-6 sm:p-8">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 rounded-none bg-[#ff5f57]" />

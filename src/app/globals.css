@@ -53,15 +53,15 @@
   /* Paper Terminal — zero-radius, workshop-utilitarian */
   --radius: 0rem;
 
-  /* === UNIFIED COLOR SYSTEM === */
-  /* Primary: Safety Orange — the ONE brand color used everywhere */
-  --color-primary: #d4541e;
-  --color-primary-hover: #b8451a;
-  --color-primary-glow: #d4541e;
+  /* === UNIFIED COLOR SYSTEM — "Midnight Edition" (2026 rebrand) === */
+  /* Base #071317 midnight · Primary #02A0A0 turquoise · Accent #FFBD65 pastel orange */
+  --color-primary: #02a0a0;
+  --color-primary-hover: #027f7d;
+  --color-primary-glow: #02a0a0;
 
-  /* Accent: lighter orange for dark grounds */
-  --color-accent: #e8703f;
-  --color-accent-hover: #d4541e;
+  /* Accent: pastel orange — highlights, badges, sparing emphasis */
+  --color-accent: #f5a94f;
+  --color-accent-hover: #ffbd65;
 
   /* Backgrounds */
   --color-bg-deep: var(--background);
@@ -69,92 +69,92 @@
   --color-bg-hero: var(--card);
 
   /* Focus */
-  --color-focus: #d4541e;
+  --color-focus: #02a0a0;
 
   /* Legacy aliases (for backward compat during migration) */
   --color-deep-navy: var(--color-bg-hero);
   --color-electric-blue: var(--color-primary);
   --color-cyan: var(--color-accent);
-  --color-slate-900: #1E293B;
-  --color-slate-100: #F1F5F9;
+  --color-slate-900: #0c1e22;
+  --color-slate-100: #e7f1ee;
   --color-deep-charcoal: var(--color-bg-deep);
   --color-secondary-dark: var(--color-bg-card);
 
   /* Semantic extras */
   --ok: #00871f;             /* "operational" green */
-  --panel: #16181c;          /* console panels stay dark in both themes */
-  --panel-foreground: #c9cdd3;
+  --panel: #0a1a1d;          /* console panels stay dark in both themes */
+  --panel-foreground: #c3d9d6;
 
-  /* Light mode (default): paper */
-  --background: #f5f5f0;     /* Cream paper */
-  --foreground: #1a1a1a;     /* Ink */
+  /* Light mode (default): misted paper — faint turquoise family */
+  --background: #f2f7f6;
+  --foreground: #0a1f1d;
   --card: #ffffff;
-  --card-foreground: #1a1a1a;
+  --card-foreground: #0a1f1d;
   --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #d4541e;        /* Safety orange */
-  --primary-foreground: #ffffff;
-  --secondary: #ecebe4;
-  --secondary-foreground: #1a1a1a;
-  --muted: #ecebe4;
-  --muted-foreground: #666666;
-  --accent: #f2e4db;         /* faint orange wash */
-  --accent-foreground: #1a1a1a;
+  --popover-foreground: #0a1f1d;
+  --primary: #02a0a0;        /* Traditional Turquoise */
+  --primary-foreground: #04110f;
+  --secondary: #e6efed;
+  --secondary-foreground: #0a1f1d;
+  --muted: #e7efed;
+  --muted-foreground: #4e6360;
+  --accent: #fff1dc;         /* faint pastel-orange wash */
+  --accent-foreground: #0a1f1d;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #cccccc;
-  --input: #cccccc;
-  --ring: #d4541e;
-  --chart-1: #d4541e;
-  --chart-2: #e8703f;
-  --chart-3: #1a1a1a;
-  --chart-4: #666666;
-  --chart-5: #cccccc;
+  --border: #c5d6d2;
+  --input: #c9d8d5;
+  --ring: #02a0a0;
+  --chart-1: #02a0a0;
+  --chart-2: #ffbd65;
+  --chart-3: #0a1f1d;
+  --chart-4: #4e6360;
+  --chart-5: #c9d8d5;
   --sidebar: #ffffff;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #d4541e;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ecebe4;
-  --sidebar-accent-foreground: #1a1a1a;
-  --sidebar-border: #cccccc;
-  --sidebar-ring: #d4541e;
+  --sidebar-foreground: #0a1f1d;
+  --sidebar-primary: #02a0a0;
+  --sidebar-primary-foreground: #04110f;
+  --sidebar-accent: #e6efed;
+  --sidebar-accent-foreground: #0a1f1d;
+  --sidebar-border: #c9d8d5;
+  --sidebar-ring: #02a0a0;
 }
 
 .dark {
-  /* Paper Terminal dark — terminal ground, light ink, brightened orange */
-  --background: #16181c;
-  --foreground: #e8e9e6;
-  --card: #1d2127;
-  --card-foreground: #e8e9e6;
-  --popover: #1d2127;
-  --popover-foreground: #e8e9e6;
-  --primary: #e8703f;        /* brightened for contrast on dark */
-  --primary-foreground: #16181c;
-  --secondary: #23272e;
-  --secondary-foreground: #e8e9e6;
-  --muted: #23272e;
-  --muted-foreground: #9aa1ab;
-  --accent: #2c2622;         /* faint orange wash on dark */
-  --accent-foreground: #e8e9e6;
+  /* Midnight Edition dark — #071317 ground, pale mint ink, turquoise + pastel orange */
+  --background: #071317;
+  --foreground: #d9ece9;
+  --card: #0c1e22;
+  --card-foreground: #d9ecea;
+  --popover: #0c1e22;
+  --popover-foreground: #d9ecea;
+  --primary: #02a0a0;        /* brand turquoise, same both modes */
+  --primary-foreground: #04110f;
+  --secondary: #112a2d;
+  --secondary-foreground: #d9ecea;
+  --muted: #112a2d;
+  --muted-foreground: #8fa8a5;
+  --accent: #12312f;         /* faint turquoise wash on dark */
+  --accent-foreground: #d9ecea;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: #3a4048;
-  --input: #3a4048;
-  --ring: #e8703f;
-  --chart-1: #e8703f;
-  --chart-2: #d4541e;
-  --chart-3: #e8e9e6;
-  --chart-4: #9aa1ab;
-  --chart-5: #3a4048;
-  --sidebar: #16181c;
-  --sidebar-foreground: #e8e9e6;
-  --sidebar-primary: #e8703f;
-  --sidebar-primary-foreground: #16181c;
-  --sidebar-accent: #23272e;
-  --sidebar-accent-foreground: #e8e9e6;
-  --sidebar-border: #3a4048;
-  --sidebar-ring: #e8703f;
+  --border: #1e383b;
+  --input: #23403f;
+  --ring: #02a0a0;
+  --chart-1: #02a0a0;
+  --chart-2: #ffbd65;
+  --chart-3: #d9ecea;
+  --chart-4: #8fa8a6;
+  --chart-5: #1e383b;
+  --sidebar: #071317;
+  --sidebar-foreground: #d9ecea;
+  --sidebar-primary: #02a0a0;
+  --sidebar-primary-foreground: #04110f;
+  --sidebar-accent: #112a2d;
+  --sidebar-accent-foreground: #d9ecea;
+  --sidebar-border: #1e383b;
+  --sidebar-ring: #02a0a0;
 
   --ok: #3ddc84;
-  --panel: #101215;
+  --panel: #041210;
 }
 
 @layer base {

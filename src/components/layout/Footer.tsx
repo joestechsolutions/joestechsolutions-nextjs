@@ -79,13 +79,13 @@ export function Footer() {
             <h4 className="text-sm font-semibold text-foreground mb-4">Free</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/prompt-library" className="text-foreground/60 hover:text-[#e8703f] text-sm transition-colors">
+                <Link href="/prompt-library" className="text-foreground/60 hover:text-[#f5a94f] text-sm transition-colors">
                   Prompt Library
-                  <span className="ml-1.5 text-[10px] text-[#e8703f]/70">FREE</span>
+                  <span className="ml-1.5 text-[10px] text-[#f5a94f]/70">FREE</span>
                 </Link>
               </li>
               <li>
-                <Link href="/whisper-walkie" className="text-foreground/60 hover:text-[#e8703f] text-sm transition-colors">
+                <Link href="/whisper-walkie" className="text-foreground/60 hover:text-[#f5a94f] text-sm transition-colors">
                   Whisper Walkie
                   <span className="ml-1.5 text-[10px] text-foreground/40">ARCHIVE</span>
                 </Link>

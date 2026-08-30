@@ -131,21 +131,21 @@ export function PlatformDownloadCards() {
       platform: "windows",
       formats: [".exe installer (recommended)", "Portable .zip"],
       note: "CUDA GPU acceleration supported",
-      accent: "#d4541e",
+      accent: "#02a0a0",
     },
     {
       name: "macOS",
       platform: "macos",
       formats: [".zip download"],
       note: "Requires Accessibility permissions",
-      accent: "#e8703f",
+      accent: "#f5a94f",
     },
     {
       name: "Linux",
       platform: "linux",
       formats: [".tar.gz download"],
       note: "Works on X11 and Wayland",
-      accent: "#d4541e",
+      accent: "#02a0a0",
     },
   ];
 

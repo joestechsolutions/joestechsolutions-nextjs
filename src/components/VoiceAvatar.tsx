@@ -135,7 +135,7 @@ export function VoiceAvatar() {
         {/* Progress ring */}
         {isPlaying && progress > 0 && (
           <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100" aria-hidden="true">
-            <circle cx="50" cy="50" r="48" fill="none" stroke="#d4541e" strokeWidth="2" strokeDasharray="301.6" strokeDashoffset={301.6 - (301.6 * progress) / 100} strokeLinecap="round" className="transition-[stroke-dashoffset] duration-150" />
+            <circle cx="50" cy="50" r="48" fill="none" stroke="#02a0a0" strokeWidth="2" strokeDasharray="301.6" strokeDashoffset={301.6 - (301.6 * progress) / 100} strokeLinecap="round" className="transition-[stroke-dashoffset] duration-150" />
           </svg>
         )}
       </div>

@@ -22,5 +22,5 @@ Chosen by Joe Aug 30 2026 from palette candidates. Replaces Safety Orange system
 
 ## Where it lives
 - Tokens: `src/app/globals.css`
-- OG/favicon/logo assets: ✅ regenerated Aug 30 2026 from candidate A (Badge Monogram) — logo-icon set 16–192, favicons, apple-touch 180, OG 1200×630. Old set in `public/_old-brand-backup/`. Master: `~/generations/jts_logo_A_final_master.png`. Note: raster PNGs downscaled from 1024 AI master — a hand-traced SVG is the eventual ideal for infinite scaling.
+- OG/favicon/logo assets: ✅ regenerated Aug 30 2026 from candidate A (Badge Monogram) — logo-icon set 16–192, favicons, apple-touch 180, OG 1200×630. Old brand **fully purged** Aug 30 (backup dir + logo-main* shells deleted, 404 in prod) per Joe. Master: `~/generations/jts_logo_A_final_master.png`. Note: raster PNGs downscaled from 1024 AI master — a hand-traced SVG is the eventual ideal for infinite scaling.
 - OG image + social templates: update when next generated — use #071317 ground, turquoise type, pastel-orange accent bar

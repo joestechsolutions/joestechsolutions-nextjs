@@ -96,7 +96,7 @@ export function TerminalHero() {
             <div className={out(shown[1])}>
               currently operating —{" "}
               <em className="not-italic font-bold text-[var(--ok)]">
-                14 agents, 24/7
+                40+ automations, 24/7
               </em>
             </div>
 

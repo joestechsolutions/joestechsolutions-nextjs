@@ -18,11 +18,11 @@ const POST = {
 export const metadata: Metadata = {
   title: "How 24 AI Agents Run My Entire Business — No SaaS Required | Joe's Tech Solutions",
   description:
-    "Instead of paying $285/mo for 10+ SaaS tools, I built 24 AI agents that handle everything — running on a Claude subscription I already use for development.",
+    "Instead of paying $285/mo for 10+ SaaS tools, I built an AI agent system that handles everything — running on a Claude subscription I already use for development.",
   alternates: { canonical: "/blog/replace-saas-with-ai-agents" },
   openGraph: {
     title: "How 24 AI Agents Run My Entire Business — No SaaS Required",
-    description: "Instead of paying $285/mo for 10+ SaaS tools, I built 24 AI agents that handle everything — running on a Claude subscription I already use for development.",
+    description: "Instead of paying $285/mo for 10+ SaaS tools, I built an AI agent system that handles everything — running on a Claude subscription I already use for development.",
     url: "https://www.joestechsolutions.com/blog/replace-saas-with-ai-agents",
     type: "article",
     publishedTime: POST.date,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "How 24 AI Agents Run My Entire Business — No SaaS Required",
-    description: "Instead of paying $285/mo for 10+ SaaS tools, I built 24 AI agents that handle everything — running on a Claude subscription I already use for development.",
+    description: "Instead of paying $285/mo for 10+ SaaS tools, I built an AI agent system that handles everything — running on a Claude subscription I already use for development.",
     images: ["/images/blog/replace-saas-og.png"],
   },
 };
@@ -54,7 +54,7 @@ export default function ReplaceSaasPage() {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline: POST.title,
-            description: "Instead of paying $285/mo for 10+ SaaS tools, one developer built 24 AI agents that handle everything — running on a Claude subscription already used for development.",
+            description: "Instead of paying $285/mo for 10+ SaaS tools, one developer built an AI agent system that handles everything — running on a Claude subscription already used for development.",
             image: "https://www.joestechsolutions.com/images/blog/replace-saas-og.png",
             author: {
               "@type": "Person",

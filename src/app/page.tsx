@@ -24,10 +24,10 @@ import { TIERS, type Tier } from "@/lib/tiers";
 
 // System stats rendered as terminal key/value output.
 const stats = [
-  { key: "agents_running", val: "14" },
-  { key: "downtime_since_launch", val: "0" },
-  { key: "automations_on_schedule", val: "32" },
-  { key: "local_and_private", val: "100%" },
+  { key: "automations_on_schedule", val: "40+" },
+  { key: "live_client_deployments", val: "3" },
+  { key: "watchdogs_watching_the_watchers", val: "3" },
+  { key: "orchestration", val: "self-hosted" },
 ];
 
 // Stripe-blocked tiers route to /contact until their pages + price IDs exist.
@@ -47,10 +47,10 @@ const portfolio = [
     status: "[IN_PROD]",
     live: true,
     name: "Hermes Agent System",
-    desc: "My own 24/7 multi-agent system — coding, research, content, ops. The thing running this site.",
+    desc: "My own 24/7 agent operations system — briefings, project stewards, watchdogs, content, ops. The system that runs my business.",
     href: "/stack",
     image: "/images/blog/22-agent-architecture.png",
-    alt: "14-agent architecture diagram",
+    alt: "JTS agent architecture diagram",
   },
   {
     status: "[PAUSED]",

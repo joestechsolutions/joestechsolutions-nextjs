@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 };
 
 const proofPoints = [
-  "An orchestrator with 14 sub-agents handling coding, research, content, and memory across sessions",
-  "30 automations on a schedule — daily briefings, content drafts, health checks, backups",
-  "Everything local, everything private, everything on my own infrastructure",
+  "One orchestrator running 40+ scheduled automations — daily briefings, a steward agent per project, health watchdogs, weekly executive reviews",
+  "Three clients with live deployments I built and left running, watched around the clock by my own monitoring",
+  "Local-first: orchestration, memory, and state on my own hardware; heavy inference on cloud models I choose deliberately",
 ];
 
 export default function About() {

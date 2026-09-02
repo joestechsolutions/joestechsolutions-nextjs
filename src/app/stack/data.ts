@@ -1,8 +1,8 @@
 // Stack data — updated when the real tool stack changes.
 // Source: ~/.hermes/config.yaml, ~/free-claude-code/.env, ollama list, ~/.gitnexus/registry.json
-// Last updated: 2026-08-28
+// Last updated: 2026-09-01
 
-export const lastUpdated = "August 28, 2026";
+export const lastUpdated = "September 1, 2026";
 
 export const models = [
   {
@@ -125,15 +125,15 @@ export const tools = [
   },
   {
     category: "Infrastructure",
-    items: ["WSL2 Ubuntu", "Systemd services", "16 Docker containers", "iptables firewall"],
+    items: ["WSL2 Ubuntu", "Systemd services", "19 Docker containers", "iptables firewall"],
   },
 ];
 
 export const stats = [
-  { label: "AI Agents", value: "25" },
-  { label: "Scheduled Automations", value: "33" },
+  { label: "Live Client Deployments", value: "3" },
+  { label: "Scheduled Automations", value: "40+" },
   { label: "Cloud Models", value: "24" },
   { label: "Indexed Code Nodes", value: "68K+" },
   { label: "Active Services", value: "9" },
-  { label: "Skills Library", value: "100+" },
+  { label: "Skills Library", value: "950+" },
 ];

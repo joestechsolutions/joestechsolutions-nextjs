@@ -7,8 +7,8 @@ export function AngleBand() {
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <FadeIn>
           <p className="text-xl sm:text-2xl text-foreground/80 leading-relaxed font-light text-center">
-            I test everything on myself first. 14 agents, 30 automations, all running 24/7 on my
-            own infrastructure. If it doesn&apos;t survive me, it doesn&apos;t ship to you.
+            I test everything on myself first. One orchestrator, 40+ automations, running 24/7 on my
+            own hardware. If it doesn&apos;t survive me, it doesn&apos;t ship to you.
           </p>
         </FadeIn>
       </div>

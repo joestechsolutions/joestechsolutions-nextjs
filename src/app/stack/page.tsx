@@ -238,7 +238,7 @@ export default function StackPage() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
           <FadeIn>
             <p className="text-sm text-foreground/40 font-mono">
-              Config backed up to github.com/joblas/Lurkr-Jo-Blade-Hermes · Last sync: {lastUpdated}
+              Config auto-backed up weekly to a private GitHub repo · Stack data updated: {lastUpdated}
             </p>
           </FadeIn>
         </div>

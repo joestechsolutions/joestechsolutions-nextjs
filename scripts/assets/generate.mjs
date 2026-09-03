@@ -8,7 +8,7 @@
 // three encodes the scenes expect (loop / all-keyframe scrub / loop). Re-running skips
 // shots whose output already exists — delete a file to regenerate it.
 
-import { mkdir, writeFile, access } from "node:fs/promises";
+import { mkdir, writeFile, access, readFile, unlink } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 
@@ -19,11 +19,17 @@ const TOKEN = PROVIDER === "fal" ? process.env.FAL_KEY : process.env.REPLICATE_A
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : null;
 const dry = args.includes("--dry-run");
 const shotFilter = args.includes("--shot") ? args[args.indexOf("--shot") + 1] : null;
+// --tier N runs only shots of priority <= N. 1 = all stills, 2 = homepage clips,
+// 3 = main-nav page loops, 4 = everything else (budget permitting).
+const tierMax = args.includes("--tier") ? Number(args[args.indexOf("--tier") + 1]) : 99;
+const NAV = new Set(["solutions", "services", "stack", "about", "contact", "agent-system", "private-ai"]);
+const tierOf = (shot) =>
+  shot.kind === "image" ? 1 : ["hero-loop", "system-scrub", "cta-loop"].includes(shot.id) ? 2 : NAV.has(shot.id.replace(/^page-/, "").replace(/-loop$/, "")) ? 3 : 4;
 
 // Swap models here for a different look. fal ids are queue endpoints.
 const MODELS = {
   replicate: { image: "black-forest-labs/flux-1.1-pro", video: "kwaivgi/kling-v2.1" },
-  fal: { image: "fal-ai/flux-pro/v1.1-ultra", video: "fal-ai/kling-video/v2.1/standard/text-to-video" },
+  fal: { image: "fal-ai/flux-pro/v1.1", video: "fal-ai/kling-video/v2.1/standard/image-to-video" },
 }[PROVIDER];
 
 // Brand: midnight #071317 ground, turquoise #02a0a0, pastel orange #f5a94f accent.
@@ -59,6 +65,7 @@ const SHOTS = [
   },
   {
     id: "hero-loop",
+    from: "hero-workshop",
     kind: "video",
     aspect_ratio: "16:9",
     duration: 5,
@@ -67,6 +74,7 @@ const SHOTS = [
   },
   {
     id: "system-scrub",
+    from: "agent-network",
     kind: "video",
     aspect_ratio: "16:9",
     duration: 10,
@@ -75,6 +83,7 @@ const SHOTS = [
   },
   {
     id: "cta-loop",
+    from: "private-ai-server",
     kind: "video",
     aspect_ratio: "16:9",
     duration: 5,
@@ -103,6 +112,9 @@ const SHOTS = [
     { id: `page-${page}-loop`, kind: "video", aspect_ratio: "16:9", duration: 5, post: "loop", prompt: `Slow, steady cinematic push-in: ${scene}; subtle light flicker, seamless loop feel, ${BRAND}` },
   ]),
 ];
+
+// fal Flux ignores aspect_ratio; it wants explicit pixel sizes (priced per megapixel).
+const FAL_SIZE = { "21:9": { width: 1920, height: 824 }, "16:9": { width: 1920, height: 1080 }, "4:5": { width: 1024, height: 1280 } };
 
 const exists = (p) => access(p).then(() => true, () => false);
 
@@ -159,7 +171,10 @@ async function main() {
   }
   console.log(`provider: ${PROVIDER}`);
   await mkdir(OUT, { recursive: true });
-  for (const shot of SHOTS) {
+  const failed = [];
+  const queue = [...SHOTS].sort((a, b) => tierOf(a) - tierOf(b));
+  for (const shot of queue) {
+    if (tierOf(shot) > tierMax) continue;
     if (only && `${shot.kind}s` !== only) continue;
     if (shotFilter && shot.id !== shotFilter) continue;
     const ext = shot.kind === "image" ? "jpg" : "mp4";
@@ -168,26 +183,45 @@ async function main() {
       console.log(`skip  ${shot.id} (exists)`);
       continue;
     }
-    console.log(`${dry ? "would " : ""}gen   ${shot.id}  [${MODELS[shot.kind]}]`);
+    console.log(`${dry ? "would " : ""}gen   t${tierOf(shot)} ${shot.id}  [${MODELS[shot.kind]}]`);
     if (dry) continue;
     const input =
       PROVIDER === "fal"
         ? shot.kind === "image"
-          ? { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, output_format: "jpeg", safety_tolerance: "2" }
-          : { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, duration: String(shot.duration) }
+          ? { prompt: shot.prompt, image_size: FAL_SIZE[shot.aspect_ratio], output_format: "jpeg", safety_tolerance: "2" }
+          : {
+              prompt: shot.prompt,
+              image_url: `data:image/jpeg;base64,${(await readFile(path.join(OUT, `${shot.from ?? shot.id.replace(/-loop$/, "")}.jpg`))).toString("base64")}`,
+              duration: String(shot.duration),
+              cfg_scale: 0.5,
+              negative_prompt: "blur, distort, low quality, people, faces, text, watermark, flicker",
+            }
         : shot.kind === "image"
           ? { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, output_format: "jpg", output_quality: 90, safety_tolerance: 2 }
           : { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, duration: shot.duration, mode: "standard" };
-    const buf = await (PROVIDER === "fal" ? fal : replicate)(MODELS[shot.kind], input);
+    let buf;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        buf = await (PROVIDER === "fal" ? fal : replicate)(MODELS[shot.kind], input);
+        break;
+      } catch (e) {
+        console.error(`\n  attempt ${attempt} failed for ${shot.id}: ${e.message}`);
+        if (attempt === 3) break;
+        await new Promise((r) => setTimeout(r, 8000));
+      }
+    }
+    if (!buf) { failed.push(shot.id); continue; }
     if (shot.kind === "image") {
       await writeFile(dest, buf);
     } else {
       const raw = path.join(OUT, `${shot.id}.raw.mp4`);
       await writeFile(raw, buf);
       postProcess(shot, raw);
+      await unlink(raw);
     }
     console.log(`\ndone  ${dest}`);
   }
+  if (failed.length) { console.error(`\nFAILED: ${failed.join(", ")}`); process.exit(2); }
 }
 
 main().catch((e) => {

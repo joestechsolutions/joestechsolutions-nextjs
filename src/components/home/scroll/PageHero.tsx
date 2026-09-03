@@ -74,8 +74,8 @@ export function PageHero({
             style={{ objectPosition: pos }}
           />
         )}
-        <div className="absolute inset-0 bg-[#02a0a0]/25 mix-blend-color" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071317] via-[#071317]/65 to-[#071317]/30" />
+        <div className="absolute inset-0 bg-[#02a0a0]/10 mix-blend-color" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071317] via-[#071317]/55 to-[#071317]/15" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#071317]/70 to-transparent" />
       </motion.div>
 

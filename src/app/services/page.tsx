@@ -39,7 +39,7 @@ export default function Services() {
         title="Three ways I work with you."
         highlight="work"
         subtitle="From a one-time setup to a full operations layer. Start where you need to, move up when you're ready."
-        media={{ type: "image", src: "/images/blog/toolkit-grid.png", position: "50% 50%" }}
+        media={{ type: "video", src: "/generated/page-services-loop.mp4", poster: "/generated/page-services-loop-poster.jpg" }}
       />
 
       {/* One anchored section per tier */}

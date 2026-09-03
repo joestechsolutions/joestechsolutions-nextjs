@@ -29,7 +29,7 @@ export default function CbarrgsCaseStudy() {
         title="Cbarrgs Music"
         highlight="Music"
         subtitle="Electronic music artist portfolio with seamless streaming platform integrations, optimized performance, and SEO strategy for music discovery."
-        media={{ type: "image", src: "/images/blog/pipelines-inside.png", position: "50% 50%" }}
+        media={{ type: "image", src: "/generated/page-case-cbarrgs.jpg" }}
       >
         <a href="https://cbarrgs.com" target="_blank" rel="noopener noreferrer" className={heroPrimaryBtn}>visit live site ↗</a>
       </PageHero>

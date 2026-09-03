@@ -32,7 +32,7 @@ export default function StackPage() {
         title="The Stack. No Smoke."
         highlight="Smoke"
         subtitle="This isn't a list of tools I read about. This is what's running right now — the models, services, and infrastructure I use to build everything you see on this site."
-        media={{ type: "image", src: "/images/tech-monitors-development.jpg", position: "50% 50%" }}
+        media={{ type: "video", src: "/generated/page-stack-loop.mp4", poster: "/generated/page-stack-loop-poster.jpg" }}
       />
 
       {/* Stats Bar */}

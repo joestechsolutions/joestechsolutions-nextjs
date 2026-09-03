@@ -101,7 +101,7 @@ export default function Solutions() {
         title="What I can build for you."
         highlight="build"
         subtitle="Three entry points. Start small, go big, or skip straight to custom. You don't have to know which one you need — that's what the first conversation is for."
-        media={{ type: "image", src: "/images/joe-presenting-ai.png", position: "50% 30%" }}
+        media={{ type: "video", src: "/generated/page-solutions-loop.mp4", poster: "/generated/page-solutions-loop-poster.jpg" }}
       />
 
       {/* 3-Solution Grid */}

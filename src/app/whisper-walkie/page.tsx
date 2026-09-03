@@ -95,7 +95,7 @@ export default function WhisperWalkiePage() {
         highlight="voice"
         size="tall"
         subtitle="Nothing leaves. Hold a hotkey, speak naturally, release. The transcribed text types directly into whatever window has focus — no clipboard, no cloud, no account. Whisper AI runs entirely on your machine."
-        media={{ type: "image", src: "/images/joe-corporate-headshot.png", position: "50% 25%" }}
+        media={{ type: "image", src: "/generated/page-whisper-walkie.jpg" }}
       >
         <HeroDownloadButton />
         <a href={GITHUB_REPO} target="_blank" rel="noopener noreferrer" className={`${heroSecondaryBtn} self-start`}>view source ↗</a>

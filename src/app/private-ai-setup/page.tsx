@@ -134,7 +134,7 @@ export default function PrivateAISetup() {
         highlight="Rules"
         size="tall"
         subtitle="Deploy GPT-4 level intelligence on your own hardware. No monthly API fees, no data harvesting, no compromises."
-        media={{ type: "image", src: "/images/blog/ollama-inside.png", position: "50% 50%" }}
+        media={{ type: "video", src: "/generated/page-private-ai-loop.mp4", poster: "/generated/page-private-ai-loop-poster.jpg" }}
       >
         <a href={calendlyLink} target="_blank" rel="noopener noreferrer" className={heroPrimaryBtn}>get in touch →</a>
         <a href="#pricing" className={heroSecondaryBtn}>see options ↓</a>

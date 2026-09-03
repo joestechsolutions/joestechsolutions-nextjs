@@ -30,7 +30,7 @@ export default function RenFaireDirectoryCaseStudy() {
         title="RenFaire Directory"
         highlight="RenFaire"
         subtitle="The modern guide to Renaissance faires across America. A revenue-generating directory featuring 200+ events, rich structured data, affiliate monetization, and top search engine rankings."
-        media={{ type: "image", src: "/images/renfaire-detail.jpg", position: "50% 50%" }}
+        media={{ type: "image", src: "/generated/page-case-renfaire.jpg" }}
       >
         <a href="https://www.renfaireguide.com" target="_blank" rel="noopener noreferrer" className={heroPrimaryBtn}>visit live site ↗</a>
       </PageHero>

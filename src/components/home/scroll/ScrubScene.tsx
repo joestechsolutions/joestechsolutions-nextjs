@@ -73,15 +73,14 @@ export function ScrubScene() {
           muted
           playsInline
           preload="auto"
-          poster="/videos/scrub-system-poster.jpg"
+          poster="/generated/system-scrub-poster.jpg"
           aria-hidden="true"
         >
-          <source src="/videos/scrub-system.mp4" type="video/mp4" />
+          <source src="/generated/system-scrub.mp4" type="video/mp4" />
         </video>
-        {/* Recolor the footage into the brand: teal grade, then midnight falloff */}
-        <div className="absolute inset-0 bg-[#02a0a0] opacity-80 mix-blend-color" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071317] via-[#071317]/75 to-[#071317]/35" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[#071317]/35" aria-hidden="true" />
+        {/* Generated footage is already in the palette — just a left falloff so the copy reads */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071317] via-[#071317]/60 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[#071317]/20" aria-hidden="true" />
 
         <div className="relative mx-auto grid w-full max-w-6xl grid-cols-[2rem_1fr] gap-6 px-6 sm:grid-cols-[3rem_1fr] sm:gap-10">
           <Rail progress={scrollYProgress} />

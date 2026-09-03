@@ -42,7 +42,7 @@ export default function BlogPage() {
         title="Building with AI, in the open."
         highlight="open"
         subtitle="How I build private AI systems, ship real products, and automate the boring stuff. Field notes from the trenches of modern development."
-        media={{ type: "image", src: "/images/joe-ai-typing.png", position: "50% 35%" }}
+        media={{ type: "image", src: "/generated/page-blog.jpg" }}
       />
 
       {/* Posts List */}

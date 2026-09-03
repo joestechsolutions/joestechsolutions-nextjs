@@ -61,3 +61,4 @@ service-account.json
 scripts/content-pipeline/venv/
 __pycache__/
 *.pyc
+public/generated/*.raw.mp4

@@ -30,12 +30,11 @@ export function CtaScene({ id = "contact" }: { id?: string }) {
           loop
           playsInline
           preload="metadata"
-          poster="/videos/cta-loop-poster.jpg"
+          poster="/generated/cta-loop-poster.jpg"
         >
-          <source src="/videos/cta-loop.mp4" type="video/mp4" />
+          <source src="/generated/cta-loop.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[#02a0a0] opacity-85 mix-blend-color" />
-        <div className="absolute inset-0 bg-[#071317]/70" />
+        <div className="absolute inset-0 bg-[#071317]/55" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#071317] via-transparent to-[#071317]" />
       </motion.div>
 

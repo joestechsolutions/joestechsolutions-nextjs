@@ -94,7 +94,7 @@ export default function AgentSystem() {
         highlight="Workforce"
         size="tall"
         subtitle="Not a chatbot. Not a tool. A multi-agent AI system that runs your business — coding, content, research, ops — connected to your tools, working while you sleep."
-        media={{ type: "image", src: "/images/self-driving-trucks.jpg", position: "50% 55%" }}
+        media={{ type: "video", src: "/generated/page-agent-system-loop.mp4", poster: "/generated/page-agent-system-loop-poster.jpg" }}
       >
         <button type="button" onClick={() => (window.location.href = calendlyLink)} className={heroPrimaryBtn}>
           book a strategy call →

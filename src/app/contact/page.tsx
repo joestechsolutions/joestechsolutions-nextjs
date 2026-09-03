@@ -48,7 +48,7 @@ export default async function Contact({
         highlight="working"
         subtitle={interestCopy ??
           "No pitch, no pressure, no \"discovery call.\" Just tell me what you're dealing with and I'll tell you if I can help. If I can't, I'll tell you that too."}
-        media={{ type: "image", src: "/images/client-collaboration.jpg", position: "50% 40%" }}
+        media={{ type: "video", src: "/generated/page-contact-loop.mp4", poster: "/generated/page-contact-loop-poster.jpg" }}
       />
 
       {/* Contact Options */}

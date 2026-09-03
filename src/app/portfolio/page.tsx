@@ -73,7 +73,7 @@ export default function Portfolio() {
         title="Things I've built."
         highlight="built"
         subtitle="Not a portfolio of pitch decks. Real apps, real sites, real people using them."
-        media={{ type: "image", src: "/generated/page-portfolio.jpg" }}
+        media={{ type: "video", src: "/generated/page-portfolio-loop.mp4", poster: "/generated/page-portfolio-loop-poster.jpg" }}
       />
 
       {/* Projects Grid */}

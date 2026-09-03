@@ -161,7 +161,7 @@ export default function GoogleMapsGrowth() {
         highlight="agent"
         size="tall"
         subtitle="Weekly posts. Every review answered. Photos and keywords kept fresh — the steady upkeep that moves you up Google Maps, handled for you while you run the business."
-        media={{ type: "image", src: "/generated/page-google-maps.jpg" }}
+        media={{ type: "video", src: "/generated/page-google-maps-loop.mp4", poster: "/generated/page-google-maps-loop-poster.jpg" }}
       >
         <Link href="/contact?interest=gbp" className={heroPrimaryBtn}>get a quote →</Link>
         <Link href="#how" className={heroSecondaryBtn}>see how it works</Link>

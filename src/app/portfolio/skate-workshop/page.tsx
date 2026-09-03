@@ -29,7 +29,7 @@ export default function SkateWorkshopCaseStudy() {
         title="The Skate Workshop"
         highlight="Skate"
         subtitle="Olympic-level skateboarding coaching delivered through a mobile-first platform with video feedback, comprehensive trick database, and multiplayer features."
-        media={{ type: "image", src: "/generated/page-case-skate.jpg" }}
+        media={{ type: "video", src: "/generated/page-case-skate-loop.mp4", poster: "/generated/page-case-skate-loop-poster.jpg" }}
       >
         <a href="https://www.theskateworkshop.app/" target="_blank" rel="noopener noreferrer" className={heroPrimaryBtn}>visit live site ↗</a>
       </PageHero>

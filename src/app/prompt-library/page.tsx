@@ -96,7 +96,7 @@ export default function PromptLibrary() {
         title="The prompt library I actually use."
         highlight="actually"
         subtitle="Not scraped from Twitter. These are the prompts running my agents right now — ops, sales, content, coding, and research. Free, in exchange for your email."
-        media={{ type: "image", src: "/generated/page-prompt-library.jpg" }}
+        media={{ type: "video", src: "/generated/page-prompt-library-loop.mp4", poster: "/generated/page-prompt-library-loop-poster.jpg" }}
       />
 
       {/* Categories */}

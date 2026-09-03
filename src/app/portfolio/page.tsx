@@ -2,12 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { MagneticButton } from "@/components/animations/MagneticButton";
+import { PageHero } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "Portfolio | Joe's Tech Solutions",
@@ -66,24 +68,13 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-card via-background to-background">
       {/* Hero */}
-      <section className="relative overflow-hidden py-20 sm:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent" />
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center space-y-6">
-            <FadeIn delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-2">Things I&apos;ve built.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
-                Not a portfolio of pitch decks. Real apps, real sites, real people using them.
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="ls -la /proof_of_work/"
+        title="Things I've built."
+        highlight="built"
+        subtitle="Not a portfolio of pitch decks. Real apps, real sites, real people using them."
+        media={{ type: "image", src: "/images/joe-deploying-server.png", position: "50% 35%" }}
+      />
 
       {/* Projects Grid */}
       <section className="relative py-20">
@@ -144,7 +135,7 @@ export default function Portfolio() {
                     <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <Button variant="outline" className="w-full border-foreground/20 hover:bg-foreground/5">
                         Live Site
-                        <ExternalLink className="ml-2 h-4 w-4" />
+                        <ArrowSquareOut className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
                   </div>
@@ -197,6 +188,8 @@ export default function Portfolio() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

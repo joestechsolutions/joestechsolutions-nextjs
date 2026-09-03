@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { getAllPosts } from "@/lib/blog";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { TextReveal } from "@/components/animations/TextReveal";
-import { ScrollBackground } from "@/components/animations/ScrollBackground";
+import { PageHero } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 
 export const metadata: Metadata = {
@@ -37,36 +37,13 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32">
-        <ScrollBackground />
-
-        <div className="relative mx-auto max-w-4xl px-6 lg:px-8">
-          <div>
-            <FadeIn delay={0} direction="right">
-              <div className="inline-flex items-center gap-2 mb-6">
-                <span className="h-px w-8 bg-primary" />
-                <span className="text-primary text-xs font-[family-name:var(--font-jetbrains-mono)] uppercase tracking-widest">
-                  Engineering Notes
-                </span>
-              </div>
-            </FadeIn>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[family-name:var(--font-jetbrains-mono)] leading-tight tracking-tight">
-              <TextReveal delay={0.1}>
-                <span className="block text-foreground">Building with AI,</span>
-              </TextReveal>
-              <TextReveal delay={0.2}>
-                <span className="block text-foreground/60">in the open.</span>
-              </TextReveal>
-            </h1>
-            <FadeIn delay={0.4}>
-              <p className="mt-6 text-lg text-foreground/50 leading-relaxed max-w-xl">
-                How we build private AI systems, ship real products, and automate
-                the boring stuff. Field notes from the trenches of modern development.
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="tail -f engineering-notes.log"
+        title="Building with AI, in the open."
+        highlight="open"
+        subtitle="How I build private AI systems, ship real products, and automate the boring stuff. Field notes from the trenches of modern development."
+        media={{ type: "image", src: "/images/joe-ai-typing.png", position: "50% 35%" }}
+      />
 
       {/* Posts List */}
       <section className="relative py-8 sm:py-16">
@@ -140,6 +117,8 @@ export default function BlogPage() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

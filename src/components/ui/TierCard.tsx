@@ -1,10 +1,17 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
-import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
+import { CheckCircle, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
+import Image from "next/image";
 import type { Tier } from "@/lib/tiers";
+
+// 3dicons renders (CC0) in public/icons — one per tier.
+const tierIcon: Record<Tier["id"], string> = {
+  "quick-start": "/icons/computer-dynamic/premium.png",
+  "back-office": "/icons/tools-dynamic/premium.png",
+  "custom-build": "/icons/rocket-dynamic/premium.png",
+};
 
 // Static class maps per accent so Tailwind can see every class at build time.
 const accentStyles: Record<
@@ -51,6 +58,13 @@ export function TierCard({ tier }: { tier: Tier }) {
       <Card
         className={`relative h-full flex flex-col bg-card ${accent.border} transition-[color,border-color,background-color] duration-500 overflow-hidden group p-8`}
       >
+        <Image
+          src={tierIcon[tier.id]}
+          alt=""
+          width={96}
+          height={96}
+          className="mb-5 h-20 w-20 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:-translate-y-1"
+        />
         {tier.badge && (
           <div
             className={`absolute top-4 right-4 px-3 py-1 rounded-none text-sm font-medium z-10 ${accent.badge}`}

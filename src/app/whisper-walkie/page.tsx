@@ -2,27 +2,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Download,
-  ExternalLink,
-  CheckCircle,
-  Shield,
-  Mic,
-  Zap,
-  Monitor,
-  Globe,
-  Lock,
-  Cpu,
-  ArrowLeft,
-  Terminal,
-  Settings,
-  Play,
-} from "lucide-react";
+import { DownloadSimple, ArrowSquareOut, CheckCircle, Shield, Microphone, Lightning, Monitor, Globe, Lock, Cpu, Terminal, Gear, Play } from "@phosphor-icons/react/dist/ssr";
 import { FAQ } from "./FAQ";
 import { HeroDownloadButton, PlatformDownloadCards, CtaDownloadButton } from "./DownloadButton";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
+import { PageHero, heroSecondaryBtn } from "@/components/home/scroll/PageHero";
 
 export const metadata: Metadata = {
   title: "Whisper Walkie — Local Push-to-Talk Transcription | Joe's Tech Solutions",
@@ -84,7 +70,7 @@ const features = [
     accent: "#f5a94f",
   },
   {
-    icon: Mic,
+    icon: Microphone,
     title: "Push-to-Talk",
     description: "Hold Right Alt (customizable), speak, release. It only records when you tell it to — total control.",
     accent: "#02a0a0",
@@ -103,84 +89,17 @@ export default function WhisperWalkiePage() {
     <div className="min-h-screen">
 
       {/* ── Hero ───────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
-        {/* Gradient background */}
-        <div className="absolute inset-0 bg-background" />
-        {/* Animated blobs */}
-        <div className="absolute inset-0 opacity-30 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary rounded-none blur-[120px] animate-glow" />
-          <div
-            className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary rounded-none blur-[100px] animate-glow"
-            style={{ animationDelay: "2s" }}
-          />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          {/* Back link */}
-          <FadeIn delay={0.05}>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-foreground/50 hover:text-foreground text-sm transition-colors mb-12"
-            >
-              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-              Joe&apos;s Tech Solutions
-            </Link>
-          </FadeIn>
-
-          <div className="mx-auto max-w-4xl text-center space-y-10">
-            {/* Badge */}
-            <FadeIn delay={0.1}>
-              <div className="inline-flex items-center gap-2 px-5 py-2 bg-card border border-foreground/10 rounded-none text-primary text-sm font-medium backdrop-blur-sm">
-                <span className="w-1.5 h-1.5 bg-primary rounded-none" aria-hidden="true" />
-                Archive &middot; Open Source (MIT) &middot; Privacy First
-              </div>
-            </FadeIn>
-
-            {/* Title */}
-            <FadeIn delay={0.15}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-3">Whisper Walkie</span>
-                <span className="block bg-gradient-to-r from-primary via-primary to-primary text-transparent bg-clip-text">
-                  Your voice, your machine.
-                </span>
-              </h1>
-            </FadeIn>
-
-            {/* Subtitle */}
-            <FadeIn delay={0.2}>
-              <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed font-light">
-                Nothing leaves.
-              </p>
-            </FadeIn>
-
-            {/* Description */}
-            <FadeIn delay={0.25}>
-              <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
-                Hold a hotkey, speak naturally, release. The transcribed text types directly into whatever
-                window has focus — no clipboard, no cloud, no account. Whisper AI runs entirely on your
-                machine.
-              </p>
-            </FadeIn>
-
-            {/* CTAs */}
-            <FadeIn delay={0.35}>
-              <div className="flex flex-col items-center gap-4 pt-4">
-                <HeroDownloadButton />
-                <a href={GITHUB_REPO} target="_blank" rel="noopener noreferrer">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="text-lg px-10 py-7 rounded-none border-foreground/20 hover:bg-foreground/5 hover:border-foreground/30 backdrop-blur-sm transition-[color,background-color,border-color]"
-                  >
-                    <ExternalLink className="mr-2 h-5 w-5" aria-hidden="true" />
-                    View Source
-                  </Button>
-                </a>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="whisper-walkie --archive · open source (MIT) · privacy first"
+        title="Whisper Walkie. Your voice, your machine."
+        highlight="voice"
+        size="tall"
+        subtitle="Nothing leaves. Hold a hotkey, speak naturally, release. The transcribed text types directly into whatever window has focus — no clipboard, no cloud, no account. Whisper AI runs entirely on your machine."
+        media={{ type: "image", src: "/images/joe-corporate-headshot.png", position: "50% 25%" }}
+      >
+        <HeroDownloadButton />
+        <a href={GITHUB_REPO} target="_blank" rel="noopener noreferrer" className={`${heroSecondaryBtn} self-start`}>view source ↗</a>
+      </PageHero>
 
       {/* ── How It Works ──────────────────────────────────────────── */}
       <section className="relative py-20 sm:py-32">
@@ -206,7 +125,7 @@ export default function WhisperWalkiePage() {
             {[
               {
                 step: "01",
-                icon: Mic,
+                icon: Microphone,
                 label: "Hold",
                 description: "Press and hold the push-to-talk hotkey (default: Right Alt). The app starts recording immediately.",
                 color: "#02a0a0",
@@ -214,7 +133,7 @@ export default function WhisperWalkiePage() {
               },
               {
                 step: "02",
-                icon: Zap,
+                icon: Lightning,
                 label: "Speak",
                 description: "Talk naturally into your microphone for as long as you need. No time limit, no wake word.",
                 color: "#f5a94f",
@@ -299,7 +218,7 @@ export default function WhisperWalkiePage() {
                   {/* Circle + icon */}
                   <div className="relative flex-shrink-0">
                     <div className="w-14 h-14 rounded-none bg-primary/15 border-2 border-primary/50 flex items-center justify-center z-10 relative">
-                      <Download className="w-6 h-6 text-primary" aria-hidden="true" />
+                      <DownloadSimple weight="duotone" className="w-6 h-6 text-primary" aria-hidden="true" />
                     </div>
                     <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-none bg-primary text-foreground text-[10px] font-bold flex items-center justify-center z-20">
                       1
@@ -324,7 +243,7 @@ export default function WhisperWalkiePage() {
                 <div className="flex gap-6 items-start">
                   <div className="relative flex-shrink-0">
                     <div className="w-14 h-14 rounded-none bg-primary/15 border-2 border-primary/50 flex items-center justify-center z-10 relative">
-                      <Monitor className="w-6 h-6 text-primary" aria-hidden="true" />
+                      <Monitor weight="duotone" className="w-6 h-6 text-primary" aria-hidden="true" />
                     </div>
                     <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-none bg-primary text-foreground text-[10px] font-bold flex items-center justify-center z-20">
                       2
@@ -339,7 +258,7 @@ export default function WhisperWalkiePage() {
                           <details className="group/detail">
                             <summary className="flex items-center gap-2 cursor-pointer list-none text-sm font-medium text-foreground/80 hover:text-foreground transition-colors select-none">
                               <span className="w-5 h-5 rounded bg-primary/15 flex items-center justify-center flex-shrink-0">
-                                <Monitor className="w-3 h-3 text-primary" aria-hidden="true" />
+                                <Monitor weight="duotone" className="w-3 h-3 text-primary" aria-hidden="true" />
                               </span>
                               Windows
                               <svg className="w-3.5 h-3.5 text-foreground/40 ml-auto transition-transform group-open/detail:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
@@ -354,7 +273,7 @@ export default function WhisperWalkiePage() {
                           <details className="group/detail">
                             <summary className="flex items-center gap-2 cursor-pointer list-none text-sm font-medium text-foreground/80 hover:text-foreground transition-colors select-none">
                               <span className="w-5 h-5 rounded bg-primary/15 flex items-center justify-center flex-shrink-0">
-                                <Globe className="w-3 h-3 text-primary" aria-hidden="true" />
+                                <Globe weight="duotone" className="w-3 h-3 text-primary" aria-hidden="true" />
                               </span>
                               macOS
                               <svg className="w-3.5 h-3.5 text-foreground/40 ml-auto transition-transform group-open/detail:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
@@ -369,7 +288,7 @@ export default function WhisperWalkiePage() {
                                 <li>Click <span className="text-foreground/70">&ldquo;Open&rdquo;</span> when macOS asks to confirm</li>
                               </ol>
                               <p className="text-foreground/40 text-xs">
-                                Grant Accessibility permissions when prompted: System Settings &rarr; Privacy &amp; Security &rarr; Accessibility.
+                                Grant Accessibility permissions when prompted: System Gear &rarr; Privacy &amp; Security &rarr; Accessibility.
                               </p>
                             </div>
                           </details>
@@ -377,7 +296,7 @@ export default function WhisperWalkiePage() {
                           <details className="group/detail">
                             <summary className="flex items-center gap-2 cursor-pointer list-none text-sm font-medium text-foreground/80 hover:text-foreground transition-colors select-none">
                               <span className="w-5 h-5 rounded bg-primary/15 flex items-center justify-center flex-shrink-0">
-                                <Terminal className="w-3 h-3 text-primary" aria-hidden="true" />
+                                <Terminal weight="duotone" className="w-3 h-3 text-primary" aria-hidden="true" />
                               </span>
                               Linux
                               <svg className="w-3.5 h-3.5 text-foreground/40 ml-auto transition-transform group-open/detail:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
@@ -402,12 +321,12 @@ export default function WhisperWalkiePage() {
                 </div>
               </StaggerItem>
 
-              {/* Step 3 — Choose Your Mic */}
+              {/* Step 3 — Choose Your Microphone */}
               <StaggerItem>
                 <div className="flex gap-6 items-start">
                   <div className="relative flex-shrink-0">
                     <div className="w-14 h-14 rounded-none bg-primary/15 border-2 border-primary/50 flex items-center justify-center z-10 relative">
-                      <Settings className="w-6 h-6 text-primary" aria-hidden="true" />
+                      <Gear weight="duotone" className="w-6 h-6 text-primary" aria-hidden="true" />
                     </div>
                     <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-none bg-primary text-foreground text-[10px] font-bold flex items-center justify-center z-20">
                       3
@@ -416,9 +335,9 @@ export default function WhisperWalkiePage() {
                   <AnimatedCard>
                     <Card className="bg-card border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 flex-1">
                       <CardContent className="p-6">
-                        <h3 className="text-lg font-bold text-foreground font-mono mb-2">Choose Your Mic</h3>
+                        <h3 className="text-lg font-bold text-foreground font-mono mb-2">Choose Your Microphone</h3>
                         <p className="text-foreground/60 leading-relaxed text-sm">
-                          Open Settings in the app and select your microphone from the dropdown.
+                          Open Gear in the app and select your microphone from the dropdown.
                         </p>
                       </CardContent>
                     </Card>
@@ -431,7 +350,7 @@ export default function WhisperWalkiePage() {
                 <div className="flex gap-6 items-start">
                   <div className="relative flex-shrink-0">
                     <div className="w-14 h-14 rounded-none bg-primary/15 border-2 border-primary/50 flex items-center justify-center z-10 relative">
-                      <Play className="w-6 h-6 text-primary" aria-hidden="true" />
+                      <Play weight="duotone" className="w-6 h-6 text-primary" aria-hidden="true" />
                     </div>
                     <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-none bg-primary text-foreground text-[10px] font-bold flex items-center justify-center z-20">
                       4
@@ -512,7 +431,7 @@ export default function WhisperWalkiePage() {
                   <ul className="space-y-4" role="list">
                     {whisperwalkieBenefits.map((benefit) => (
                       <li key={benefit} className="flex items-start gap-3">
-                        <CheckCircle
+                        <CheckCircle weight="duotone"
                           className="mt-0.5 w-5 h-5 flex-shrink-0 text-primary"
                           aria-hidden="true"
                         />
@@ -719,7 +638,7 @@ export default function WhisperWalkiePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary hover:text-primary font-medium transition-colors"
             >
-              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+              <ArrowSquareOut className="w-4 h-4" aria-hidden="true" />
               Read the source on GitHub
             </a>
           </FadeIn>

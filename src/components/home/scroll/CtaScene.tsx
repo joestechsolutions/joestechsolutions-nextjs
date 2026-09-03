@@ -7,7 +7,7 @@ import { MagneticButton } from "@/components/animations/MagneticButton";
 import { TextReveal } from "@/components/animations/TextReveal";
 
 // Closing scene: full-bleed loop with a slow parallax, one line, two buttons.
-export function CtaScene() {
+export function CtaScene({ id = "contact" }: { id?: string }) {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -19,7 +19,7 @@ export function CtaScene() {
   return (
     <section
       ref={ref}
-      id="contact"
+      id={id}
       className="relative flex min-h-[92vh] items-center overflow-hidden bg-[#071317] text-[#d9ece9]"
     >
       <motion.div className="absolute -inset-y-[12%] inset-x-0" style={reduced ? undefined : { y }} aria-hidden="true">

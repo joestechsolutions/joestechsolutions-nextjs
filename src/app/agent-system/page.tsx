@@ -26,7 +26,8 @@ import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { useState, useRef, useLayoutEffect } from "react";
 import { agentFaqs } from "./faqs";
-import { twMerge } from "tailwind-merge";
+import { PageHero, heroPrimaryBtn, heroSecondaryBtn } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 const faqs = agentFaqs;
 
@@ -80,14 +81,6 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
   );
 }
 
-const HeroBlob = ({ className }: { className?: string }) => (
-  <div
-    className={twMerge(
-      "absolute rounded-none blur-[130px] opacity-0 animate-blob-show pointer-events-none",
-      className
-    )}
-  />
-);
 
 export default function AgentSystem() {
   const calendlyLink = "/contact";
@@ -95,54 +88,21 @@ export default function AgentSystem() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
-        <div className="absolute inset-0 bg-background" />
-        <HeroBlob className="w-[500px] h-[500px] bg-primary/15 top-[-100px] left-[-100px]" />
-        <HeroBlob className="w-[400px] h-[400px] bg-primary/10 bottom-[-50px] right-[10%] [animation-delay:1.5s]" />
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <FadeIn delay={0.1}>
-              <span className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-none text-primary text-sm font-medium">
-                Full Stack · 24/7 Autonomous
-              </span>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-3">Your AI</span>
-                <span className="block bg-gradient-to-r from-primary via-primary to-primary text-transparent bg-clip-text">
-                  Workforce.
-                </span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.25}>
-              <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed font-light">
-                Not a chatbot. Not a tool. A multi-agent AI system that runs your business —
-                coding, content, research, ops — connected to your tools, working while you sleep.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.35}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <MagneticButton strength={0.2}>
-                  <Button
-                    onClick={() => (window.location.href = calendlyLink)}
-                    className="bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary text-foreground rounded-none group shadow-lg shadow-primary/20 px-8 py-6 text-lg font-mono font-semibold"
-                  >
-                    Book a Strategy Call
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </MagneticButton>
-                <Button
-                  onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-                  className="bg-card/50 border border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary rounded-none px-8 py-6 text-lg font-mono font-semibold transition-[color,background-color,border-color,box-shadow]"
-                >
-                  See What&apos;s Included
-                </Button>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="systemctl status hermes --all · 24/7 autonomous"
+        title="Your AI Workforce."
+        highlight="Workforce"
+        size="tall"
+        subtitle="Not a chatbot. Not a tool. A multi-agent AI system that runs your business — coding, content, research, ops — connected to your tools, working while you sleep."
+        media={{ type: "image", src: "/images/self-driving-trucks.jpg", position: "50% 55%" }}
+      >
+        <button type="button" onClick={() => (window.location.href = calendlyLink)} className={heroPrimaryBtn}>
+          book a strategy call →
+        </button>
+        <button type="button" onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })} className={heroSecondaryBtn}>
+          see what&apos;s included
+        </button>
+      </PageHero>
 
       {/* The Problem */}
       <section className="relative py-24 sm:py-32">
@@ -592,6 +552,8 @@ export default function AgentSystem() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

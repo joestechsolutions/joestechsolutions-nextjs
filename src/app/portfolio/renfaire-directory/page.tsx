@@ -2,8 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { ArrowLeft, ExternalLink, CheckCircle, Search, Globe, Zap, TrendingUp, MapPin, DollarSign, BarChart3 } from "lucide-react";
+import { ArrowLeft, CheckCircle, MagnifyingGlass, Globe, Lightning, TrendUp, MapPin, CurrencyDollar, ChartBar } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
+import { PageHero, heroPrimaryBtn } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "RenFaire Directory Case Study | Joe's Tech Solutions",
@@ -21,8 +23,20 @@ export const metadata: Metadata = {
 export default function RenFaireDirectoryCaseStudy() {
   return (
     <div className="min-h-screen bg-background">
+
+      {/* Hero */}
+      <PageHero
+        eyebrow="cat /proof_of_work/renfaire-directory · content platform · seo · directory"
+        title="RenFaire Directory"
+        highlight="RenFaire"
+        subtitle="The modern guide to Renaissance faires across America. A revenue-generating directory featuring 200+ events, rich structured data, affiliate monetization, and top search engine rankings."
+        media={{ type: "image", src: "/images/renfaire-detail.jpg", position: "50% 50%" }}
+      >
+        <a href="https://www.renfaireguide.com" target="_blank" rel="noopener noreferrer" className={heroPrimaryBtn}>visit live site ↗</a>
+      </PageHero>
+
       {/* Back Button */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-8 pb-0">
         <Link href="/portfolio">
           <Button variant="outline" className="border-foreground/20 hover:bg-foreground/5">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -31,51 +45,6 @@ export default function RenFaireDirectoryCaseStudy() {
         </Link>
       </div>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden pb-20">
-        <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-background/20 to-background/20" />
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-block px-4 py-2 bg-primary/20 border border-primary/30 rounded-none text-primary text-sm font-semibold">
-                Content Platform &bull; SEO &bull; Directory
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-mono">
-                RenFaire Directory
-              </h1>
-
-              <p className="text-xl text-foreground/90 leading-relaxed">
-                The modern guide to Renaissance faires across America. A revenue-generating
-                directory featuring 200+ events, rich structured data, affiliate monetization,
-                and top search engine rankings.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="https://www.renfaireguide.com" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="bg-primary hover:bg-primary rounded-none shadow-lg shadow-primary/20">
-                    Visit Live Site
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="relative aspect-[4/3] rounded-none overflow-hidden border border-foreground/10">
-                <Image
-                  src="/images/renfaire-hero.jpg"
-                  alt="RenFaire Directory homepage"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Project Overview Stats */}
       <section className="relative py-20 bg-card/30">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -83,7 +52,7 @@ export default function RenFaireDirectoryCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-primary" />
+                  <MapPin weight="duotone" className="w-6 h-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">Listings</CardTitle>
               </CardHeader>
@@ -95,7 +64,7 @@ export default function RenFaireDirectoryCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-6 h-6 text-primary" />
+                  <TrendUp weight="duotone" className="w-6 h-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">SEO</CardTitle>
               </CardHeader>
@@ -107,7 +76,7 @@ export default function RenFaireDirectoryCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="w-6 h-6 text-green-400" />
+                  <CurrencyDollar weight="duotone" className="w-6 h-6 text-green-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">Revenue</CardTitle>
               </CardHeader>
@@ -151,7 +120,7 @@ export default function RenFaireDirectoryCaseStudy() {
                   "Newsletter signup and review system"
                 ].map((item, index) => (
                   <div key={index} className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle weight="duotone" className="h-5 w-5 text-green-400 mr-3 flex-shrink-0 mt-0.5" />
                     <span className="text-foreground/90">{item}</span>
                   </div>
                 ))}
@@ -218,12 +187,12 @@ export default function RenFaireDirectoryCaseStudy() {
               {
                 title: "Automated Data Enrichment",
                 description: "Every faire listing is enriched with Google Places data including ratings, reviews, hours, addresses, and phone numbers. Data stays fresh through automated pipelines.",
-                icon: Zap
+                icon: Lightning
               },
               {
                 title: "SEO-First Architecture",
                 description: "Event schema structured data, FAQPage schema, dynamic sitemaps, canonical tags, and server-side rendering ensure every page is optimized for Google discovery.",
-                icon: Search
+                icon: MagnifyingGlass
               },
               {
                 title: "Near-Me Geolocation",
@@ -233,7 +202,7 @@ export default function RenFaireDirectoryCaseStudy() {
               {
                 title: "Affiliate Revenue Engine",
                 description: "Integrated Booking.com hotel/flight affiliates and ThredUp costume shopping links generate passive revenue from every faire listing page.",
-                icon: DollarSign
+                icon: CurrencyDollar
               }
             ].map((feature, index) => (
               <Card key={index} className="bg-card border-foreground/10 hover:border-primary/50 transition-colors group">
@@ -309,7 +278,7 @@ export default function RenFaireDirectoryCaseStudy() {
               {
                 title: "Structured Data",
                 items: ["Event schema on 218 pages", "FAQPage schema per listing", "AggregateRating markup", "Organization + Place schemas"],
-                icon: BarChart3
+                icon: ChartBar
               },
               {
                 title: "Content Strategy",
@@ -319,7 +288,7 @@ export default function RenFaireDirectoryCaseStudy() {
               {
                 title: "Technical SEO",
                 items: ["270+ URL sitemap", "Proper canonical tags", "Server-side rendering", "Core Web Vitals optimized"],
-                icon: Zap
+                icon: Lightning
               }
             ].map((strategy, index) => (
               <Card key={index} className="bg-card border-foreground/10">
@@ -333,7 +302,7 @@ export default function RenFaireDirectoryCaseStudy() {
                   <ul className="space-y-2">
                     {strategy.items.map((item, i) => (
                       <li key={i} className="flex items-start">
-                        <CheckCircle className="h-4 w-4 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle weight="duotone" className="h-4 w-4 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
                         <span className="text-foreground/80 text-sm">{item}</span>
                       </li>
                     ))}
@@ -369,6 +338,8 @@ export default function RenFaireDirectoryCaseStudy() {
           </div>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

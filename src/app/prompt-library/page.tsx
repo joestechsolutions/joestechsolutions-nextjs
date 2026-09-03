@@ -14,6 +14,8 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerCo
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { PageHero } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "Free Prompt Library | Joe's Tech Solutions",
@@ -89,25 +91,13 @@ export default function PromptLibrary() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
-        <div className="absolute inset-0 bg-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <FadeIn delay={0.1}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-3">The prompt library</span>
-                <span className="block text-primary">I actually use.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed font-light">
-                Not scraped from Twitter. These are the prompts running my agents right now —
-                ops, sales, content, coding, and research. Free, in exchange for your email.
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="ls ~/prompts"
+        title="The prompt library I actually use."
+        highlight="actually"
+        subtitle="Not scraped from Twitter. These are the prompts running my agents right now — ops, sales, content, coding, and research. Free, in exchange for your email."
+        media={{ type: "image", src: "/images/blog/prompting-guide.png", position: "50% 50%" }}
+      />
 
       {/* Categories */}
       <section className="relative py-16 sm:py-24">
@@ -193,6 +183,8 @@ export default function PromptLibrary() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

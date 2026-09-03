@@ -5,22 +5,9 @@ import { Card } from "@/components/ui/card";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { AngleBand } from "@/components/ui/AngleBand";
-import {
-  ArrowRight,
-  MapPin,
-  Star,
-  MessageSquareText,
-  Camera,
-  CalendarClock,
-  SearchCheck,
-  Bot,
-  ShieldCheck,
-  Flag,
-  Link2,
-  BarChart3,
-  FileText,
-  HelpCircle,
-} from "lucide-react";
+import { PageHero, heroPrimaryBtn, heroSecondaryBtn } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { ArrowRight, MapPin, Star, ChatText, Camera, CalendarCheck, ListMagnifyingGlass, Robot, ShieldCheck, Flag, LinkSimple, ChartBar, FileText, Question } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
   title: "Google Maps Growth | Joe's Tech Solutions",
@@ -49,7 +36,7 @@ const problems = [
     body: "Every unanswered review — good or bad — reads as 'they stopped caring.' Responding within hours is one of the strongest signals your profile can send.",
   },
   {
-    icon: CalendarClock,
+    icon: CalendarCheck,
     title: "A stale profile",
     body: "No posts since spring, five photos, a services list from two owners ago. Google reads inactivity as decay, and so do customers.",
   },
@@ -85,7 +72,7 @@ const included = [
     body: "Offers, updates, and seasonal content written in your voice.",
   },
   {
-    icon: MessageSquareText,
+    icon: ChatText,
     title: "Review replies, every one",
     body: "Positive or negative, answered within hours — human-reviewed.",
   },
@@ -95,17 +82,17 @@ const included = [
     body: "Fresh, geotagged, service-relevant photos added on schedule.",
   },
   {
-    icon: SearchCheck,
+    icon: ListMagnifyingGlass,
     title: "Category & keyword tuning",
     body: "Services, attributes, and descriptions kept aligned with what people actually search.",
   },
   {
-    icon: HelpCircle,
+    icon: Question,
     title: "Q&A monitoring",
     body: "Questions on your listing answered before they cost you calls.",
   },
   {
-    icon: Link2,
+    icon: LinkSimple,
     title: "Citation consistency",
     body: "Name, address, and phone checked across the directories Google cross-references.",
   },
@@ -115,7 +102,7 @@ const included = [
     body: "Competitor listings gaming the Map Pack, and junk reviews on yours — reported.",
   },
   {
-    icon: BarChart3,
+    icon: ChartBar,
     title: "Monthly report",
     body: "Rankings, calls, and direction requests — with next month's plan attached.",
   },
@@ -168,56 +155,17 @@ export default function GoogleMapsGrowth() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
-        <div className="absolute inset-0 bg-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <FadeIn delay={0.05}>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium border border-primary/20">
-                <MapPin className="h-4 w-4" />
-                For local businesses that live on Map calls
-              </span>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-3">Your Google profile,</span>
-                <span className="block text-primary">run by an AI agent.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed font-light">
-                Weekly posts. Every review answered. Photos and keywords kept fresh —
-                the steady upkeep that moves you up Google Maps, handled for you
-                while you run the business.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-                <Link href="/contact?interest=gbp">
-                  <MagneticButton strength={0.3}>
-                    <Button
-                      size="lg"
-                      className="bg-primary hover:bg-primary/85 text-foreground text-lg px-10 py-7 rounded-none shadow-2xl shadow-primary/20 group"
-                    >
-                      Get a quote
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </MagneticButton>
-                </Link>
-                <Link href="#how">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="text-lg px-10 py-7 rounded-none border-foreground/20 hover:border-primary/50 hover:text-primary bg-transparent"
-                  >
-                    See how it works
-                  </Button>
-                </Link>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="gbp-agent --weekly · for local businesses that live on Map calls"
+        title="Your Google profile, run by an AI agent."
+        highlight="agent"
+        size="tall"
+        subtitle="Weekly posts. Every review answered. Photos and keywords kept fresh — the steady upkeep that moves you up Google Maps, handled for you while you run the business."
+        media={{ type: "image", src: "/images/credentials-google-waymo.jpg", position: "50% 50%" }}
+      >
+        <Link href="/contact?interest=gbp" className={heroPrimaryBtn}>get a quote →</Link>
+        <Link href="#how" className={heroSecondaryBtn}>see how it works</Link>
+      </PageHero>
 
       {/* The problem */}
       <section className="relative py-16 sm:py-24">
@@ -255,7 +203,7 @@ export default function GoogleMapsGrowth() {
           <FadeIn>
             <div className="text-center mb-14">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium border border-primary/20 mb-6">
-                <Bot className="h-4 w-4" />
+                <Robot weight="duotone" className="h-4 w-4" />
                 How it works
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground font-mono">
@@ -310,7 +258,7 @@ export default function GoogleMapsGrowth() {
           <FadeIn>
             <Card className="border-primary/30 bg-primary/5 p-10 sm:p-12">
               <div className="flex items-start gap-5">
-                <ShieldCheck className="h-10 w-10 text-primary shrink-0" />
+                <ShieldCheck weight="duotone" className="h-10 w-10 text-primary shrink-0" />
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-foreground font-mono mb-4">
                     Our one promise: no magic
@@ -370,7 +318,7 @@ export default function GoogleMapsGrowth() {
           <FadeIn>
             <div className="text-center mb-12">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium border border-primary/20 mb-6">
-                <HelpCircle className="h-4 w-4" />
+                <Question weight="duotone" className="h-4 w-4" />
                 Straight answers
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground font-mono">
@@ -414,7 +362,7 @@ export default function GoogleMapsGrowth() {
                   size="lg"
                   className="bg-primary hover:bg-primary/85 text-foreground text-lg px-12 py-7 rounded-none group shadow-2xl shadow-primary/20"
                 >
-                  <BarChart3 className="mr-2 h-5 w-5" />
+                  <ChartBar weight="duotone" className="mr-2 h-5 w-5" />
                   Get my free audit
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -423,12 +371,14 @@ export default function GoogleMapsGrowth() {
           </FadeIn>
           <FadeIn delay={0.4}>
             <p className="mt-6 text-foreground/40 text-sm font-light flex items-center justify-center gap-2">
-              <BarChart3 className="h-3.5 w-3.5" />
+              <ChartBar weight="duotone" className="h-3.5 w-3.5" />
               Free audit · no commitment · month-to-month after
             </p>
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { ArrowLeft, ExternalLink, CheckCircle, Globe, Zap, TrendingUp } from "lucide-react";
+import { ArrowLeft, CheckCircle, Globe, Lightning, TrendUp } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
+import { PageHero, heroPrimaryBtn } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "Cbarrgs Music Case Study | Joe's Tech Solutions",
@@ -21,8 +22,20 @@ export const metadata: Metadata = {
 export default function CbarrgsCaseStudy() {
   return (
     <div className="min-h-screen bg-background">
+
+      {/* Hero */}
+      <PageHero
+        eyebrow="cat /proof_of_work/cbarrgs · artist website · performance optimized"
+        title="Cbarrgs Music"
+        highlight="Music"
+        subtitle="Electronic music artist portfolio with seamless streaming platform integrations, optimized performance, and SEO strategy for music discovery."
+        media={{ type: "image", src: "/images/blog/pipelines-inside.png", position: "50% 50%" }}
+      >
+        <a href="https://cbarrgs.com" target="_blank" rel="noopener noreferrer" className={heroPrimaryBtn}>visit live site ↗</a>
+      </PageHero>
+
       {/* Back Button */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-8 pb-0">
         <Link href="/portfolio">
           <Button variant="outline" className="border-foreground/20 hover:bg-foreground/5">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -31,50 +44,6 @@ export default function CbarrgsCaseStudy() {
         </Link>
       </div>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden pb-20">
-        <div className="absolute inset-0 bg-linear-to-br from-card/20 via-background/20 to-background/20" />
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-block px-4 py-2 bg-primary/20 border border-primary/30 rounded-none text-primary text-sm font-semibold">
-                Artist Website • Performance Optimized
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-mono">
-                Cbarrgs Music
-              </h1>
-
-              <p className="text-xl text-foreground/80 leading-relaxed">
-                Electronic music artist portfolio with seamless streaming platform integrations,
-                optimized performance, and SEO strategy for music discovery.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="https://cbarrgs.com" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="bg-primary hover:bg-primary/85 rounded-none shadow-lg shadow-primary/20">
-                    Visit Live Site
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="relative aspect-[4/3] rounded-none overflow-hidden border border-foreground/10 bg-card flex items-center justify-center">
-                <Image
-                  src="/images/cbarrgs-logo.jpeg"
-                  alt="Cbarrgs logo"
-                  fill
-                  className="object-contain p-8"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Project Overview */}
       <section className="relative py-20 bg-card/30">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -82,7 +51,7 @@ export default function CbarrgsCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Globe className="w-6 h-6 text-primary" />
+                  <Globe weight="duotone" className="w-6 h-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">Platform</CardTitle>
               </CardHeader>
@@ -94,7 +63,7 @@ export default function CbarrgsCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/15 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-6 h-6 text-primary" />
+                  <Lightning weight="duotone" className="w-6 h-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">Performance</CardTitle>
               </CardHeader>
@@ -106,7 +75,7 @@ export default function CbarrgsCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-6 h-6 text-green-400" />
+                  <TrendUp weight="duotone" className="w-6 h-6 text-green-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">SEO</CardTitle>
               </CardHeader>
@@ -147,7 +116,7 @@ export default function CbarrgsCaseStudy() {
                   "Performance monitoring and optimization"
                 ].map((item, index) => (
                   <div key={index} className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle weight="duotone" className="h-5 w-5 text-green-400 mr-3 flex-shrink-0 mt-0.5" />
                     <span className="text-foreground/80">{item}</span>
                   </div>
                 ))}
@@ -201,12 +170,12 @@ export default function CbarrgsCaseStudy() {
               {
                 title: "Performance Optimization",
                 description: "Advanced font-loading strategies and code splitting ensure fast page loads and smooth user experience.",
-                icon: Zap
+                icon: Lightning
               },
               {
                 title: "SEO & Discoverability",
                 description: "Schema.org structured data and Open Graph tags optimize search engine visibility and social sharing.",
-                icon: TrendingUp
+                icon: TrendUp
               },
               {
                 title: "Artist Branding",
@@ -282,6 +251,8 @@ export default function CbarrgsCaseStudy() {
           </div>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

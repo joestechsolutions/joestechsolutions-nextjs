@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
+import { PageHero } from "@/components/home/scroll/PageHero";
 
 export const metadata: Metadata = {
   title: "Contact | Joe's Tech Solutions",
@@ -41,25 +42,14 @@ export default async function Contact({
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32">
-        <div className="absolute inset-0 bg-background" />
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <FadeIn delay={0.1}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-3">Tell me what&apos;s not working.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-xl sm:text-2xl text-foreground/80 leading-relaxed font-light">
-                {interestCopy ??
-                  "No pitch, no pressure, no \"discovery call.\" Just tell me what you're dealing with and I'll tell you if I can help. If I can't, I'll tell you that too."}
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="mail joe --subject 'what is not working'"
+        title="Tell me what's not working."
+        highlight="working"
+        subtitle={interestCopy ??
+          "No pitch, no pressure, no \"discovery call.\" Just tell me what you're dealing with and I'll tell you if I can help. If I can't, I'll tell you that too."}
+        media={{ type: "image", src: "/images/client-collaboration.jpg", position: "50% 40%" }}
+      />
 
       {/* Contact Options */}
       <section className="relative py-24">

@@ -111,20 +111,20 @@ export function ArchitectureDiagram() {
           <Connection x1={400} y1={358} x2={640} y2={392} index={8} />
 
           {/* Top: Joe */}
-          <Node x={400} y={36} label="👤 Joe" sublabel="Telegram" color="#02a0a0" index={0} size="lg" />
+          <Node x={400} y={36} label="Joe" sublabel="Telegram" color="#02a0a0" index={0} size="lg" />
 
           {/* Orchestrator */}
-          <Node x={400} y={142} label="🧠 Lurkr" sublabel="Orchestrator · Opus" color="#ffbd65" index={1} size="lg" />
+          <Node x={400} y={142} label="Lurkr" sublabel="Orchestrator · Opus" color="#ffbd65" index={1} size="lg" />
 
           {/* Sub-agents row */}
-          <Node x={120} y={248} label="⚒️ Forge" sublabel="Code" color="#f5a94f" index={2} size="sm" />
-          <Node x={260} y={248} label="📡 Radar" sublabel="Leads" color="#f5a94f" index={3} size="sm" />
-          <Node x={400} y={248} label="🎨 Muse" sublabel="Content" color="#f5a94f" index={4} size="sm" />
-          <Node x={540} y={248} label="⚙️ Helm" sublabel="Infra" color="#f5a94f" index={5} size="sm" />
-          <Node x={680} y={248} label="💰 Ledger" sublabel="Finance" color="#f5a94f" index={6} size="sm" />
+          <Node x={120} y={248} label="Forge" sublabel="Code" color="#f5a94f" index={2} size="sm" />
+          <Node x={260} y={248} label="Radar" sublabel="Leads" color="#f5a94f" index={3} size="sm" />
+          <Node x={400} y={248} label="Muse" sublabel="Content" color="#f5a94f" index={4} size="sm" />
+          <Node x={540} y={248} label="Helm" sublabel="Infra" color="#f5a94f" index={5} size="sm" />
+          <Node x={680} y={248} label="Ledger" sublabel="Finance" color="#f5a94f" index={6} size="sm" />
 
           {/* Memory layer */}
-          <Node x={400} y={338} label="💾 Memory + Cron" sublabel="Files · Supabase · Schedules" color="#F59E0B" index={7} size="lg" />
+          <Node x={400} y={338} label="Memory + Cron" sublabel="Files · Supabase · Schedules" color="#F59E0B" index={7} size="lg" />
 
           {/* External APIs */}
           <Node x={160} y={400} label="Gmail" color="#64748B" index={8} size="sm" />

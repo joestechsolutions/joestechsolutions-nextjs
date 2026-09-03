@@ -79,6 +79,27 @@ const SHOTS = [
     post: "loop",
     prompt: `Slow dolly forward down a dark server corridor, turquoise light strips along the racks, faint haze, steady camera, seamless loop feel, ${BRAND}`,
   },
+  // ── Per-page heroes (one unique still + clip per page; nothing reused across the site) ──
+  ...[
+    ["solutions", "A workbench with three distinct tools laid out in a row on dark steel — a small server, a laptop, a phone — each under its own pool of turquoise light"],
+    ["services", "Three doorways in a dark concrete corridor, each lit from inside with a different intensity of turquoise, one with a warm pastel-orange glow"],
+    ["stack", "Tight macro of a running server rack: fiber, blinking turquoise link lights, brushed aluminum, shallow focus"],
+    ["blog", "A dark desk at night with an open notebook, a mechanical keyboard, and a monitor showing a terminal, turquoise screen glow, warm lamp"],
+    ["about", "Empty founder's chair at a workbench, tools hung with precision on a pegboard, one warm lamp, turquoise monitor glow at the edge of frame"],
+    ["contact", "A single vintage telephone handset on a dark steel desk lit by one turquoise light, cable coiling into darkness"],
+    ["agent-system", "Sixteen small identical black cubes arranged as an org chart on a dark surface, thin turquoise light lines connecting them, top-down"],
+    ["private-ai", "A compact matte-black server sitting on a wooden shelf in a small-business back office, padlock-shaped turquoise indicator light, brick wall"],
+    ["prompt-library", "Rows of index cards in a black card catalog drawer, one pulled out and lit turquoise, monospace-looking marks on the cards, no legible text"],
+    ["portfolio", "A gallery wall in a dark room with three unlit framed screens, a single turquoise spotlight on the middle frame"],
+    ["google-maps", "A city street at dusk seen from above, one storefront glowing pastel orange, a turquoise map pin of light hovering over it"],
+    ["whisper-walkie", "A vintage push-to-talk microphone on a dark desk, a turquoise sound-wave of light frozen mid-air in front of it"],
+    ["case-skate", "A skateboard leaning against a dark concrete wall under a turquoise light strip, wheels catching the light"],
+    ["case-renfaire", "Colorful festival banners and a castle tower silhouette at dusk, a turquoise glow rising from below, painterly but photoreal"],
+    ["case-cbarrgs", "A studio synthesizer and headphones on a dark desk, one turquoise LED strip, warm pastel-orange VU meter glow"],
+  ].flatMap(([page, scene]) => [
+    { id: `page-${page}`, kind: "image", aspect_ratio: "21:9", prompt: `${scene}, cinematic wide shot, 35mm, shallow depth of field, ${BRAND}` },
+    { id: `page-${page}-loop`, kind: "video", aspect_ratio: "16:9", duration: 5, post: "loop", prompt: `Slow, steady cinematic push-in: ${scene}; subtle light flicker, seamless loop feel, ${BRAND}` },
+  ]),
 ];
 
 const exists = (p) => access(p).then(() => true, () => false);

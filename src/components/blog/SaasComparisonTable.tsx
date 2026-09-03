@@ -1,19 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Users, FileText, Receipt, Activity, Search, LayoutGrid, Share2, Compass, PenTool, X, Bot } from "lucide-react";
+import { EnvelopeSimple, Users, FileText, Receipt, Pulse, MagnifyingGlass, SquaresFour, ShareNetwork, Compass, PenNib, X, Robot } from "@phosphor-icons/react";
 
 const rows = [
-  { need: "Email triage + drafts", oldTool: "Superhuman", cost: 30, agent: "Agent + Gmail API", icon: Mail },
+  { need: "Email triage + drafts", oldTool: "Superhuman", cost: 30, agent: "Agent + Gmail API", icon: EnvelopeSimple },
   { need: "CRM / pipeline", oldTool: "HubSpot", cost: 50, agent: "Supabase + agent", icon: Users },
   { need: "Content calendar", oldTool: "Notion + Buffer", cost: 25, agent: "Muse agent + cron", icon: FileText },
   { need: "Invoice generation", oldTool: "FreshBooks", cost: 30, agent: "Stripe API + agent", icon: Receipt },
-  { need: "Uptime monitoring", oldTool: "Better Uptime", cost: 20, agent: "Heartbeat agent", icon: Activity },
-  { need: "SEO monitoring", oldTool: "Ahrefs (lite)", cost: 99, agent: "Beacon + Search Console", icon: Search },
-  { need: "Project management", oldTool: "Linear", cost: 16, agent: "GitHub Issues + agent", icon: LayoutGrid },
-  { need: "Social scheduling", oldTool: "Buffer", cost: 15, agent: "Draft queue + approval", icon: Share2 },
+  { need: "Uptime monitoring", oldTool: "Better Uptime", cost: 20, agent: "Heartbeat agent", icon: Pulse },
+  { need: "SEO monitoring", oldTool: "Ahrefs (lite)", cost: 99, agent: "Beacon + MagnifyingGlass Console", icon: MagnifyingGlass },
+  { need: "Project management", oldTool: "Linear", cost: 16, agent: "GitHub Issues + agent", icon: SquaresFour },
+  { need: "Social scheduling", oldTool: "Buffer", cost: 15, agent: "Draft queue + approval", icon: ShareNetwork },
   { need: "Competitive research", oldTool: "Manual (hours)", cost: 0, agent: "Radar + web search", icon: Compass },
-  { need: "Client proposals", oldTool: "Google Docs", cost: 0, agent: "Template + gen script", icon: PenTool },
+  { need: "Client proposals", oldTool: "Google Docs", cost: 0, agent: "Template + gen script", icon: PenNib },
 ];
 
 const totalOld = rows.reduce((s, r) => s + r.cost, 0);
@@ -64,7 +64,7 @@ export function SaasComparisonTable() {
                 {row.cost > 0 ? `$${row.cost}` : <span className="text-foreground/30">—</span>}
               </span>
               <span className="flex items-center justify-end gap-2 text-primary text-sm font-medium">
-                <Bot className="w-3.5 h-3.5 shrink-0" />
+                <Robot weight="duotone" className="w-3.5 h-3.5 shrink-0" />
                 {row.agent}
               </span>
             </motion.div>
@@ -116,7 +116,7 @@ export function SaasComparisonTable() {
                   {row.oldTool} {row.cost > 0 && <span className="text-red-400/90">(${row.cost}/mo)</span>}
                 </span>
                 <span className="text-primary font-medium flex items-center gap-1">
-                  <Bot className="w-3 h-3" />
+                  <Robot weight="duotone" className="w-3 h-3" />
                   {row.agent}
                 </span>
               </div>

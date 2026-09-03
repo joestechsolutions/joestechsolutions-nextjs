@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -9,8 +10,16 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { Check } from "@phosphor-icons/react";
 import { useMediaQuery } from "./useMediaQuery";
 import { SectionLabel } from "./SectionLabel";
+
+// 3dicons renders (CC0) that live in public/icons — one per tier.
+const tierIcon: Record<string, string> = {
+  "quick-start": "/icons/computer-dynamic/premium.png",
+  "back-office": "/icons/tools-dynamic/premium.png",
+  "custom-build": "/icons/rocket-dynamic/premium.png",
+};
 
 export type ServiceCard = {
   id: string;
@@ -123,6 +132,15 @@ function Card({ card, index }: { card: ServiceCard; index: number }) {
         </span>
         <span className="font-bold">0{index + 1}</span>
       </p>
+      {tierIcon[card.id] && (
+        <Image
+          src={tierIcon[card.id]}
+          alt=""
+          width={112}
+          height={112}
+          className="pointer-events-none absolute right-7 top-14 h-24 w-24 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] sm:h-28 sm:w-28"
+        />
+      )}
       <h3 className="font-mono text-3xl font-bold leading-none tracking-tight sm:text-5xl">
         <span className="text-primary">▸ </span>
         {card.name}
@@ -141,7 +159,7 @@ function Card({ card, index }: { card: ServiceCard; index: number }) {
       <ul className="mt-6 grid gap-2 font-mono text-[13px] text-foreground/85 sm:grid-cols-2">
         {card.features.map((f) => (
           <li key={f} className="flex gap-2">
-            <span className="text-primary">✓</span>
+            <Check weight="bold" className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
             <span>{f}</span>
           </li>
         ))}

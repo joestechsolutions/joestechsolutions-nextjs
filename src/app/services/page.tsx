@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Mic, Download, ExternalLink, MapPin } from "lucide-react";
+import { ArrowRight, Microphone, DownloadSimple, ArrowSquareOut, MapPin } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
@@ -10,6 +10,8 @@ import { AngleBand } from "@/components/ui/AngleBand";
 import { TierCard } from "@/components/ui/TierCard";
 import { OfferCatalogSchema } from "@/components/seo/JsonLd";
 import { TIERS } from "@/lib/tiers";
+import { PageHero } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "Services | Joe's Tech Solutions",
@@ -32,25 +34,13 @@ export default function Services() {
       <OfferCatalogSchema />
 
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
-        <div className="absolute inset-0 bg-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <FadeIn delay={0.1}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-3">Three ways I</span>
-                <span className="block text-primary">work with you.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed font-light">
-                From a one-time setup to a full operations layer. Start where you need to, move up
-                when you&apos;re ready.
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="cat services.md"
+        title="Three ways I work with you."
+        highlight="work"
+        subtitle="From a one-time setup to a full operations layer. Start where you need to, move up when you're ready."
+        media={{ type: "image", src: "/images/blog/toolkit-grid.png", position: "50% 50%" }}
+      />
 
       {/* One anchored section per tier */}
       <section className="relative py-16 sm:py-24">
@@ -72,7 +62,7 @@ export default function Services() {
               <Card className="bg-card/60 border-primary/20 hover:border-primary/50 transition-colors duration-500 group p-8">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                   <div className="w-14 h-14 bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
-                    <MapPin className="h-7 w-7 text-primary" />
+                    <MapPin weight="duotone" className="h-7 w-7 text-primary" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-foreground font-mono mb-1">
@@ -109,7 +99,7 @@ export default function Services() {
                   <Card className="bg-card/60 border-foreground/10 hover:border-primary/40 transition-[color,border-color,background-color] duration-500 group overflow-hidden">
                     <div className="relative grid sm:grid-cols-[auto_1fr_auto] items-center gap-6 p-8">
                       <div className="w-16 h-16 bg-primary/10 rounded-none flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/20 transition-[color,background-color,transform] duration-300 mx-auto sm:mx-0">
-                        <Mic className="h-8 w-8 text-primary" />
+                        <Microphone weight="duotone" className="h-8 w-8 text-primary" />
                       </div>
 
                       <div className="text-center sm:text-left">
@@ -139,11 +129,11 @@ export default function Services() {
 
                       <div className="flex flex-col gap-2 items-center">
                         <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/85 text-foreground text-sm font-medium rounded-none shadow-lg shadow-primary/20 transition-colors">
-                          <Download className="h-4 w-4" />
+                          <DownloadSimple weight="duotone" className="h-4 w-4" />
                           Download Free
                         </span>
                         <span className="text-foreground/40 text-xs flex items-center gap-1">
-                          <ExternalLink className="h-3 w-3" />
+                          <ArrowSquareOut className="h-3 w-3" />
                           MIT License
                         </span>
                       </div>
@@ -182,6 +172,8 @@ export default function Services() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

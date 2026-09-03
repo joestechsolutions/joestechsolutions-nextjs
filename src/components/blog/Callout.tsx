@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { Lightbulb, AlertTriangle, Zap, Quote } from "lucide-react";
+import { Lightbulb, Warning, Lightning, Quotes } from "@phosphor-icons/react";
 
 type CalloutVariant = "insight" | "warning" | "tip" | "quote";
 
 const variantStyles: Record<CalloutVariant, { border: string; bg: string; icon: typeof Lightbulb; iconColor: string }> = {
   insight: { border: "border-primary/30", bg: "bg-primary/5", icon: Lightbulb, iconColor: "text-primary" },
-  warning: { border: "border-amber-500/30", bg: "bg-amber-500/5", icon: AlertTriangle, iconColor: "text-amber-400" },
-  tip: { border: "border-primary/30", bg: "bg-primary/5", icon: Zap, iconColor: "text-primary" },
-  quote: { border: "border-primary/30", bg: "bg-primary/5", icon: Quote, iconColor: "text-primary" },
+  warning: { border: "border-amber-500/30", bg: "bg-amber-500/5", icon: Warning, iconColor: "text-amber-400" },
+  tip: { border: "border-primary/30", bg: "bg-primary/5", icon: Lightning, iconColor: "text-primary" },
+  quote: { border: "border-primary/30", bg: "bg-primary/5", icon: Quotes, iconColor: "text-primary" },
 };
 
 export function Callout({

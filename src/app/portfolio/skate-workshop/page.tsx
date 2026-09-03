@@ -1,9 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { ArrowLeft, ExternalLink, CheckCircle, Smartphone, Globe, Zap, Users } from "lucide-react";
+import { ArrowLeft, CheckCircle, DeviceMobile, Globe, Lightning, Users } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
+import { PageHero, heroPrimaryBtn } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "The Skate Workshop Case Study | Joe's Tech Solutions",
@@ -21,8 +22,20 @@ export const metadata: Metadata = {
 export default function SkateWorkshopCaseStudy() {
   return (
     <div className="min-h-screen bg-background">
+
+      {/* Hero */}
+      <PageHero
+        eyebrow="cat /proof_of_work/skate-workshop · mobile app · web platform · subscription saas"
+        title="The Skate Workshop"
+        highlight="Skate"
+        subtitle="Olympic-level skateboarding coaching delivered through a mobile-first platform with video feedback, comprehensive trick database, and multiplayer features."
+        media={{ type: "image", src: "/images/skateboarding-action.jpg", position: "50% 40%" }}
+      >
+        <a href="https://www.theskateworkshop.app/" target="_blank" rel="noopener noreferrer" className={heroPrimaryBtn}>visit live site ↗</a>
+      </PageHero>
+
       {/* Back Button */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-8 pb-0">
         <Link href="/portfolio">
           <Button variant="outline" className="border-foreground/20 hover:bg-foreground/5">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -31,50 +44,6 @@ export default function SkateWorkshopCaseStudy() {
         </Link>
       </div>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden pb-20">
-        <div className="absolute inset-0 bg-linear-to-br from-card/20 via-background/20 to-background/20" />
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-block px-4 py-2 bg-primary/15 border border-primary/30 rounded-none text-primary text-sm font-semibold">
-                Mobile App • Web Platform • Subscription SaaS
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-mono">
-                The Skate Workshop
-              </h1>
-
-              <p className="text-xl text-foreground/90 leading-relaxed">
-                Olympic-level skateboarding coaching delivered through a mobile-first platform
-                with video feedback, comprehensive trick database, and multiplayer features.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="https://www.theskateworkshop.app/" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="bg-primary hover:bg-primary/85 rounded-none shadow-lg shadow-primary/20">
-                    Visit Live Site
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="relative aspect-[4/3] rounded-none overflow-hidden border border-foreground/10 bg-card flex items-center justify-center">
-                <Image
-                  src="/images/skate-workshop-hero.png"
-                  alt="The Skate Workshop app icon"
-                  fill
-                  className="object-contain p-8"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Project Overview */}
       <section className="relative py-20 bg-card/30">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -82,7 +51,7 @@ export default function SkateWorkshopCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/15 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Smartphone className="w-6 h-6 text-primary" />
+                  <DeviceMobile weight="duotone" className="w-6 h-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">Platform</CardTitle>
               </CardHeader>
@@ -94,7 +63,7 @@ export default function SkateWorkshopCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-primary" />
+                  <Users weight="duotone" className="w-6 h-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">Users</CardTitle>
               </CardHeader>
@@ -106,7 +75,7 @@ export default function SkateWorkshopCaseStudy() {
             <Card className="bg-card border-foreground/10 text-center">
               <CardHeader>
                 <div className="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-6 h-6 text-green-400" />
+                  <Lightning weight="duotone" className="w-6 h-6 text-green-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground font-mono">Features</CardTitle>
               </CardHeader>
@@ -148,7 +117,7 @@ export default function SkateWorkshopCaseStudy() {
                   "Progress tracking and analytics"
                 ].map((item, index) => (
                   <div key={index} className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle weight="duotone" className="h-5 w-5 text-green-400 mr-3 flex-shrink-0 mt-0.5" />
                     <span className="text-foreground/90">{item}</span>
                   </div>
                 ))}
@@ -202,12 +171,12 @@ export default function SkateWorkshopCaseStudy() {
               {
                 title: "400+ Trick Database",
                 description: "Comprehensive library of skateboarding tricks with video tutorials, difficulty ratings, and step-by-step instructions.",
-                icon: Smartphone
+                icon: DeviceMobile
               },
               {
                 title: "Progress Tracking",
                 description: "Track learning progression, completed tricks, and skill development over time with detailed analytics.",
-                icon: Zap
+                icon: Lightning
               },
               {
                 title: "Multiplayer SKATE Game",
@@ -283,6 +252,8 @@ export default function SkateWorkshopCaseStudy() {
           </div>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

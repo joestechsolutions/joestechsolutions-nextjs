@@ -1,5 +1,7 @@
 "use client";
 
+import { Sun, Moon, CircleHalf } from "@phosphor-icons/react";
+
 import { useEffect, useState } from "react";
 
 // Toggles the `dark` class on <html>. Initial state is set before paint by
@@ -31,7 +33,7 @@ export function ThemeToggle() {
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {/* Render both labels until mounted to avoid hydration mismatch */}
-      {dark === null ? "◐" : dark ? "☀ light" : "☾ dark"}
+      {dark === null ? <CircleHalf weight="fill" className="h-4 w-4" /> : dark ? <><Sun weight="duotone" className="h-4 w-4" /> light</> : <><Moon weight="duotone" className="h-4 w-4" /> dark</>}
     </button>
   );
 }

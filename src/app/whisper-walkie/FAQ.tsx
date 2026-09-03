@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { Question, CaretDown } from "@phosphor-icons/react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const faqs = [
@@ -102,7 +102,7 @@ export function FAQ() {
                         isOpen ? "bg-primary/15" : "bg-foreground/5 group-hover:bg-primary/10"
                       }`}
                     >
-                      <HelpCircle
+                      <Question weight="duotone"
                         className={`w-4 h-4 transition-colors duration-200 ${
                           isOpen ? "text-primary" : "text-foreground/40 group-hover:text-primary/70"
                         }`}
@@ -120,7 +120,7 @@ export function FAQ() {
                     </span>
 
                     {/* Chevron */}
-                    <ChevronDown
+                    <CaretDown
                       className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
                         isOpen
                           ? "text-primary rotate-180"

@@ -11,6 +11,8 @@ import { MagneticButton } from "@/components/animations/MagneticButton";
 import { useState, useRef, useLayoutEffect } from "react";
 import { privateAiFaqs } from "./faqs";
 import { twMerge } from 'tailwind-merge';
+import { PageHero, heroPrimaryBtn, heroSecondaryBtn } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 // FAQ data
 const faqs = privateAiFaqs;
@@ -126,81 +128,17 @@ export default function PrivateAISetup() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center text-center py-40 sm:py-32 lg:py-40 bg-background overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <HeroBlob className="w-[640px] h-[640px] bg-gradient-to-br from-primary/20 to-transparent top-[-180px] left-[-80px] animate-blob-drift-a" />
-          <HeroBlob className="w-[520px] h-[520px] bg-gradient-to-br from-primary/18 to-transparent top-[100px] right-[-160px] animate-blob-drift-b animation-delay-1000" />
-          <HeroBlob className="w-[420px] h-[420px] bg-gradient-to-br from-primary/14 to-transparent bottom-[-80px] left-[35%] animate-blob-drift-c animation-delay-2000" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <FadeIn delay={0.1}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-none bg-primary/10 border border-primary/20 mb-6">
-                <span className="w-1.5 h-1.5 bg-primary rounded-none animate-pulse" />
-                <span className="text-primary font-medium text-sm tracking-wider uppercase">Private AI — Built for Your Business</span>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold tracking-tight font-mono leading-tight">
-                <span className="block text-foreground mb-3">Your AI.</span>
-                <span className="block bg-gradient-to-r from-primary via-primary to-primary text-transparent bg-clip-text">Your Data. Your Rules.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-xl sm:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light">
-                Deploy GPT-4 level intelligence on your own hardware. No monthly API fees, no data harvesting, no compromises.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-                <MagneticButton strength={0.3}>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary text-foreground text-lg px-8 py-7 rounded-none group shadow-2xl shadow-primary/20 font-mono font-semibold"
-                  >
-                    <a href={calendlyLink} target="_blank" rel="noopener noreferrer">
-                      <CalendarCheck weight="duotone" className="mr-2 h-5 w-5" />
-                      Get in touch →
-                    </a>
-                  </Button>
-                </MagneticButton>
-                <MagneticButton strength={0.3}>
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="bg-card/50 border-foreground/20 hover:border-primary/50 text-foreground hover:text-primary text-lg px-8 py-7 rounded-none group shadow-2xl shadow-transparent hover:shadow-primary/10 font-mono font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-300 backdrop-blur-sm"
-                  >
-                    <a href="#pricing">
-                      See Options
-                      <CaretDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-                    </a>
-                  </Button>
-                </MagneticButton>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.4}>
-              <div className="mt-16 relative mx-auto max-w-4xl rounded-none overflow-hidden border border-foreground/10 shadow-2xl shadow-primary/10">
-                <Image
-                  src="/images/joe-ai-typing.png"
-                  alt="Joe deploying private AI systems"
-                  width={1024}
-                  height={1024}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-        <FadeIn delay={0.5} className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-foreground/40 text-xs uppercase tracking-widest animate-bounce">
-          <span>Scroll</span>
-          <CaretDown weight="bold" className="h-4 w-4" />
-        </FadeIn>
-      </section>
+      <PageHero
+        eyebrow="ollama serve --private · built for your business"
+        title="Your AI. Your Data. Your Rules."
+        highlight="Rules"
+        size="tall"
+        subtitle="Deploy GPT-4 level intelligence on your own hardware. No monthly API fees, no data harvesting, no compromises."
+        media={{ type: "image", src: "/images/blog/ollama-inside.png", position: "50% 50%" }}
+      >
+        <a href={calendlyLink} target="_blank" rel="noopener noreferrer" className={heroPrimaryBtn}>get in touch →</a>
+        <a href="#pricing" className={heroSecondaryBtn}>see options ↓</a>
+      </PageHero>
 
       {/* Stats Strip */}
       <section className="bg-card border-y border-foreground/10 py-12 -mt-20 relative z-20">
@@ -719,6 +657,8 @@ export default function PrivateAISetup() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

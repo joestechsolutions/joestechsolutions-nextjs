@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
+import { SmoothScroll } from "@/components/home/SmoothScroll";
+import { ScrollProgress } from "@/components/animations/ScrollProgress";
 import { Footer } from "@/components/layout/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -91,6 +93,8 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <SmoothScroll />
+        <ScrollProgress />
         <Header />
         <main id="main-content" className="pt-16 min-h-screen">
           {children}

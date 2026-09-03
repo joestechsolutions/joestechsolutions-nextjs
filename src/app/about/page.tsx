@@ -1,10 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { MagneticButton } from "@/components/animations/MagneticButton";
+import { PageHero, heroPrimaryBtn } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "About | Joe's Tech Solutions",
@@ -29,58 +30,28 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32">
-        <div className="absolute inset-0 bg-background" />
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-8">
-              <FadeIn delay={0.1}>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground font-mono">
-                  I&apos;m Joe. I build the tools your business runs on.
-                </h1>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <p className="text-xl sm:text-2xl text-foreground/80 leading-relaxed font-light">
-                  I&apos;m what you get when you skip the agency, skip the discovery sprint, and just hire
-                  the person who&apos;s going to build your thing. Forward Deployed Engineer — I show up
-                  where the work is, figure out what&apos;s broken, and leave it running.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.25}>
-                <p className="text-lg text-foreground/60 leading-relaxed font-light">
-                  I run the same stack for my own business that I build for clients. If it doesn&apos;t
-                  survive me, it doesn&apos;t ship to you.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.3}>
-                <Link href="/contact">
-                  <MagneticButton strength={0.2}>
-                    <Button size="lg" className="bg-primary hover:bg-primary/85 text-foreground rounded-none group shadow-lg shadow-primary/20">
-                      Get in touch
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </MagneticButton>
-                </Link>
-              </FadeIn>
-            </div>
-
-            <FadeIn delay={0.4} direction="left">
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary rounded-none blur-2xl opacity-20" />
-                <div className="relative aspect-square rounded-none overflow-hidden border border-foreground/10">
-                  <Image
-                    src="/images/joe-profile.jpg"
-                    alt="Joe Blasiola, Founder of Joe's Tech Solutions"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="whoami"
+        title="I'm Joe. I build the tools your business runs on."
+        highlight="business"
+        size="tall"
+        subtitle={
+          <>
+            <p>
+              I&apos;m what you get when you skip the agency, skip the discovery sprint, and just hire
+              the person who&apos;s going to build your thing. Forward Deployed Engineer — I show up
+              where the work is, figure out what&apos;s broken, and leave it running.
+            </p>
+            <p className="mt-3 text-[15px] text-[#d9ece9]/60">
+              I run the same stack for my own business that I build for clients. If it doesn&apos;t
+              survive me, it doesn&apos;t ship to you.
+            </p>
+          </>
+        }
+        media={{ type: "image", src: "/images/joe-tech-portrait.png", alt: "Joe Blas, founder of Joe's Tech Solutions", position: "60% 25%" }}
+      >
+        <Link href="/contact" className={heroPrimaryBtn}>get in touch</Link>
+      </PageHero>
 
       {/* Why I do this */}
       <section className="relative py-24 sm:py-32 bg-card/30">
@@ -126,7 +97,7 @@ export default function About() {
                 <ul className="space-y-4">
                   {proofPoints.map((point) => (
                     <li key={point} className="flex items-start gap-3 text-foreground/80">
-                      <CheckCircle className="h-6 w-6 text-primary shrink-0 mt-0.5" />
+                      <CheckCircle weight="duotone" className="h-6 w-6 text-primary shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{point}</span>
                     </li>
                   ))}
@@ -192,6 +163,8 @@ export default function About() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

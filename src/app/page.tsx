@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { ScrollProgress } from "@/components/animations/ScrollProgress";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { CinematicHero } from "@/components/home/scroll/CinematicHero";
 import { ScrubScene } from "@/components/home/scroll/ScrubScene";
 import { StatsScene } from "@/components/home/scroll/StatsScene";
@@ -123,9 +121,6 @@ const serviceCards: ServiceCard[] = TIERS.map((t) => ({
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
-      <SmoothScroll />
-      <ScrollProgress />
-
       <CinematicHero />
       <ScrubScene />
       <StatsScene />

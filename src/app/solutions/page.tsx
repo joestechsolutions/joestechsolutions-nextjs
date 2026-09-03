@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
-import {
-  Robot,
-  Gear,
-  Rocket,
-} from "@phosphor-icons/react/dist/ssr";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
@@ -15,6 +11,8 @@ import { MagneticButton } from "@/components/animations/MagneticButton";
 import { AngleBand } from "@/components/ui/AngleBand";
 import { PricingLadder } from "@/components/ui/PricingLadder";
 import { OfferCatalogSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { PageHero } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "Solutions | Joe's Tech Solutions",
@@ -34,7 +32,6 @@ export const metadata: Metadata = {
 const solutions = [
   {
     name: "Setup",
-    icon: Robot,
     accent: "#02a0a0",
     description:
       "Private AI on your machine or server. A 75-minute session, live, one on one. When we're done, you own it — no subscriptions, no data leaving your setup.",
@@ -43,7 +40,6 @@ const solutions = [
   },
   {
     name: "Operations",
-    icon: Gear,
     accent: "#02a0a0",
     description:
       "An AI assistant running on your server, handling the stuff you don't want to think about — scheduling, outreach, reporting, daily briefings. I tune it every month so it gets better.",
@@ -52,7 +48,6 @@ const solutions = [
   },
   {
     name: "Custom Build",
-    icon: Rocket,
     accent: "#02a0a0",
     description:
       "Mobile apps, web apps, full agent systems — built with the stack I use daily. React Native, Next.js, AI-assisted development, human-verified.",
@@ -82,6 +77,13 @@ const solutionAccent: Record<string, { iconBg: string; iconText: string; border:
   },
 };
 
+// 3dicons renders (CC0) in public/icons — one per tier.
+const solutionIcon: Record<string, string> = {
+  Setup: "/icons/computer-dynamic/premium.png",
+  Operations: "/icons/tools-dynamic/premium.png",
+  "Custom Build": "/icons/rocket-dynamic/premium.png",
+};
+
 export default function Solutions() {
   return (
     <div className="min-h-screen">
@@ -94,24 +96,13 @@ export default function Solutions() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
-        <div className="absolute inset-0 bg-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <FadeIn delay={0.1}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-3">What I can build for you.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed font-light">
-                Three entry points. Start small, go big, or skip straight to custom. You don&apos;t have
-                to know which one you need — that&apos;s what the first conversation is for.
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="cat solutions.md"
+        title="What I can build for you."
+        highlight="build"
+        subtitle="Three entry points. Start small, go big, or skip straight to custom. You don't have to know which one you need — that's what the first conversation is for."
+        media={{ type: "image", src: "/images/joe-presenting-ai.png", position: "50% 30%" }}
+      />
 
       {/* 3-Solution Grid */}
       <section className="relative py-16 sm:py-24">
@@ -119,7 +110,6 @@ export default function Solutions() {
           <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
             {solutions.map((solution) => {
               const accent = solutionAccent[solution.accent];
-              const Icon = solution.icon;
               return (
                 <StaggerItem key={solution.name} className="h-full">
                   <AnimatedCard className="h-full">
@@ -128,11 +118,13 @@ export default function Solutions() {
                     >
                       <div className="absolute top-0 right-0 w-64 h-64 bg-background rounded-none blur-3xl" />
                       <div className="relative space-y-5">
-                        <div
-                          className={`w-16 h-16 ${accent.iconBg} rounded-none flex items-center justify-center group-hover:scale-110 transition-transform`}
-                        >
-                          <Icon weight="duotone" className={`h-10 w-10 ${accent.iconText}`} />
-                        </div>
+                        <Image
+                          src={solutionIcon[solution.name]}
+                          alt=""
+                          width={96}
+                          height={96}
+                          className="h-24 w-24 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105"
+                        />
                         <h2 className="text-2xl font-bold text-foreground font-mono">
                           {solution.name}
                         </h2>
@@ -183,6 +175,8 @@ export default function Solutions() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

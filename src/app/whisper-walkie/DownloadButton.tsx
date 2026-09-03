@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download, ArrowRight, ChevronDown } from "lucide-react";
+import { DownloadSimple, ArrowRight, CaretDown } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 
@@ -72,7 +72,7 @@ export function HeroDownloadButton() {
             size="lg"
             className="bg-primary hover:bg-primary/85 text-foreground text-lg px-10 py-7 rounded-none group shadow-lg shadow-primary/20 transition-[color,background-color,border-color,box-shadow,transform] duration-300"
           >
-            <Download className="mr-2 h-5 w-5" aria-hidden="true" />
+            <DownloadSimple weight="duotone" className="mr-2 h-5 w-5" aria-hidden="true" />
             Download for {info.label}
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Button>
@@ -90,7 +90,7 @@ export function HeroDownloadButton() {
         aria-expanded={showOthers}
       >
         Other platforms
-        <ChevronDown
+        <CaretDown
           className={`w-3.5 h-3.5 transition-transform duration-200 ${showOthers ? "rotate-180" : ""}`}
           aria-hidden="true"
         />
@@ -105,7 +105,7 @@ export function HeroDownloadButton() {
               rel="noopener noreferrer"
               className="text-sm text-primary hover:text-primary/80 border border-foreground/10 hover:border-primary/30 rounded-none px-4 py-2 transition-[color,border-color] flex items-center gap-2"
             >
-              <Download className="w-3.5 h-3.5" aria-hidden="true" />
+              <DownloadSimple weight="duotone" className="w-3.5 h-3.5" aria-hidden="true" />
               {plat.label}
             </a>
           ))}
@@ -168,7 +168,7 @@ export function PlatformDownloadCards() {
                 className="w-14 h-14 rounded-none flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300"
                 style={{ backgroundColor: `${card.accent}15` }}
               >
-                <Download
+                <DownloadSimple weight="duotone"
                   className="w-7 h-7"
                   style={{ color: card.accent }}
                   aria-hidden="true"
@@ -185,7 +185,7 @@ export function PlatformDownloadCards() {
                 className="inline-flex items-center gap-2 text-sm font-medium transition-colors"
                 style={{ color: card.accent }}
               >
-                <Download className="w-4 h-4" aria-hidden="true" />
+                <DownloadSimple weight="duotone" className="w-4 h-4" aria-hidden="true" />
                 Download
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </div>
@@ -214,7 +214,7 @@ export function CtaDownloadButton() {
           size="lg"
           className="bg-primary hover:bg-primary/85 text-foreground text-lg px-10 py-7 rounded-none group shadow-lg shadow-primary/20 transition-[color,background-color,border-color,box-shadow,transform]"
         >
-          <Download className="mr-2 h-5 w-5" aria-hidden="true" />
+          <DownloadSimple weight="duotone" className="mr-2 h-5 w-5" aria-hidden="true" />
           Download for {info.label}
           <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
         </Button>

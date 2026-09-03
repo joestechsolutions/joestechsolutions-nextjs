@@ -4,10 +4,11 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { Card, CardContent } from "@/components/ui/card";
-import { Cpu, Database, Wrench, GitBranch, Brain, Cloud, Desktop } from "@phosphor-icons/react/dist/ssr";
-import { ArrowRight } from "lucide-react";
+import { Cpu, Database, Wrench, GitBranch, Brain, Cloud, Desktop, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/home/scroll/PageHero";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "The Stack | Joe's Tech Solutions",
@@ -26,34 +27,13 @@ export default function StackPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden py-24 sm:py-32">
-        <div className="absolute inset-0 bg-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <FadeIn delay={0.1}>
-              <div className="inline-flex items-center gap-2 px-5 py-2 bg-card border border-foreground/10 rounded-none text-primary text-sm font-medium backdrop-blur-sm">
-                <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-primary opacity-75" />
-                  <span className="relative inline-flex rounded-none h-2.5 w-2.5 bg-primary" />
-                </span>
-                <span>Live infrastructure — updated {lastUpdated}</span>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight font-mono">
-                <span className="block text-foreground mb-3">The Stack.</span>
-                <span className="block text-primary">No Smoke.</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed font-light">
-                This isn&apos;t a list of tools I read about. This is what&apos;s running right now —
-                the models, services, and infrastructure I use to build everything you see on this site.
-              </p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow={`uptime --live · updated ${lastUpdated}`}
+        title="The Stack. No Smoke."
+        highlight="Smoke"
+        subtitle="This isn't a list of tools I read about. This is what's running right now — the models, services, and infrastructure I use to build everything you see on this site."
+        media={{ type: "image", src: "/images/tech-monitors-development.jpg", position: "50% 50%" }}
+      />
 
       {/* Stats Bar */}
       <section className="relative py-12 bg-card/30">
@@ -243,6 +223,8 @@ export default function StackPage() {
           </FadeIn>
         </div>
       </section>
+
+      <CtaScene id="cta" />
     </div>
   );
 }

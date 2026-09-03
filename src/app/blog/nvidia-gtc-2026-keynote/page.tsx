@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Clock, Calendar, User, Github, Linkedin, Globe } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, CalendarBlank, User, GithubLogo, LinkedinLogo, Globe } from "@phosphor-icons/react/dist/ssr";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { ParallaxSection } from "@/components/animations/ParallaxSection";
 import { BlogContent } from "./BlogContent";
@@ -142,15 +142,15 @@ export default function NvidiaGtc2026Page() {
           <FadeIn delay={0.2}>
             <div className="flex flex-wrap items-center gap-5 text-foreground/50 text-sm border-t border-foreground/10 pt-5">
               <span className="flex items-center gap-1.5">
-                <User className="w-4 h-4" />
+                <User weight="duotone" className="w-4 h-4" />
                 {POST.author}
               </span>
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4" />
+                <CalendarBlank weight="duotone" className="w-4 h-4" />
                 {formatDate(POST.date)}
               </span>
               <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4" />
+                <Clock weight="duotone" className="w-4 h-4" />
                 {POST.readTime} min read
               </span>
             </div>
@@ -215,7 +215,7 @@ export default function NvidiaGtc2026Page() {
                         href="/"
                         className="flex items-center gap-1.5 text-foreground/50 hover:text-[var(--ok)] text-sm transition-colors"
                       >
-                        <Globe className="w-4 h-4" />
+                        <Globe weight="duotone" className="w-4 h-4" />
                         Website
                       </Link>
                       <a
@@ -224,7 +224,7 @@ export default function NvidiaGtc2026Page() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 text-foreground/50 hover:text-[var(--ok)] text-sm transition-colors"
                       >
-                        <Github className="w-4 h-4" />
+                        <GithubLogo weight="duotone" className="w-4 h-4" />
                         GitHub
                       </a>
                       <a
@@ -233,7 +233,7 @@ export default function NvidiaGtc2026Page() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 text-foreground/50 hover:text-[var(--ok)] text-sm transition-colors"
                       >
-                        <Linkedin className="w-4 h-4" />
+                        <LinkedinLogo weight="duotone" className="w-4 h-4" />
                         LinkedIn
                       </a>
                     </div>

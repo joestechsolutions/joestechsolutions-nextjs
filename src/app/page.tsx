@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { ScrollProgress } from "@/components/animations/ScrollProgress";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { SmoothScroll } from "@/components/home/SmoothScroll";
+import { CinematicHero } from "@/components/home/scroll/CinematicHero";
+import { ScrubScene } from "@/components/home/scroll/ScrubScene";
+import { StatsScene } from "@/components/home/scroll/StatsScene";
+import { HorizontalServices, type ServiceCard } from "@/components/home/scroll/HorizontalServices";
+import { StackedPortfolio } from "@/components/home/scroll/StackedPortfolio";
+import { StackMarquee } from "@/components/home/scroll/StackMarquee";
+import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { TIERS, type Tier } from "@/lib/tiers";
 
 export const metadata: Metadata = {
   title: "Joe's Tech Solutions — Custom Software, Automation & AI for SMBs",
@@ -16,19 +26,6 @@ export const metadata: Metadata = {
     url: "https://www.joestechsolutions.com",
   },
 };
-import { FadeIn } from "@/components/animations/FadeIn";
-import { NewsletterSignup } from "@/components/NewsletterSignup";
-import { TerminalHero } from "@/components/home/TerminalHero";
-import { SmoothScroll } from "@/components/home/SmoothScroll";
-import { TIERS, type Tier } from "@/lib/tiers";
-
-// System stats rendered as terminal key/value output.
-const stats = [
-  { key: "automations_on_schedule", val: "40+" },
-  { key: "live_client_deployments", val: "3" },
-  { key: "watchdogs_watching_the_watchers", val: "3" },
-  { key: "orchestration", val: "self-hosted" },
-];
 
 // Stripe-blocked tiers route to /contact until their pages + price IDs exist.
 const tierHref = (t: Tier) =>
@@ -106,176 +103,39 @@ const stack = [
   { pkg: "docker", desc: "containerization", url: "https://www.docker.com" },
 ];
 
-function SectionLabel({ children }: { children: string }) {
-  return (
-    <p className="mb-1.5 font-mono text-[13px] font-bold text-foreground">
-      <span className="text-primary">$ </span>
-      {children}
-    </p>
-  );
-}
 
+// Tier data flattened into plain props (a server → client boundary sits between here
+// and HorizontalServices, so no functions cross it).
+const serviceCards: ServiceCard[] = TIERS.map((t) => ({
+  id: t.id,
+  name: t.name,
+  category: t.category,
+  blurb: t.blurb,
+  features: t.features,
+  badge: t.badge,
+  href: tierHref(t),
+  cta: t.stripeReady ? "get started →" : "learn more →",
+  specs: t.id === "quick-start" ? featuredSpecs : undefined,
+}));
+
+// The homepage is a scroll journey: cinematic hero → pinned scrub scene → stats →
+// sideways services → stacked portfolio → stack marquee → newsletter → CTA.
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
       <SmoothScroll />
+      <ScrollProgress />
 
-      <TerminalHero />
-
-      {/* Stats — system output */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-6 py-7 font-mono text-sm">
-          {stats.map((s) => (
-            <div
-              key={s.key}
-              className="flex justify-between border-b border-dashed border-border/70 py-1.5"
-            >
-              <span className="text-muted-foreground">{s.key}</span>
-              <span className="font-bold">{s.val}</span>
-            </div>
-          ))}
-          <div className="flex justify-between py-1.5">
-            <span className="text-muted-foreground">system</span>
-            <span className="font-bold text-[var(--ok)]">● operational</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services" className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-6 py-14">
-          <SectionLabel>cat services.md</SectionLabel>
-          <h2 className="mb-8 font-mono text-2xl font-bold tracking-tight">
-            Three ways I work with you.
-          </h2>
-          <div className="flex flex-col gap-5">
-            {TIERS.map((t, i) => (
-              <FadeIn key={t.id} delay={i * 0.05}>
-                <div
-                  className={`border-2 border-foreground bg-card p-6 ${t.badge ? "shadow-[6px_6px_0_var(--primary)]" : ""}`}
-                >
-                  <p className="mb-2 font-mono text-[11px] tracking-wider text-muted-foreground">
-                    {t.badge ? (
-                      <>
-                        [ <span className="font-bold text-primary">{t.badge.toUpperCase()}</span> ]{" "}
-                        {t.category.toLowerCase()}
-                      </>
-                    ) : (
-                      `[ ${t.category.toLowerCase()} ]`
-                    )}
-                  </p>
-                  <h3 className="font-mono text-lg font-bold">
-                    <span className="text-primary">▸ </span>
-                    {t.name}
-                  </h3>
-                  <p className="mb-3 max-w-[600px] text-[13.5px] text-foreground/80">
-                    {t.blurb}
-                  </p>
-                  {t.id === "quick-start" && (
-                    <p className="mb-3.5 font-mono text-xs text-muted-foreground">
-                      {featuredSpecs.map((m, j) => (
-                        <span key={m.k}>
-                          {m.k}: <span className="font-bold text-foreground">{m.v}</span>
-                          {j < featuredSpecs.length - 1 ? " · " : ""}
-                        </span>
-                      ))}
-                    </p>
-                  )}
-                  <Link
-                    href={tierHref(t)}
-                    className="border-b-2 border-primary font-mono text-[13px] font-bold text-foreground transition-colors hover:text-primary"
-                  >
-                    {t.stripeReady ? "get started →" : "learn more →"}
-                  </Link>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio — ls output with real screenshots */}
-      <section id="portfolio" className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-6 py-14">
-          <SectionLabel>ls -la /proof_of_work/</SectionLabel>
-          <h2 className="mb-8 font-mono text-2xl font-bold tracking-tight">
-            Real things I&apos;ve built.
-          </h2>
-          <div className="flex flex-col">
-            {portfolio.map((p, i) => (
-              <FadeIn key={p.name} delay={i * 0.04}>
-                <Link
-                  href={p.href}
-                  className={`group flex flex-wrap items-start gap-5 py-4 ${i < portfolio.length - 1 ? "border-b border-dashed border-border" : ""}`}
-                >
-                  <div className="relative h-[88px] w-[132px] shrink-0 border-2 border-foreground">
-                    <Image
-                      src={p.image}
-                      alt={p.alt}
-                      fill
-                      sizes="132px"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p
-                      className={`font-mono text-[11px] font-bold ${p.live ? "text-[var(--ok)]" : "text-muted-foreground/70"}`}
-                    >
-                      {p.status}
-                    </p>
-                    <h3 className="mb-1 mt-0.5 font-mono text-[15px] font-bold group-hover:text-primary">
-                      {p.name}
-                    </h3>
-                    <p className="max-w-[460px] text-[12.5px] text-muted-foreground">
-                      {p.desc}
-                    </p>
-                  </div>
-                  <span className="whitespace-nowrap font-mono text-xs font-bold text-primary">
-                    view →
-                  </span>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stack — installed packages */}
-      <section id="stack" className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-6 py-14">
-          <SectionLabel>cat /etc/stack.txt</SectionLabel>
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-mono text-2xl font-bold tracking-tight">
-              What I actually run.
-            </h2>
-            <Link
-              href="/stack"
-              className="border-b-2 border-primary font-mono text-[13px] font-bold transition-colors hover:text-primary"
-            >
-              see the live stack →
-            </Link>
-          </div>
-          <div className="font-mono text-[13.5px] leading-[2.1]">
-            {stack.map((t) => (
-              <div key={t.pkg}>
-                <a
-                  href={t.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold text-primary hover:underline"
-                >
-                  {t.pkg}
-                </a>{" "}
-                <span className="text-muted-foreground">— {t.desc}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CinematicHero />
+      <ScrubScene />
+      <StatsScene />
+      <HorizontalServices cards={serviceCards} />
+      <StackedPortfolio items={portfolio} />
+      <StackMarquee items={stack} />
 
       {/* Newsletter — a dark console card so the signup form keeps its styling */}
       <section className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-6 py-14">
+        <div className="mx-auto max-w-3xl px-6 py-20">
           <FadeIn>
             <div className="border-2 border-foreground bg-[var(--panel)] p-8 shadow-[8px_8px_0_var(--foreground)] sm:p-10">
               <p className="mb-1.5 font-mono text-[13px] font-bold text-[var(--color-accent)]">
@@ -295,33 +155,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="contact">
-        <div className="mx-auto max-w-3xl px-6 py-16 text-center">
-          <p className="mb-1.5 font-mono text-[13px] font-bold">
-            <span className="text-primary">$ </span>
-            echo &quot;ready?&quot;
-          </p>
-          <h2 className="mx-auto mb-7 mt-2 max-w-xl font-mono text-[22px] font-bold leading-normal">
-            If you made it this far, you probably already know if you want to{" "}
-            <span className="text-primary">talk</span>.
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3.5">
-            <Link
-              href="/contact"
-              className="border-2 border-foreground bg-foreground px-6 py-2.5 font-mono text-sm font-bold text-background transition-colors hover:border-primary hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-            >
-              get in touch
-            </Link>
-            <a
-              href="mailto:joe@joestechsolutions.com"
-              className="border-2 border-foreground px-6 py-2.5 font-mono text-sm font-bold text-foreground transition-colors hover:bg-foreground hover:text-background focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-            >
-              email me
-            </a>
-          </div>
-        </div>
-      </section>
+      <CtaScene />
     </div>
   );
 }

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-// Generate on-brand images and video clips for the homepage scroll journey via Replicate.
+// Generate on-brand images and video clips for the site's scroll journey.
+// Provider: fal.ai (default, FAL_KEY) or Replicate (REPLICATE_API_TOKEN).
 //
-//   REPLICATE_API_TOKEN=r8_... node scripts/assets/generate.mjs [--only images|videos] [--dry-run] [--shot <id>]
+//   FAL_KEY=... node scripts/assets/generate.mjs [--only images|videos] [--dry-run] [--shot <id>] [--provider fal|replicate]
 //
 // Output lands in public/generated/. Videos are post-processed with ffmpeg into the
 // three encodes the scenes expect (loop / all-keyframe scrub / loop). Re-running skips
@@ -12,17 +13,18 @@ import { execFileSync } from "node:child_process";
 import path from "node:path";
 
 const OUT = path.resolve("public/generated");
-const TOKEN = process.env.REPLICATE_API_TOKEN;
 const args = process.argv.slice(2);
+const PROVIDER = args.includes("--provider") ? args[args.indexOf("--provider") + 1] : process.env.FAL_KEY ? "fal" : "replicate";
+const TOKEN = PROVIDER === "fal" ? process.env.FAL_KEY : process.env.REPLICATE_API_TOKEN;
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : null;
 const dry = args.includes("--dry-run");
 const shotFilter = args.includes("--shot") ? args[args.indexOf("--shot") + 1] : null;
 
-// Swap models here if Replicate renames or you want a different look.
+// Swap models here for a different look. fal ids are queue endpoints.
 const MODELS = {
-  image: "black-forest-labs/flux-1.1-pro",
-  video: "kwaivgi/kling-v2.1",
-};
+  replicate: { image: "black-forest-labs/flux-1.1-pro", video: "kwaivgi/kling-v2.1" },
+  fal: { image: "fal-ai/flux-pro/v1.1-ultra", video: "fal-ai/kling-video/v2.1/standard/text-to-video" },
+}[PROVIDER];
 
 // Brand: midnight #071317 ground, turquoise #02a0a0, pastel orange #f5a94f accent.
 // "Precision badge" — geometric, restrained, engineered. No people, no legible text.
@@ -123,6 +125,24 @@ async function replicate(model, input) {
   return Buffer.from(await (await fetch(url)).arrayBuffer());
 }
 
+async function fal(model, input) {
+  const headers = { Authorization: `Key ${TOKEN}`, "Content-Type": "application/json" };
+  const submit = await fetch(`https://queue.fal.run/${model}`, { method: "POST", headers, body: JSON.stringify(input) });
+  if (!submit.ok) throw new Error(`${model}: ${submit.status} ${await submit.text()}`);
+  const { status_url, response_url } = await submit.json();
+  for (;;) {
+    const st = await (await fetch(status_url, { headers })).json();
+    if (st.status === "COMPLETED") break;
+    if (st.status === "FAILED") throw new Error(`${model} failed: ${JSON.stringify(st)}`);
+    process.stdout.write(".");
+    await new Promise((r) => setTimeout(r, 4000));
+  }
+  const out = await (await fetch(response_url, { headers })).json();
+  const url = out.video?.url ?? out.images?.[0]?.url ?? out.image?.url;
+  if (!url) throw new Error(`${model}: no media in response ${JSON.stringify(out).slice(0, 300)}`);
+  return Buffer.from(await (await fetch(url)).arrayBuffer());
+}
+
 function postProcess(shot, rawPath) {
   const out = path.join(OUT, `${shot.id}.mp4`);
   const common = ["-v", "error", "-y", "-i", rawPath, "-an", "-vf", "scale=1280:-2", "-c:v", "libx264", "-preset", "slow", "-pix_fmt", "yuv420p", "-movflags", "+faststart"];
@@ -134,9 +154,10 @@ function postProcess(shot, rawPath) {
 
 async function main() {
   if (!TOKEN && !dry) {
-    console.error("REPLICATE_API_TOKEN is not set.");
+    console.error(PROVIDER === "fal" ? "FAL_KEY is not set." : "REPLICATE_API_TOKEN is not set.");
     process.exit(1);
   }
+  console.log(`provider: ${PROVIDER}`);
   await mkdir(OUT, { recursive: true });
   for (const shot of SHOTS) {
     if (only && `${shot.kind}s` !== only) continue;
@@ -150,10 +171,14 @@ async function main() {
     console.log(`${dry ? "would " : ""}gen   ${shot.id}  [${MODELS[shot.kind]}]`);
     if (dry) continue;
     const input =
-      shot.kind === "image"
-        ? { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, output_format: "jpg", output_quality: 90, safety_tolerance: 2 }
-        : { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, duration: shot.duration, mode: "standard" };
-    const buf = await replicate(MODELS[shot.kind], input);
+      PROVIDER === "fal"
+        ? shot.kind === "image"
+          ? { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, output_format: "jpeg", safety_tolerance: "2" }
+          : { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, duration: String(shot.duration) }
+        : shot.kind === "image"
+          ? { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, output_format: "jpg", output_quality: 90, safety_tolerance: 2 }
+          : { prompt: shot.prompt, aspect_ratio: shot.aspect_ratio, duration: shot.duration, mode: "standard" };
+    const buf = await (PROVIDER === "fal" ? fal : replicate)(MODELS[shot.kind], input);
     if (shot.kind === "image") {
       await writeFile(dest, buf);
     } else {

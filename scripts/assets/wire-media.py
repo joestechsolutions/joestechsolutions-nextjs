@@ -6,7 +6,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 GEN = ROOT / "public/generated"
 PAGES = {  # page file → shot id
     "src/app/solutions/page.tsx": "solutions", "src/app/services/page.tsx": "services", "src/app/stack/page.tsx": "stack",
-    "src/app/blog/page.tsx": "blog", "src/app/contact/page.tsx": "contact",  # about keeps Joe's portrait on purpose
+    "src/app/blog/page.tsx": "blog", "src/app/about/page.tsx": "about", "src/app/contact/page.tsx": "contact",
     "src/app/agent-system/page.tsx": "agent-system", "src/app/private-ai-setup/page.tsx": "private-ai",
     "src/app/prompt-library/page.tsx": "prompt-library", "src/app/portfolio/page.tsx": "portfolio",
     "src/app/google-maps-growth/page.tsx": "google-maps", "src/app/whisper-walkie/page.tsx": "whisper-walkie",
@@ -27,7 +27,7 @@ for rel, shot in PAGES.items():
     if new != s:
         p.write_text(new); changed.append(f"{rel} → {media.split('src: ')[1].split(',')[0]}")
 # homepage scenes
-HOME = [  # the homepage hero keeps the clip of Joe on purpose; hero-loop is a spare
+HOME = [("src/components/home/scroll/CinematicHero.tsx", "hero-loop", "/generated/hero-loop"),
         ("src/components/home/scroll/ScrubScene.tsx", "system-scrub", "/videos/scrub-system"),
         ("src/components/home/scroll/CtaScene.tsx", "cta-loop", "/videos/cta-loop")]
 for rel, shot, old in HOME:

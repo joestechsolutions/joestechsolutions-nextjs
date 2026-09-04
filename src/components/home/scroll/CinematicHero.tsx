@@ -40,9 +40,9 @@ export function CinematicHero() {
           loop
           playsInline
           preload="metadata"
-          poster="/videos/hero-joe-poster.jpg"
+          poster="/generated/hero-loop-poster.jpg"
         >
-          <source src="/videos/hero-joe.mp4" type="video/mp4" />
+          <source src="/generated/hero-loop.mp4" type="video/mp4" />
         </video>
         {/* Brand grade: pull the footage toward midnight + turquoise */}
         <div className="absolute inset-0 bg-[#02a0a0]/20 mix-blend-color" />

@@ -48,7 +48,7 @@ export default function About() {
             </p>
           </>
         }
-        media={{ type: "image", src: "/images/joe-tech-portrait.png", alt: "Joe Blas, founder of Joe's Tech Solutions", position: "60% 25%" }}
+        media={{ type: "video", src: "/generated/page-about-loop.mp4", poster: "/generated/page-about-loop-poster.jpg" }}
       >
         <Link href="/contact" className={heroPrimaryBtn}>get in touch</Link>
       </PageHero>

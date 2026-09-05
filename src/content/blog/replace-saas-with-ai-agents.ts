@@ -11,7 +11,7 @@ export const post: BlogPost = {
   tags: ["AI Agents", "Automation", "SaaS", "Cost Savings"],
   seo: {
     title:
-      "How I Replaced 10 SaaS Tools With 24 AI Agents on a $20/mo Server | Joe's Tech Solutions",
+      "How I Replaced 10 SaaS Tools With AI Agents on a $20/mo Server | Joe's Tech Solutions",
     description:
       "How one developer replaced $285/mo in SaaS subscriptions with a team of AI agents running on a single Linux VPS. Architecture, real examples, and lessons learned.",
     ogImage: "/images/blog/replace-saas-og.png",

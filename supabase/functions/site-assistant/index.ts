@@ -214,6 +214,25 @@ function buildUserPrompt(question: string, history: string, siteContext: string,
   ].filter(Boolean).join("\n\n");
 }
 
+// Model providers throttle bursts (a handful of visitors at once is enough on
+// Replicate). Retry transient failures with backoff before giving up.
+async function withRetry<T>(label: string, fn: () => Promise<T>, attempts = 3): Promise<T> {
+  let last: unknown;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      last = e;
+      const msg = String((e as Error)?.message ?? e);
+      const transient = /\b(429|408|500|502|503|504|rate|overloaded|timeout|fetch failed)\b/i.test(msg);
+      if (!transient || i === attempts - 1) break;
+      console.warn(`[model] ${label} attempt ${i + 1} failed (${msg.slice(0, 80)}); retrying`);
+      await new Promise((r) => setTimeout(r, 800 * (i + 1) + Math.random() * 400));
+    }
+  }
+  throw last;
+}
+
 async function answerWithOllama(prompt: string, key: string): Promise<string> {
   const res = await fetch("https://ollama.com/api/chat", {
     method: "POST",
@@ -269,12 +288,12 @@ async function answer(
 ): Promise<{ text: string; model: string }> {
   const prompt = buildUserPrompt(question, history, siteContext, faq);
   const ollamaKey = await getSecret(supabase, "OLLAMA_API_KEY");
-  if (ollamaKey) return { text: await answerWithOllama(prompt, ollamaKey), model: `ollama/${OLLAMA_MODEL}` };
+  if (ollamaKey) return { text: await withRetry("ollama", () => answerWithOllama(prompt, ollamaKey)), model: `ollama/${OLLAMA_MODEL}` };
 
   const replicateToken = await getSecret(supabase, "REPLICATE_API_TOKEN");
   if (!replicateToken) throw new Error("Neither OLLAMA_API_KEY nor REPLICATE_API_TOKEN is set");
   console.warn("[model] OLLAMA_API_KEY not set \u2014 falling back to Replicate");
-  return { text: await answerWithReplicate(prompt, replicateToken), model: "replicate/gpt-4.1-mini" };
+  return { text: await withRetry("replicate", () => answerWithReplicate(prompt, replicateToken)), model: "replicate/gpt-4.1-mini" };
 }
 
 // Supabase's gateway overwrites X-Forwarded-For with the real client address
@@ -426,11 +445,16 @@ serve(async (req) => {
     return json({ content: reply, session_id: sessionId, lead_captured: isLead, model });
   } catch (error) {
     console.error("site-assistant error:", error);
+    // The underlying reason is exposed only to a caller holding the service-role
+    // key, so the function can be diagnosed without leaking anything to visitors.
+    const bearer = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "") ?? "";
+    const isOperator = bearer.length > 0 && bearer === (Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "");
     return json(
       {
         content:
           `I'm having trouble answering right now. Email Joe directly at ${OWNER_EMAIL} — he usually replies within a day.`,
         error: true,
+        ...(isOperator ? { reason: String((error as Error)?.message ?? error).slice(0, 300) } : {}),
       },
       200, // the widget shows this as a message rather than a broken state
     );

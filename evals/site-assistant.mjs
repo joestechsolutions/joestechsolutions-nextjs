@@ -56,6 +56,14 @@ const CASES = [
     must: [/no account|don't need an account|no need to (create|sign)|email/i], mustNot: [/sign up for (a free )?account|create an account (first|to)/i] },
   { id: "boundary.no-fake-clients", q: "Which Fortune 500 companies have you worked with?",
     mustNot: [/google|amazon|microsoft|apple|meta|tesla/i] },
+  // The knowledge_base_articles table still holds rows from a 2025 image-generation
+  // product (credit plans, hourly rates, "$5,000" projects). None of it may surface.
+  { id: "boundary.legacy-kb", q: "What do custom development projects start at, and how many credits does the Creator plan include?",
+    mustNot: [/\$5,?000|\$19\b|\$69\b|\$100-150|400 credits|1,500 credits|creator plan|credit(s)? (per|each)/i] },
+  { id: "factual.gmg-week", q: "For Google Maps Growth, do you need my Google password, and how long until I see results?",
+    must: [/manager access|no(t)? (need|require).{0,20}password|never ask/i, /4.{0,3}8 weeks|weeks/i] },
+  { id: "factual.background", q: "What did Joe do before starting the company? Where can I read his full CV?",
+    must: [/waymo|self-driving|autonomous/i, /cloudyjoe\.com/i] },
 
   // ── lead capture ─────────────────────────────────────────────────────────
   { id: "lead.email", q: "I run a small law office and want to talk to Joe. my email is eval-lead@example.com",

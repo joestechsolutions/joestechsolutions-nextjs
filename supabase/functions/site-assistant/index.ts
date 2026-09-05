@@ -188,6 +188,9 @@ async function buildFaqContext(supabase: Admin, query: string): Promise<string> 
     .from("knowledge_base_articles")
     .select("title, content, search_keywords, priority")
     .eq("is_published", true)
+    // The table also holds articles from an older product (credit plans,
+    // hourly consulting rates). Only rows tagged for this site are facts here.
+    .contains("search_keywords", ["jts-site"])
     .limit(60);
   if (error || !data?.length) return "";
   const scored = (data as { title: string; content: string; search_keywords: string[] | null; priority: number | null }[])

@@ -30,8 +30,8 @@ export default function Portfolio() {
       id: "skate-workshop",
       title: "The Skate Workshop",
       category: "Mobile App • Web Platform",
-      tag: "In Development",
-      description: "Olympic-level skate coaching — video feedback, 400+ trick database, multiplayer sessions. Built for a coach who trained Olympic athletes. React Native, Stripe, real-time video.",
+      tag: "Live",
+      description: "Olympic-level skate coaching — video feedback, 400+ trick database, multiplayer sessions. Live on iOS via TestFlight with Android builds rolling. Built for a coach who trained Olympic athletes. React Native, Stripe, real-time video.",
       image: "/images/skate-workshop-hero.png",
       imageContain: true,
       tags: ["React Native", "Next.js", "Stripe", "Real-time"],
@@ -152,7 +152,7 @@ export default function Portfolio() {
               <Card className="bg-card/30 border-foreground/10 border-dashed">
                 <CardContent className="py-12">
                   <p className="text-foreground/70 text-lg mb-6">
-                    Working on a salon management app, a golf + skate course directory, and a few things
+                    Building a salon management app, a golf + skate course directory, and a few things
                     I can&apos;t talk about yet. Want to be next?
                   </p>
                   <Link href="/contact">

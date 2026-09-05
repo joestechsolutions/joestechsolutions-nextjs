@@ -125,7 +125,7 @@ export const tools = [
   },
   {
     category: "Infrastructure",
-    items: ["WSL2 Ubuntu", "Systemd services", "19 Docker containers", "iptables firewall"],
+    items: ["WSL2 Ubuntu", "Systemd services", "19 Docker containers", "27 listening ports", "iptables firewall"],
   },
 ];
 
@@ -134,6 +134,6 @@ export const stats = [
   { label: "Scheduled Automations", value: "40+" },
   { label: "Cloud Models", value: "24" },
   { label: "Indexed Code Nodes", value: "68K+" },
-  { label: "Active Services", value: "9" },
+  { label: "Active Services", value: "19" },
   { label: "Skills Library", value: "950+" },
 ];

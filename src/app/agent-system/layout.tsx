@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { FAQSchema, SoftwareProductSchema } from "@/components/seo/JsonLd";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Agent System | Joe's Tech Solutions",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     canonical: "/agent-system",
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.agentSystem],
     title: "Agent System | Joe's Tech Solutions",
     description: "Your own AI workforce. Multi-agent system connected to your tools, running 24/7.",
     url: "https://www.joestechsolutions.com/agent-system",

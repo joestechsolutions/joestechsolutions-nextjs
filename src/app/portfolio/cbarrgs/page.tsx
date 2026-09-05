@@ -5,6 +5,7 @@ import { ArrowLeft, CheckCircle, Globe, Lightning, TrendUp } from "@phosphor-ico
 import type { Metadata } from "next";
 import { PageHero, heroPrimaryBtn } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Cbarrgs Music Case Study | Joe's Tech Solutions",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     canonical: '/portfolio/cbarrgs',
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.portfolio],
     title: "Cbarrgs Music Case Study | Joe's Tech Solutions",
     description: "Music artist portfolio website with streaming integrations, performance optimization, and SEO.",
     url: 'https://www.joestechsolutions.com/portfolio/cbarrgs',

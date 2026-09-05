@@ -50,6 +50,11 @@ export function OrganizationSchema() {
       "Next.js",
       "Custom Software Development"
     ],
+    "sameAs": [
+      "https://github.com/joblas",
+      "https://github.com/joestechsolutions",
+      "https://linkedin.com/in/joe-blas"
+    ],
     "priceRange": "$$$"
   };
 

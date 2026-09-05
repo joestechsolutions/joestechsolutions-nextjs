@@ -8,6 +8,7 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { PageHero } from "@/components/home/scroll/PageHero";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Contact | Joe's Tech Solutions",
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     canonical: '/contact',
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.contact],
     title: "Contact | Joe's Tech Solutions",
     description: "No pitch, no pressure, no discovery call. Just tell me what you're dealing with and I'll tell you if I can help.",
     url: 'https://www.joestechsolutions.com/contact',

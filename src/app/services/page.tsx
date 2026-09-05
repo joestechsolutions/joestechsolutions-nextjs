@@ -12,6 +12,7 @@ import { OfferCatalogSchema } from "@/components/seo/JsonLd";
 import { TIERS } from "@/lib/tiers";
 import { PageHero } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Services | Joe's Tech Solutions",
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
     canonical: "/services",
   },
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: "Services | Joe's Tech Solutions",
     description:
       "Three ways I work with you — from a one-time setup to a full Custom Build. Start where you need to, move up when you're ready.",

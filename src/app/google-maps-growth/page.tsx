@@ -8,6 +8,7 @@ import { AngleBand } from "@/components/ui/AngleBand";
 import { PageHero, heroPrimaryBtn, heroSecondaryBtn } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
 import { ArrowRight, MapPin, Star, ChatText, Camera, CalendarCheck, ListMagnifyingGlass, Robot, ShieldCheck, Flag, LinkSimple, ChartBar, FileText, Question } from "@phosphor-icons/react/dist/ssr";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Google Maps Growth | Joe's Tech Solutions",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     canonical: "/google-maps-growth",
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.mapsGrowth],
     title: "Google Maps Growth | Joe's Tech Solutions",
     description:
       "An AI agent runs your Google Business Profile — weekly posts, review replies, photos, keywords. Month-to-month, policy-compliant, human-reviewed.",

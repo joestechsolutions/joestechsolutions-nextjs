@@ -9,6 +9,7 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { PageHero, heroSecondaryBtn } from "@/components/home/scroll/PageHero";
+import { SITE_OG_IMAGE } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Whisper Walkie — Local Push-to-Talk Transcription | Joe's Tech Solutions",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     canonical: "/whisper-walkie",
   },
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: "Whisper Walkie — Local Push-to-Talk Transcription",
     description:
       "Hold a key. Speak. Release. Your words appear in any app — instantly, privately, with no internet connection required. Free, open source (MIT), and maintained as an archive.",

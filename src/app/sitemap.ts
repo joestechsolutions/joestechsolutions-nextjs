@@ -1,16 +1,13 @@
 import { MetadataRoute } from 'next';
+import { getAllPosts } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.joestechsolutions.com';
   const currentDate = new Date();
 
-  // Blog post slugs
-  const blogSlugs = [
-    'why-your-business-needs-private-ai',
-    '22-agent-ai-team-architecture',
-    'replace-saas-with-ai-agents',
-    'nvidia-gtc-2026-keynote',
-  ];
+  // Blog slugs derived from the actual content registry — a new post added
+  // to src/content/blog + lib/blog.ts lands in the sitemap automatically.
+  const blogSlugs = getAllPosts().map((p) => p.slug);
 
   // Industry vertical slugs
   const verticalSlugs = [

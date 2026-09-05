@@ -5,6 +5,7 @@ import { ArrowLeft, CheckCircle, DeviceMobile, Globe, Lightning, Users } from "@
 import type { Metadata } from "next";
 import { PageHero, heroPrimaryBtn } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "The Skate Workshop Case Study | Joe's Tech Solutions",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     canonical: '/portfolio/skate-workshop',
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.portfolio],
     title: "The Skate Workshop Case Study | Joe's Tech Solutions",
     description: "Olympic-level skateboarding coaching platform built with React Native, Next.js, and real-time features.",
     url: 'https://www.joestechsolutions.com/portfolio/skate-workshop',

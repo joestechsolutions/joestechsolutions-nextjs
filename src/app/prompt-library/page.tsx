@@ -16,6 +16,7 @@ import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Free Prompt Library | Joe's Tech Solutions",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     canonical: "/prompt-library",
   },
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: "Free Prompt Library | Joe's Tech Solutions",
     description:
       "The prompt library I actually use — ops, sales, content, coding, and research prompts. Free download.",

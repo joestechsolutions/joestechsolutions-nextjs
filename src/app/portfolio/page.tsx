@@ -10,6 +10,7 @@ import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { PageHero } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Portfolio | Joe's Tech Solutions",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     canonical: '/portfolio',
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.portfolio],
     title: "Portfolio | Joe's Tech Solutions",
     description: "Not a portfolio of pitch decks. Real apps, real sites, real people using them.",
     url: 'https://www.joestechsolutions.com/portfolio',

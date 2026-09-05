@@ -66,24 +66,25 @@ function corsHeaders(origin: string | null): Record<string, string> {
   };
 }
 
-const SYSTEM_PROMPT = `You are the assistant on Joe's Tech Solutions (joestechsolutions.com). Joe Blas is a solo forward-deployed engineer who builds custom software, automation and private AI for small businesses.
+const SYSTEM_PROMPT = `You are the assistant on Joe's Tech Solutions (joestechsolutions.com). Joe Blas is a solo Forward Deployed Engineer who builds custom software, automation and private AI for small businesses. He shows up where the work is, figures out what is broken, and leaves it running.
 
-WHAT JOE OFFERS — three ways to work together:
-- Setup (one-time): private AI on the client's own machine or server. A 75-minute live session, one on one. They own it afterwards — no subscription, no data leaving their setup. Page: /private-ai-setup
-- Operations (monthly retainer): an AI assistant running on the client's server handling scheduling, outreach, reporting and daily briefings. Joe tunes it every month. Page: /services#back-office
-- Custom Build (project-based): mobile and web apps and full agent systems, built in React Native and Next.js, AI-assisted and human-verified. Page: /services#custom-build
-There is also Google Maps Growth — an agent that runs a local business's Google Business Profile (posts, review replies, photos, keywords). Page: /google-maps-growth
+WHAT JOE OFFERS \u2014 three ways to work together:
+- Setup (one-time): private AI on the client's own machine, cloud server, or fully managed. A 75-minute live session, one on one. They own it afterwards \u2014 no subscription, no per-query API fees, no data leaving their setup. Starter kits for nine industries. Page: /private-ai-setup
+- Operations (monthly retainer): an AI assistant running on the client's own server handling scheduling, outreach, reporting and daily briefings. Joe tunes it every month. Page: /services#back-office
+- Custom Build (project-based): mobile and web apps and full agent systems in React Native and Next.js, AI-assisted and human-verified, scoped and priced before any code, client owns the code and repo. Page: /services#custom-build
+Also: Google Maps Growth, an agent that runs a local business's Google Business Profile with human review on high-stakes replies (/google-maps-growth). Free: Whisper Walkie, an open-source local dictation app (/whisper-walkie), and Joe's own prompt library (/prompt-library). Case studies on /portfolio, his running infrastructure on /stack, writing on /blog.
 
-HOW HE WORKS: no discovery calls, no 40-page proposals. Tell him what is broken, he builds the fix and leaves it running. He runs the same stack for his own business that he builds for clients.
+HOW HE WORKS: no discovery calls, no 40-page proposals, no agency. Email only \u2014 joe@joestechsolutions.com \u2014 and he replies within 24 hours. He runs the same stack for his own business that he builds for clients: one orchestrator, 40+ scheduled automations, three clients with live deployments, local-first on his own hardware.
 
-PRICING: never invent numbers. Prices are quoted per project through the contact page. Private AI Setup is the one product with online checkout. If asked about cost, say it is quoted per project and offer to put them in touch.
+PRICING: never invent numbers. Everything is quoted per project by email. Private AI Setup is the one product with online checkout.
 
 RULES:
-- Answer ONLY from the SITE CONTEXT below and the facts above. If it is not there, say you do not know and offer to pass the question to Joe.
-- Never invent case studies, client names, metrics, prices or timelines.
-- Be concise and concrete: 2-4 sentences typically. Plain, direct, no hype, no emoji.
-- Link to the relevant page when it helps (use the path, e.g. /private-ai-setup).
-- Anyone can reach Joe. If someone wants to talk, has a project, or asks for a human, invite them to leave an email address in the chat and say you will pass it to Joe, or point them at /contact. Never ask anyone to create an account — there are no accounts.`;
+- Answer from the CURATED FACTS and SITE CONTEXT provided. Curated facts win if they disagree with a page.
+- If the answer is not there, say plainly that it is not something the site covers and offer to pass the question to Joe. Do not guess.
+- Never invent case studies, client names, metrics, prices, timelines, locations or hours.
+- Be concise and concrete: 2-4 sentences. Plain, direct, no hype, no emoji, no bullet lists unless listing options.
+- Link to the relevant page path when it helps (e.g. /private-ai-setup).
+- Anyone can reach Joe. If someone wants to talk, has a project, or asks for a human, invite them to leave an email address in the chat (you will pass it to Joe) or point them to /contact. Never ask anyone to create an account \u2014 there are no accounts.`;
 
 function stripHtml(html: string): string {
   try {
@@ -129,19 +130,41 @@ function keywordScore(text: string, query: string): number {
   return words.reduce((n, w) => n + (haystack.includes(w) ? 1 : 0), 0);
 }
 
-// Rank the site's own pages against the question by keyword overlap. Four
-// pages of context is small enough for the model and wide enough to cover the
-// answer for a site this size.
-async function buildSiteContext(query: string): Promise<string> {
-  const fallbackUrls = [
-    `${SITE}/`, `${SITE}/services`, `${SITE}/solutions`,
-    `${SITE}/private-ai-setup`, `${SITE}/portfolio`, `${SITE}/about`,
-    `${SITE}/stack`, `${SITE}/contact`,
-  ];
-  const sitemap = await fetchSitemapUrls();
-  const urls = (sitemap.length ? sitemap : fallbackUrls).slice(0, 12);
+// Pages that carry the answers to most questions; always fetched.
+const CORE_PAGES = ["/", "/services", "/about", "/contact", "/private-ai-setup"];
 
-  const settled = await Promise.allSettled(urls.map(fetchPageText));
+function queryWords(query: string): string[] {
+  return query.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 3);
+}
+
+// Cheap first pass: score every sitemap URL by its slug so the whole site is in
+// play (the sitemap is ~30 URLs and /about and /stack sit at the end of it).
+// Then fetch only the winners and score their text. Two-stage, so a question
+// about healthcare reaches /private-ai-setup/industries/healthcare without
+// downloading the whole site per message.
+async function buildSiteContext(query: string): Promise<string> {
+  const words = queryWords(query);
+  const sitemap = await fetchSitemapUrls();
+  const all = sitemap.length ? sitemap : CORE_PAGES.map((p) => `${SITE}${p}`);
+
+  const bySlug = all
+    .map((url) => {
+      const slug = url.replace(SITE, "").replace(/[-/]+/g, " ").toLowerCase();
+      return { url, score: words.reduce((n, w) => n + (slug.includes(w) ? 2 : 0), 0) };
+    })
+    .sort((a, b) => b.score - a.score);
+  const picked = new Set<string>(CORE_PAGES.map((p) => `${SITE}${p}`));
+  for (const { url, score } of bySlug) {
+    if (picked.size >= 9) break;
+    if (score > 0) picked.add(url);
+  }
+  // Fill remaining slots with the sitemap order so blog/industry pages still get a look.
+  for (const url of all) {
+    if (picked.size >= 9) break;
+    picked.add(url);
+  }
+
+  const settled = await Promise.allSettled([...picked].map(fetchPageText));
   const pages = settled
     .flatMap((r) => (r.status === "fulfilled" ? [r.value] : []))
     .filter((p) => p.text.length > 80);
@@ -155,8 +178,36 @@ async function buildSiteContext(query: string): Promise<string> {
     .join("\n\n");
 }
 
-function buildUserPrompt(question: string, history: string, siteContext: string): string {
+// Curated answers in knowledge_base_articles: facts that are true but thin or
+// scattered on the pages, plus anything Joe adds after reviewing
+// unanswered_questions. Matched on keywords, title and content.
+async function buildFaqContext(supabase: Admin, query: string): Promise<string> {
+  const words = queryWords(query);
+  if (!words.length) return "";
+  const { data, error } = await supabase
+    .from("knowledge_base_articles")
+    .select("title, content, search_keywords, priority")
+    .eq("is_published", true)
+    .limit(60);
+  if (error || !data?.length) return "";
+  const scored = (data as { title: string; content: string; search_keywords: string[] | null; priority: number | null }[])
+    .map((a) => {
+      const hay = `${a.title} ${a.content}`.toLowerCase();
+      const kws = (a.search_keywords ?? []).map((k) => k.toLowerCase());
+      const score =
+        words.reduce((n, w) => n + (kws.some((k) => k.includes(w) || w.includes(k)) ? 3 : hay.includes(w) ? 1 : 0), 0) +
+        (a.priority ?? 0) / 10;
+      return { a, score };
+    })
+    .filter(({ score }) => score >= 1)
+    .sort((x, y) => y.score - x.score)
+    .slice(0, 3);
+  return scored.map(({ a }) => `FAQ \u2014 ${a.title}:\n${a.content}`).join("\n\n");
+}
+
+function buildUserPrompt(question: string, history: string, siteContext: string, faq: string): string {
   return [
+    faq ? `CURATED FACTS (authoritative, prefer these):\n${faq}` : "",
     siteContext ? `SITE CONTEXT (from ${SITE}):\n${siteContext}` : "",
     history ? `Earlier in this conversation:\n${history}` : "",
     `Visitor: ${question}`,
@@ -214,8 +265,9 @@ async function answer(
   question: string,
   history: string,
   siteContext: string,
+  faq: string,
 ): Promise<{ text: string; model: string }> {
-  const prompt = buildUserPrompt(question, history, siteContext);
+  const prompt = buildUserPrompt(question, history, siteContext, faq);
   const ollamaKey = await getSecret(supabase, "OLLAMA_API_KEY");
   if (ollamaKey) return { text: await answerWithOllama(prompt, ollamaKey), model: `ollama/${OLLAMA_MODEL}` };
 
@@ -239,6 +291,9 @@ function clientIp(req: Request): string {
   const ip = raw.trim();
   return IPV4.test(ip) || (ip.includes(":") && IPV6.test(ip)) ? ip : "0.0.0.0";
 }
+
+const UNANSWERED =
+  /\b(i (do not|don't) (know|have that)|not (on|covered by) the site|isn't (mentioned|covered)|no (mention|information) (of|about)|pass (your|that|this) (question|along) to joe)\b/i;
 
 const EMAIL_RE = /[^\s@]+@[^\s@]+\.[^\s@]{2,}/;
 const WANTS_HUMAN =
@@ -332,18 +387,24 @@ serve(async (req) => {
       .select("type, content")
       .eq("session_id", sessionId)
       .order("created_at", { ascending: true })
-      .limit(8);
+      .limit(12);
     const history = (past ?? [])
       .map((m: { type: string; content: string }) =>
         `${m.type === "user" ? "Visitor" : "Assistant"}: ${m.content}`)
       .join("\n");
 
-    const siteContext = await buildSiteContext(message);
-    const { text: reply, model } = await answer(supabase, message, history, siteContext);
+    const [siteContext, faq] = await Promise.all([
+      buildSiteContext(message),
+      buildFaqContext(supabase, message),
+    ]);
+    const { text: reply, model } = await answer(supabase, message, history, siteContext, faq);
 
+    // The learning loop: replies that admit a gap are flagged so they surface
+    // in the unanswered_questions view for Joe to turn into FAQ rows.
+    const unanswered = UNANSWERED.test(reply);
     await supabase.from("chat_conversations").insert([
       { session_id: sessionId, type: "user", content: message, page_context: page },
-      { session_id: sessionId, type: "assistant", content: reply, page_context: page },
+      { session_id: sessionId, type: "assistant", content: reply, page_context: page, metadata: { model, unanswered } },
     ]);
 
     const email = message.match(EMAIL_RE)?.[0] ?? null;

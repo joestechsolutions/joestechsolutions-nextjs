@@ -13,7 +13,7 @@ import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 export const metadata: Metadata = {
   title: "Google Maps Growth | Joe's Tech Solutions",
   description:
-    "Your Google Business Profile, run by an AI agent. Weekly posts, review replies, fresh photos, and keyword upkeep — the steady work that moves you up Google Maps. Month-to-month, Google-compliant, quoted to fit your business.",
+    "Your Google Business Profile, run by an AI agent — weekly posts, review replies, fresh photos, keyword upkeep. Month-to-month and Google-compliant.",
   alternates: {
     canonical: "/google-maps-growth",
   },

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     images: [SITE_OG_IMAGE],
-    title: "Whisper Walkie — Local Push-to-Talk Transcription",
+    title: "Whisper Walkie — Private Push-to-Talk Dictation, Works Offline",
     description:
       "Hold a key. Speak. Release. Your words appear in any app — instantly, privately, with no internet connection required. Free, open source (MIT), and maintained as an archive.",
     url: "https://www.joestechsolutions.com/whisper-walkie",

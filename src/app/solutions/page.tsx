@@ -122,7 +122,7 @@ export default function Solutions() {
                       <div className="relative space-y-5">
                         <Image
                           src={solutionIcon[solution.name]}
-                          alt=""
+                          alt={`${solution.name} solution icon`}
                           width={96}
                           height={96}
                           className="h-24 w-24 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105"

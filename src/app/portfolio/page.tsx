@@ -14,7 +14,7 @@ import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Portfolio | Joe's Tech Solutions",
-  description: "Not a portfolio of pitch decks. Real apps, real sites, real people using them.",
+  description: "Real products with real users — a TestFlight coaching app, an 848-page directory ranking in search, a live artist site. Not pitch decks: shipped software in the wild.",
   alternates: {
     canonical: '/portfolio',
   },
@@ -197,6 +197,53 @@ export default function Portfolio() {
           </FadeIn>
         </div>
       </section>
+
+      {/* The Standard */}
+      <section className="relative py-24 bg-card/30">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <FadeIn>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground font-mono mb-4">
+              What every build gets.
+            </h2>
+            <p className="text-foreground/60 mb-10 max-w-2xl">
+              These aren&apos;t one-off gigs — they run on the same infrastructure I use to run my
+              own business. That&apos;s the standard.
+            </p>
+          </FadeIn>
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.12}>
+            {[
+              {
+                k: "Shipped, not prototyped",
+                v: "Everything here is in production with real users — TestFlight builds, live traffic, working payments.",
+              },
+              {
+                k: "Tested on me first",
+                v: "I run my own business on the same agent stacks and deploy pipelines I build for clients.",
+              },
+              {
+                k: "You own it",
+                v: "Code in your repo, data in your accounts, infra on your hosting. No lock-in, no license meters.",
+              },
+              {
+                k: "Stays maintained",
+                v: "Weekly health checks, monthly updates, and a real human (me) on call when something breaks.",
+              },
+            ].map((item) => (
+              <StaggerItem key={item.k}>
+                <AnimatedCard>
+                  <Card className="bg-card border-foreground/10 h-full">
+                    <CardContent className="pt-6">
+                      <h3 className="text-lg font-bold text-foreground font-mono mb-3">{item.k}</h3>
+                      <p className="text-foreground/70 text-sm leading-relaxed">{item.v}</p>
+                    </CardContent>
+                  </Card>
+                </AnimatedCard>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
 
       <CtaScene id="cta" />
     </div>

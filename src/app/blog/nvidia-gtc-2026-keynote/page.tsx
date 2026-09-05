@@ -46,7 +46,7 @@ function formatDate(dateStr: string): string {
 // JSON-LD structured data for SEO — static object, safe to serialize
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
+  "@type": "Article",
   headline: POST.title,
   description: "Breaking down NVIDIA GTC 2026: Vera Rubin, Groq 3, NemoClaw AI agents, 110 robots, and what it all means for businesses investing in AI infrastructure.",
   image: "https://www.joestechsolutions.com/images/blog/nvidia-gtc-2026-og.jpg",

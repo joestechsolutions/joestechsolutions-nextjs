@@ -135,7 +135,7 @@ function Card({ card, index }: { card: ServiceCard; index: number }) {
       {tierIcon[card.id] && (
         <Image
           src={tierIcon[card.id]}
-          alt=""
+          alt={`${card.name} tier icon`}
           width={112}
           height={112}
           className="pointer-events-none absolute right-7 top-14 h-24 w-24 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] sm:h-28 sm:w-28"

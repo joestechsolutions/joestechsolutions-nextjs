@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { ArticleSchema } from "@/components/seo/JsonLd";
+import { ArticleSchema, HowToSchema } from "@/components/seo/JsonLd";
 import { TextReveal } from "@/components/animations/TextReveal";
 import { ScrollProgress } from "@/components/animations/ScrollProgress";
 import { BlogVideoPlayer } from "@/components/BlogVideoPlayer";
@@ -81,6 +81,34 @@ export default async function BlogPostPage({ params }: Props) {
         url={`https://www.joestechsolutions.com/blog/${post.slug}`}
         keywords={post.tags}
       />
+      {slug === "why-your-business-needs-private-ai" && (
+        <HowToSchema
+          name="How to Set Up Private AI for Your Business"
+          description="Install a private, locally-running AI assistant (Ollama + Open WebUI) so your business gets ChatGPT-level capability without client data leaving your network."
+          steps={[
+            {
+              name: "Provision the hardware",
+              text: "Configure a machine or server on your network with enough RAM and GPU capacity for the models you plan to run.",
+            },
+            {
+              name: "Install Ollama",
+              text: "Run the one-line install: curl -fsSL https://ollama.com/install.sh | sh — Ollama runs AI models locally as a private server.",
+            },
+            {
+              name: "Pull a model",
+              text: "Download a capable open model such as Llama 3.1, Mistral, or Qwen with: ollama pull llama3.1",
+            },
+            {
+              name: "Install Open WebUI",
+              text: "Deploy Open WebUI via Docker and point it at your local Ollama instance to get a polished, ChatGPT-style interface.",
+            },
+            {
+              name: "Connect your team",
+              text: "Let your team reach the assistant over your local network or VPN — no data ever leaves your building.",
+            },
+          ]}
+        />
+      )}
       <ScrollProgress />
       {/* Header */}
       <section className="relative overflow-hidden py-20 sm:py-28">

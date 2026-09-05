@@ -46,8 +46,8 @@ const portfolio = [
     name: "Hermes Agent System",
     desc: "My own 24/7 agent operations system — briefings, project stewards, watchdogs, content, ops. The system that runs my business.",
     href: "/stack",
-    image: "/images/blog/22-agent-architecture.png",
-    alt: "JTS agent architecture diagram",
+    image: "/images/stack-live.png",
+    alt: "The live Stack page on joestechsolutions.com — client deployments, automations, models, services",
   },
   {
     status: "[PAUSED]",

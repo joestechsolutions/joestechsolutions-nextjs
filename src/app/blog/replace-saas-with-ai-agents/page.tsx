@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     publishedTime: POST.date,
     authors: [POST.author],
     tags: POST.tags,
-    images: [{ url: "/images/blog/replace-saas-og.png", width: 1200, height: 630, alt: POST.title }],
+    images: [{ url: "/images/blog/replace-saas-og-v2.png", width: 1200, height: 630, alt: POST.title }],
   },
   twitter: {
     card: "summary_large_image",
     title: "How 24 AI Agents Run My Entire Business — No SaaS Required",
     description: "Instead of paying $285/mo for 10+ SaaS tools, I built an AI agent system that handles everything — running on a Claude subscription I already use for development.",
-    images: ["/images/blog/replace-saas-og.png"],
+    images: ["/images/blog/replace-saas-og-v2.png"],
   },
 };
 
@@ -55,7 +55,7 @@ export default function ReplaceSaasPage() {
             "@type": "BlogPosting",
             headline: POST.title,
             description: "Instead of paying $285/mo for 10+ SaaS tools, one developer built an AI agent system that handles everything — running on a Claude subscription already used for development.",
-            image: "https://www.joestechsolutions.com/images/blog/replace-saas-og.png",
+            image: "https://www.joestechsolutions.com/images/blog/replace-saas-og-v2.png",
             author: {
               "@type": "Person",
               name: "Joe Blas",

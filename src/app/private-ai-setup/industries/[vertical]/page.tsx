@@ -9,6 +9,7 @@ import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { VERTICALS_DATA, getAllVerticalSlugs } from "@/lib/verticals";
 import type { Metadata } from "next";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 // Generate static params for all verticals
 export function generateStaticParams() {
@@ -37,6 +38,7 @@ export async function generateMetadata({
       canonical: `/private-ai-setup/industries/${slug}`,
     },
     openGraph: {
+    images: [SECTION_OG_IMAGES.industries],
       title: `${vertical.name} AI Assistant | Joe's Tech Solutions`,
       description: vertical.tagline + " — " + vertical.description,
       url: `https://www.joestechsolutions.com/private-ai-setup/industries/${slug}`,

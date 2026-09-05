@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "The Stack | Joe's Tech Solutions",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     canonical: '/stack',
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.stack],
     title: "The Stack | Joe's Tech Solutions",
     description: "The actual AI infrastructure powering JTS — Claude Opus 5 + Fable 5/5.1, 24+ cloud models, 19 active services, 40+ scheduled automations, 68K+ indexed code nodes.",
     url: 'https://www.joestechsolutions.com/stack',

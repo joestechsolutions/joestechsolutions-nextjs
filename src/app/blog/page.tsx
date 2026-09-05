@@ -5,6 +5,7 @@ import { getAllPosts } from "@/lib/blog";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { PageHero } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE } from "@/lib/og-images";
 
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     canonical: "/blog",
   },
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: "Blog | Joe's Tech Solutions",
     description:
       "Practical guides and straight talk on private AI, web development, and technology for small businesses.",

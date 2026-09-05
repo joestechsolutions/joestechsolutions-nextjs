@@ -6,6 +6,7 @@ import { ArrowLeft, CheckCircle, MagnifyingGlass, Globe, Lightning, TrendUp, Map
 import type { Metadata } from "next";
 import { PageHero, heroPrimaryBtn } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "RenFaire Directory Case Study | Joe's Tech Solutions",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     canonical: '/portfolio/renfaire-directory',
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.portfolio],
     title: "RenFaire Directory Case Study | Joe's Tech Solutions",
     description: "SEO-first Renaissance faire directory with 200+ listings, structured data, affiliate revenue, and top search rankings.",
     url: 'https://www.joestechsolutions.com/portfolio/renfaire-directory',

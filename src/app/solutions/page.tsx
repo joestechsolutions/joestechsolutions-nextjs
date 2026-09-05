@@ -13,6 +13,7 @@ import { PricingLadder } from "@/components/ui/PricingLadder";
 import { OfferCatalogSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Solutions | Joe's Tech Solutions",
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     canonical: "/solutions",
   },
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: "Solutions | Joe's Tech Solutions",
     description:
       "What I can build for you. Three entry points: Setup, Operations, Custom Build.",

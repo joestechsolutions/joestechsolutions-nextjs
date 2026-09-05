@@ -6,6 +6,7 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { PageHero, heroPrimaryBtn } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
+import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "About | Joe's Tech Solutions",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     canonical: '/about',
   },
   openGraph: {
+    images: [SECTION_OG_IMAGES.about],
     title: "About | Joe's Tech Solutions",
     description: "I'm what you get when you skip the agency and hire the person who's going to build your thing.",
     url: 'https://www.joestechsolutions.com/about',

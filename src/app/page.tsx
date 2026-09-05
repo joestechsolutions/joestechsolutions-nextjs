@@ -9,6 +9,7 @@ import { StackedPortfolio } from "@/components/home/scroll/StackedPortfolio";
 import { StackMarquee } from "@/components/home/scroll/StackMarquee";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
 import { TIERS, type Tier } from "@/lib/tiers";
+import { SITE_OG_IMAGE } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Joe's Tech Solutions — Custom Software, Automation & AI for SMBs",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: "Joe's Tech Solutions — Custom Software, Automation & AI for SMBs",
     description:
       "Custom software, automation, and AI — built for small businesses that just need things to work. I test everything on myself first.",

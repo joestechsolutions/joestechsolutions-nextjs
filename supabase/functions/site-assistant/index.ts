@@ -20,6 +20,12 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const SITE = "https://www.joestechsolutions.com";
 const OWNER_EMAIL = "joe@joestechsolutions.com";
 
+// Per-IP fixed window. Generous for a real conversation, tight enough that a
+// script cannot run up the Replicate bill. Checked before any model call, so
+// a blocked request costs nothing.
+const RATE_LIMIT = 30;
+const RATE_WINDOW = "1 hour";
+
 const ALLOWED_ORIGINS = [
   "https://joestechsolutions.com",
   "https://www.joestechsolutions.com",
@@ -194,6 +200,11 @@ async function answer(question: string, history: string, siteContext: string): P
   return (Array.isArray(out) ? out.join("") : String(out ?? "")).trim();
 }
 
+function clientIp(req: Request): string {
+  const fwd = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  return fwd || req.headers.get("cf-connecting-ip") || "0.0.0.0";
+}
+
 const EMAIL_RE = /[^\s@]+@[^\s@]+\.[^\s@]{2,}/;
 const WANTS_HUMAN =
   /\b(talk to joe|speak to joe|contact joe|reach joe|a human|real person|call me|email me|get in touch|hire|quote|proposal)\b/i;
@@ -261,6 +272,25 @@ serve(async (req) => {
       Deno.env.get("SUPABASE_URL") ?? "",
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
     );
+
+    // Rate limit first — before retrieval or the model, so abuse is free to reject.
+    // Fails open: a limiter outage should not take the chat down with it.
+    const { data: allowed, error: limitError } = await supabase.rpc("check_chat_rate_limit", {
+      p_ip: clientIp(req),
+      p_limit: RATE_LIMIT,
+      p_window: RATE_WINDOW,
+    });
+    if (limitError) console.warn("[rate-limit] check failed, allowing:", limitError.message);
+    if (allowed === false) {
+      return json(
+        {
+          content:
+            `That's a lot of messages for one hour. Email Joe directly at ${OWNER_EMAIL} and he'll pick it up.`,
+          rate_limited: true,
+        },
+        429,
+      );
+    }
 
     const { data: past } = await supabase
       .from("chat_conversations")

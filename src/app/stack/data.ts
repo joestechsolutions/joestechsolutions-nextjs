@@ -1,19 +1,37 @@
 // Stack data — updated when the real tool stack changes.
-// Source: ~/.hermes/config.yaml, ~/free-claude-code/.env, ollama list, ~/.gitnexus/registry.json
-// Last updated: 2026-09-01
+// Source: ~/.hermes/config.yaml, ~/ai-stack/02-routing/fcc.env, Claude Code CLI (first-party), ollama list
+// Last updated: 2026-09-05
 
-export const lastUpdated = "September 1, 2026";
+export const lastUpdated = "September 5, 2026";
 
 export const models = [
   {
+    name: "Claude Opus 5",
+    role: "Heavy reasoning — deep development at the desk via Claude Code",
+    provider: "Claude (first-party subscription)",
+    capabilities: ["tools", "thinking", "vision"],
+  },
+  {
+    name: "Fable 5.1",
+    role: "Frontier coding — deep dev at the desk + remote control from the phone",
+    provider: "Claude (first-party subscription)",
+    capabilities: ["tools", "thinking", "vision"],
+  },
+  {
+    name: "Fable 5",
+    role: "Agentic coding + client app builds (Archive Salon, beta loop) — desk and remote",
+    provider: "Claude (first-party subscription)",
+    capabilities: ["tools", "thinking", "vision"],
+  },
+  {
     name: "GLM 5.3 Flash",
-    role: "Default — main conversation + cron fleet",
+    role: "Hermes default — desk conversations + Telegram on the phone + cron fleet",
     provider: "Ollama Cloud",
     capabilities: ["tools", "thinking"],
   },
   {
     name: "GLM 5.3",
-    role: "Heavy agentic coding — code-architect, debugger, security-auditor + FCC proxy",
+    role: "FCC proxy Opus-tier mapping + heavy cloud coding",
     provider: "Ollama Cloud",
     capabilities: ["tools", "thinking"],
   },
@@ -59,13 +77,13 @@ export const services = [
   {
     name: "FCC Proxy",
     port: "8082",
-    purpose: "Claude Code → cloud model routing",
+    purpose: "Claude Code CLI → subscription + cloud model routing",
     tech: "Python, uvicorn",
   },
   {
     name: "Ollama",
     port: "11434",
-    purpose: "Local + cloud model inference (24 models)",
+    purpose: "Local + cloud model inference (20+ models)",
     tech: "Go, systemd",
   },
   {
@@ -113,7 +131,7 @@ export const tools = [
   },
   {
     category: "Coding",
-    items: ["Claude Code (via FCC proxy)", "GitNexus code graph", "Agent-Skills (24 SDLC skills)", "Cline CLI"],
+    items: ["Claude Code (Opus 5 + Fable 5/5.1 first-party)", "GitNexus code graph", "Agent-Skills (24 SDLC skills)", "Cline CLI"],
   },
   {
     category: "Memory",
@@ -121,7 +139,7 @@ export const tools = [
   },
   {
     category: "Models",
-    items: ["24 Ollama Cloud models", "Ollama Cloud (primary)", "16-model fallback chain", "Granite 4.1 (local)"],
+    items: ["Claude Opus 5 + Fable 5/5.1 (first-party)", "Ollama Cloud (primary)", "8-model fallback chain", "Granite 4.1 (local)"],
   },
   {
     category: "Infrastructure",
@@ -132,7 +150,7 @@ export const tools = [
 export const stats = [
   { label: "Live Client Deployments", value: "3" },
   { label: "Scheduled Automations", value: "40+" },
-  { label: "Cloud Models", value: "24" },
+  { label: "Cloud Models", value: "24+" },
   { label: "Indexed Code Nodes", value: "68K+" },
   { label: "Active Services", value: "19" },
   { label: "Skills Library", value: "950+" },

@@ -20,8 +20,8 @@ const agentFaqs = [
     answer: "Managed AI gives you a private LLM with n8n workflows. The Agent System is a full multi-agent hierarchy — an orchestrator AI that delegates to specialized sub-agents (coding, content, research, ops), with a skills library, memory system, and 24/7 cron automation. It's the difference between a tool and an employee."
   },
   {
-    question: "How does the Ollama Cloud model routing work?",
-    answer: "Instead of paying Anthropic $200/mo with usage caps, I route through Ollama Cloud at $100/mo with zero caps. Three tiers mirror Claude's structure: a heavy reasoning model (Opus equivalent), a balanced coding model (Sonnet equivalent), and a fast lightweight model (Haiku equivalent). Same workload routing, half the cost, no walls."
+    question: "How does the model routing work?",
+    answer: "Two layers. Frontier work — the hardest coding and reasoning — runs on Claude Opus 5 and Fable 5/5.1 through a first-party Claude Code subscription. Everything else (sub-agents, cron fleet, content, vision) routes across Ollama Cloud by task type. You get frontier capability where it counts and flat-rate economics everywhere else — no per-token metering on either layer."
   },
   {
     question: "What integrations are included?",

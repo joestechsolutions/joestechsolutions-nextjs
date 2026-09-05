@@ -12,13 +12,13 @@ import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "The Stack | Joe's Tech Solutions",
-  description: "The actual AI infrastructure powering Joe's Tech Solutions — 14 AI agents, 24 cloud models, 7 services, 60K+ indexed code nodes. Updated live.",
+  description: "The actual AI infrastructure powering Joe's Tech Solutions — 14 AI agents, Claude Opus 5 + Fable 5/5.1 + 24 cloud models, 10 services, 68K+ indexed code nodes. Updated live.",
   alternates: {
     canonical: '/stack',
   },
   openGraph: {
     title: "The Stack | Joe's Tech Solutions",
-    description: "The actual AI infrastructure powering JTS — 14 AI agents, 24 cloud models, 7 services, 60K+ indexed code nodes.",
+    description: "The actual AI infrastructure powering JTS — 14 AI agents, Claude Opus 5 + Fable 5/5.1 + 24 cloud models, 10 services, 68K+ indexed code nodes.",
     url: 'https://www.joestechsolutions.com/stack',
   },
 };
@@ -63,7 +63,7 @@ export default function StackPage() {
               </div>
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground font-mono">Models</h2>
-                <p className="text-foreground/60 mt-1">24 cloud models, routed by task type</p>
+                <p className="text-foreground/60 mt-1">Claude Opus 5 + Fable 5/5.1 lead; 24+ models routed by task type</p>
               </div>
             </div>
           </FadeIn>
@@ -184,10 +184,12 @@ export default function StackPage() {
                 How It Actually Works
               </h2>
               <p className="text-xl text-foreground/70 font-light leading-relaxed">
-                A message comes in via Telegram. Hermes (the orchestrator) reads it, decides what to do,
-                and either handles it directly or delegates to a coding subagent running through the FCC proxy.
-                MemPalace remembers everything across sessions. GitNexus maps the codebase so changes are
-                surgical, not guesswork. All inference runs through cloud models — 24 models, no per-token costs.
+                At the desk: Hermes (the orchestrator) runs conversations and the cron fleet on GLM 5.3 Flash,
+                and deep development goes through Claude Code on frontier models — Opus 5 for the hardest
+                reasoning, Fable 5.1 for the build-and-ship pipeline. Away from the desk: the same stack follows
+                — Hermes answers on Telegram from the phone, and Claude Code keeps building via remote control.
+                MemPalace remembers everything across sessions and surfaces. GitNexus maps the codebase so changes are
+                surgical, not guesswork. Flat subscriptions — no per-token costs, at the desk or in your pocket.
               </p>
             </div>
           </FadeIn>

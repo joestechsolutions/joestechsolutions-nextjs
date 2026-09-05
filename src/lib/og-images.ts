@@ -19,7 +19,7 @@ export const SITE_OG_IMAGE_URL = "/og-image.png";
 export const SECTION_OG_IMAGES = {
   about: "/images/joe-corporate-headshot.png", // 1024x1024 1.4MB
   agentSystem: "/images/og/agent-system.png", // 2400x1260 (1200x630 @2x)
-  mapsGrowth: "/images/renfaire-hero.jpg", // 1280x720
+  mapsGrowth: "/images/og/google-maps-growth.png", // 2400x1260 (1200x630 @2x)
   portfolio: "/images/client-collaboration.jpg", // 1920x1080
   privateAi: "/images/joe-launch-private-ai.png", // 1584x672
   stack: "/images/og/stack.png", // 2400x1260 (1200x630 @2x)

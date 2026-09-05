@@ -7,7 +7,7 @@ import { MagneticButton } from "@/components/animations/MagneticButton";
 import { AngleBand } from "@/components/ui/AngleBand";
 import { PageHero, heroPrimaryBtn, heroSecondaryBtn } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
-import { ArrowRight, MapPin, Star, ChatText, Camera, CalendarCheck, ListMagnifyingGlass, Robot, ShieldCheck, Flag, LinkSimple, ChartBar, FileText, Question } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, MapPin, Star, ChatText, Camera, CalendarCheck, ListMagnifyingGlass, Robot, ShieldCheck, Flag, LinkSimple, ChartBar, FileText, Question, House, Wrench, Stethoscope, Barbell, Storefront, CalendarBlank, ChatCircleText, CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
@@ -133,6 +133,49 @@ const faqs = [
   },
 ];
 
+const fits = [
+  {
+    icon: House,
+    title: "Home services",
+    body: "HVAC, plumbing, electrical, cleaning, landscaping — the call goes to whoever shows up first on the map.",
+  },
+  {
+    icon: Wrench,
+    title: "Trades & repair",
+    body: "Auto shops, appliance repair, handyman work. Reviews and response time decide who gets the job.",
+  },
+  {
+    icon: Stethoscope,
+    title: "Clinics & practices",
+    body: "Dental, chiro, physical therapy, med spas. Patients read every reply before they book.",
+  },
+  {
+    icon: Barbell,
+    title: "Studios & gyms",
+    body: "Fitness, yoga, martial arts, lessons. Fresh photos and posts keep the profile alive between seasons.",
+  },
+  {
+    icon: Storefront,
+    title: "Shops & retail",
+    body: "Anyone whose customers search \"near me\" and pick from the top three.",
+  },
+];
+
+const week = [
+  { when: "Monday", what: "This week's post goes live — an offer, an update, or seasonal content, written in your voice." },
+  { when: "Every day", what: "New reviews get a reply within hours. Anything sensitive — a complaint, anything legal-sounding — gets a human read first." },
+  { when: "Wednesday", what: "Fresh photos added. Categories, services, and attributes checked against what people actually search." },
+  { when: "Friday", what: "Q&A sweep, citation check, and any spam listings or junk reviews reported to Google." },
+  { when: "Month end", what: "Your report: search views, calls, direction requests, where you moved, and what we're doing next." },
+];
+
+const exampleReply = {
+  stars: 2,
+  review: "Work was fine but I waited 40 minutes past my appointment. Nobody told me they were running behind.",
+  reply:
+    "Thanks for the straight feedback, and I'm sorry about the wait — 40 minutes past your slot isn't the standard we hold ourselves to, and you should have been told. We've changed how we buffer the schedule so it doesn't repeat. If you're open to it, call the shop and ask for the owner directly; I'd like to make this right.",
+};
+
 export default function GoogleMapsGrowth() {
   return (
     <div className="min-h-screen">
@@ -152,6 +195,21 @@ export default function GoogleMapsGrowth() {
               "AI-managed Google Business Profile service: weekly posts, review replies, photo optimization, keyword tuning, and monthly reporting for local businesses.",
             areaServed: "US",
             serviceType: "Local SEO / Google Business Profile management",
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
           }),
         }}
       />
@@ -254,6 +312,62 @@ export default function GoogleMapsGrowth() {
         </div>
       </section>
 
+      {/* A week on your profile */}
+      <section className="relative py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-14">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium border border-primary/20 mb-6">
+                <CalendarBlank weight="duotone" className="h-4 w-4" />
+                What you actually get
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground font-mono mb-4">
+                A week on your profile
+              </h2>
+              <p className="text-foreground/60 text-lg font-light max-w-2xl mx-auto">
+                The cadence is the product. Here&apos;s what a normal week looks like once
+                the agent is running.
+              </p>
+            </div>
+          </FadeIn>
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-8 items-start">
+            <FadeIn delay={0.1}>
+              <ol className="border border-foreground/10 bg-card/40 divide-y divide-foreground/10">
+                {week.map((w) => (
+                  <li key={w.when} className="flex gap-5 p-5">
+                    <span className="w-24 shrink-0 font-mono text-sm font-bold text-primary">{w.when}</span>
+                    <p className="text-foreground/70 text-sm leading-relaxed font-light">{w.what}</p>
+                  </li>
+                ))}
+              </ol>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="border-2 border-foreground bg-[var(--panel)] p-6 shadow-[8px_8px_0_var(--primary)] sm:p-8">
+                <p className="mb-4 font-mono text-[12px] font-bold tracking-wider text-[#8a919c]">
+                  EXAMPLE — a review and the agent&apos;s reply
+                </p>
+                <div className="mb-5 border border-[#8a919c]/30 p-4">
+                  <p className="mb-2 flex items-center gap-1 text-primary" aria-label={`${exampleReply.stars} out of 5 stars`}>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star key={i} weight={i < exampleReply.stars ? "fill" : "regular"} className="h-4 w-4" />
+                    ))}
+                  </p>
+                  <p className="text-sm leading-relaxed text-[#f0f1ec]/80">&ldquo;{exampleReply.review}&rdquo;</p>
+                </div>
+                <div className="flex gap-3">
+                  <ChatCircleText weight="duotone" className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <p className="text-sm leading-relaxed text-[#f0f1ec]">{exampleReply.reply}</p>
+                </div>
+                <p className="mt-5 flex items-center gap-2 font-mono text-[11px] text-[#8a919c]">
+                  <CheckCircle weight="duotone" className="h-3.5 w-3.5 text-primary" />
+                  Drafted by the agent in your voice. A human reads it before it posts.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* Honest expectations */}
       <section className="relative py-20 sm:py-24">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
@@ -273,7 +387,7 @@ export default function GoogleMapsGrowth() {
                   <p className="text-foreground/80 leading-relaxed font-light mb-6">
                     What we do is the steady, policy-compliant upkeep Google&apos;s own guidance
                     asks for. Profiles that get it consistently tend to climb, and the ones we
-                    keep climbing stay climbed. We&apos;ll show you exactly what changed, every month.
+                    maintain hold their spot. We&apos;ll show you exactly what changed, every month.
                   </p>
                   <ul className="space-y-2 text-foreground/70 text-sm font-light">
                     <li className="flex items-center gap-2">
@@ -300,17 +414,27 @@ export default function GoogleMapsGrowth() {
       <section className="relative pb-20 sm:pb-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
-            <div className="text-center mb-10">
+            <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground font-mono mb-4">
                 Built for businesses that live on the Map
               </h2>
-              <p className="text-foreground/60 text-lg font-light">
-                Best fit: home services, trades, clinics, studios, and shops with a
-                physical location — 4+ star rating, already spending on ads, tired of
-                ranking under someone else.
+              <p className="text-foreground/60 text-lg font-light max-w-2xl mx-auto">
+                Best fit: a physical location, a 4+ star rating, already spending on
+                ads, and tired of ranking under someone else.
               </p>
             </div>
           </FadeIn>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {fits.map((f, i) => (
+              <FadeIn key={f.title} delay={0.05 + i * 0.05}>
+                <div className="h-full border border-foreground/10 bg-card/40 p-6 hover:border-primary/40 transition-colors duration-500">
+                  <f.icon weight="duotone" className="h-7 w-7 text-primary mb-4" />
+                  <h3 className="font-bold text-foreground font-mono text-sm mb-2">{f.title}</h3>
+                  <p className="text-foreground/60 text-sm leading-relaxed font-light">{f.body}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 

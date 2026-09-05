@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, MapPin } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -145,6 +145,32 @@ export default function Solutions() {
               );
             })}
           </StaggerContainer>
+
+          {/* Google Maps Growth — a done-for-you service alongside the three tiers */}
+          <FadeIn delay={0.3}>
+            <Link href="/google-maps-growth" className="block mt-8">
+              <Card className="bg-card/60 border-primary/20 hover:border-primary/50 transition-colors duration-500 group p-8">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                  <div className="w-14 h-14 bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                    <MapPin weight="duotone" className="h-7 w-7 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-foreground font-mono mb-1">
+                      Google Maps Growth
+                    </h3>
+                    <p className="text-foreground/70 font-light">
+                      Also: an AI agent runs your Google Business Profile — weekly posts, every
+                      review answered, photos and keywords kept fresh. Done for you, month-to-month.
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/85 text-foreground text-sm font-medium rounded-none shrink-0">
+                    Learn more
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </Card>
+            </Link>
+          </FadeIn>
         </div>
       </section>
 

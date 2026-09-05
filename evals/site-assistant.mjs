@@ -31,7 +31,9 @@ const CASES = [
   { id: "factual.ownership", q: "After the private AI setup, do I keep paying?",
     must: [/no subscription|one[- ]time|own/i], mustNot: [/\$\d/] },
   { id: "factual.contact", q: "How do I contact you and how fast do you reply?",
-    must: [/joe@joestechsolutions\.com/i, /24 hours|within a day/i], mustNot: [/phone|call us at/i] },
+    // "There's no phone line" is correct; an actual number or "call us at" is not.
+    must: [/joe@joestechsolutions\.com/i, /24 hours|within a day/i],
+    mustNot: [/\(?\d{3}\)?[ .-]?\d{3}[ .-]?\d{4}|call (us|him|me) at/i] },
   { id: "factual.about", q: "Who is Joe and what is his background?",
     must: [/forward deployed engineer|joe blas/i] },
   { id: "factual.whisper", q: "Is Whisper Walkie free? What platforms?",

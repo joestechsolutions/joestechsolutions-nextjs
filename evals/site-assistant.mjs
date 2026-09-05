@@ -59,7 +59,8 @@ const CASES = [
   // The knowledge_base_articles table still holds rows from a 2025 image-generation
   // product (credit plans, hourly rates, "$5,000" projects). None of it may surface.
   { id: "boundary.legacy-kb", q: "What do custom development projects start at, and how many credits does the Creator plan include?",
-    mustNot: [/\$5,?000|\$19\b|\$69\b|\$100-150|400 credits|1,500 credits|creator plan|credit(s)? (per|each)/i] },
+    // Denying the plan by name ("no Creator plan here") is correct; quoting its numbers is not.
+    mustNot: [/\$5,?000|\$19\b|\$69\b|\$100-150|400 credits|1,500 credits|credits? (per|each) (image|video|second)/i] },
   { id: "factual.gmg-week", q: "For Google Maps Growth, do you need my Google password, and how long until I see results?",
     must: [/manager access|no(t)? (need|require).{0,20}password|never ask/i, /4.{0,3}8 weeks|weeks/i] },
   { id: "factual.background", q: "What did Joe do before starting the company? Where can I read his full CV?",

@@ -1,8 +1,8 @@
-import { promises as fs } from "fs";
-import path from "path";
+import { getSupabaseAdmin } from "./supabase-admin";
 
-// Simple JSON file storage for intakes
-// For production, consider using a proper database (Prisma, Supabase, etc.)
+// Private AI setup intakes, stored in Supabase (public.intakes). This used to
+// write a JSON file under process.cwd(), which silently lost every submission
+// on Vercel's read-only filesystem.
 
 export interface IntakeData {
   id: string;
@@ -21,59 +21,73 @@ export interface IntakeData {
   status: "pending" | "pending_call" | "scheduled" | "completed";
 }
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const INTAKES_FILE = path.join(DATA_DIR, "intakes.json");
+// public.intakes is snake_case; the app has always spoken camelCase.
+type IntakeRow = {
+  id: string;
+  session_id: string;
+  email: string;
+  name: string;
+  setup_type: IntakeData["setupType"];
+  operating_system: string;
+  specs: string;
+  use_cases: string;
+  domain_preference: string | null;
+  model_size_preference: IntakeData["modelSizePreference"] | null;
+  status: IntakeData["status"];
+  created_at: string;
+};
 
-// Ensure data directory exists
-async function ensureDataDir() {
-  try {
-    await fs.access(DATA_DIR);
-  } catch {
-    await fs.mkdir(DATA_DIR, { recursive: true });
-  }
+function toIntakeData(row: IntakeRow): IntakeData {
+  return {
+    id: row.id,
+    sessionId: row.session_id,
+    email: row.email,
+    name: row.name,
+    setupType: row.setup_type,
+    operatingSystem: row.operating_system,
+    specs: row.specs,
+    useCases: row.use_cases,
+    ...(row.domain_preference ? { domainPreference: row.domain_preference } : {}),
+    ...(row.model_size_preference
+      ? { modelSizePreference: row.model_size_preference }
+      : {}),
+    timestamp: row.created_at,
+    status: row.status,
+  };
 }
 
-// Read all intakes
-async function getIntakes(): Promise<IntakeData[]> {
-  try {
-    await ensureDataDir();
-    const data = await fs.readFile(INTAKES_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-}
-
-// Add a new intake
 export async function addIntake(
   intake: Omit<IntakeData, "id" | "timestamp" | "status">,
   status: IntakeData["status"] = "pending"
 ): Promise<IntakeData> {
-  await ensureDataDir();
-  const intakes = await getIntakes();
+  const { data, error } = await getSupabaseAdmin()
+    .from("intakes")
+    .insert({
+      session_id: intake.sessionId ?? "",
+      email: intake.email ?? "",
+      name: intake.name ?? "",
+      setup_type: intake.setupType,
+      operating_system: intake.operatingSystem ?? "",
+      specs: intake.specs ?? "",
+      use_cases: intake.useCases ?? "",
+      domain_preference: intake.domainPreference ?? null,
+      model_size_preference: intake.modelSizePreference ?? null,
+      status,
+    })
+    .select()
+    .single();
 
-  const newIntake: IntakeData = {
-    ...intake,
-    id: `intake_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
-    timestamp: new Date().toISOString(),
-    status,
-  };
-
-  intakes.push(newIntake);
-  try {
-    await fs.writeFile(INTAKES_FILE, JSON.stringify(intakes, null, 2));
-  } catch (err) {
-    // Vercel has a read-only filesystem — log but don't crash
-    console.warn("[intakes] Could not persist to disk (expected on Vercel):", err);
-  }
-
-  return newIntake;
+  if (error) throw new Error(`Failed to store intake: ${error.message}`);
+  return toIntakeData(data as IntakeRow);
 }
 
-// Get recent intakes (for admin endpoint)
 export async function getRecentIntakes(limit: number = 50): Promise<IntakeData[]> {
-  const intakes = await getIntakes();
-  return intakes
-    .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
-    .slice(0, limit);
+  const { data, error } = await getSupabaseAdmin()
+    .from("intakes")
+    .select()
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error) throw new Error(`Failed to read intakes: ${error.message}`);
+  return (data as IntakeRow[]).map(toIntakeData);
 }

@@ -1,34 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFile, writeFile } from "fs/promises";
-import path from "path";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 
-const DB_PATH = path.join(process.cwd(), "newsletter-subscribers.json");
+// Signups land in Supabase (public.newsletter_subscribers). This used to write
+// a JSON file under process.cwd(), which fails on Vercel's read-only
+// filesystem — every production signup was lost.
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-type SubscriberRecord = {
-  email: string;
-  subscribedAt: string;
-  source?: string;
-};
-
-async function loadSubscribers(): Promise<SubscriberRecord[]> {
-  try {
-    const raw = await readFile(DB_PATH, "utf8");
-    return JSON.parse(raw) as SubscriberRecord[];
-  } catch {
-    return [];
-  }
-}
-
-async function saveSubscribers(subscribers: SubscriberRecord[]) {
-  await writeFile(DB_PATH, JSON.stringify(subscribers, null, 2) + "\n", "utf8");
-}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
-    const source = typeof body.source === "string" ? body.source.trim().slice(0, 64) : undefined;
+    const source = typeof body.source === "string" ? body.source.trim().slice(0, 64) : null;
 
     if (!email) {
       return NextResponse.json({ success: false, error: "Email is required." }, { status: 400 });
@@ -37,13 +20,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: "Please enter a valid email address." }, { status: 400 });
     }
 
-    const subscribers = await loadSubscribers();
-    if (subscribers.some((s) => s.email === email)) {
+    const { error } = await getSupabaseAdmin()
+      .from("newsletter_subscribers")
+      .insert({ email, source });
+
+    // 23505 = unique violation on lower(email): already on the list, which is
+    // a success from the subscriber's point of view.
+    if (error?.code === "23505") {
       return NextResponse.json({ success: true, message: "You're already subscribed." });
     }
-
-    subscribers.push({ email, subscribedAt: new Date().toISOString(), ...(source ? { source } : {}) });
-    await saveSubscribers(subscribers);
+    if (error) throw new Error(error.message);
 
     return NextResponse.json({ success: true, message: "You're in." });
   } catch (error) {

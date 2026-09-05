@@ -57,7 +57,7 @@ export default function Portfolio() {
       category: "Artist Website",
       tag: "Live",
       description: "Music artist portfolio with streaming integrations and performance optimization. Fast, discoverable, built for an artist who needed to be found.",
-      image: "/images/cbarrgs-logo.jpeg",
+      image: "/images/cbarrgs-site.jpg",
       tags: ["Next.js", "SEO", "Performance"],
       color: "blue",
       href: "/portfolio/cbarrgs",
@@ -80,18 +80,22 @@ export default function Portfolio() {
       <section className="relative py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <StaggerContainer className="grid lg:grid-cols-2 gap-8" staggerDelay={0.2}>
-            {projects.map((project) => (
-              <StaggerItem key={project.id}>
+            {projects.map((project, i) => {
+              // An odd number of projects would leave a hole in the 2-up grid, so the
+              // last card spans the row and lays its image out beside the copy.
+              const wide = i === projects.length - 1 && projects.length % 2 === 1;
+              return (
+              <StaggerItem key={project.id} className={wide ? "lg:col-span-2" : undefined}>
                 <AnimatedCard>
-                  <Card className="bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color,transform] duration-300 overflow-hidden group h-full">
-                <div className={`relative aspect-video overflow-hidden ${project.imageContain ? 'bg-card' : ''}`}>
+                  <Card className={`bg-card border-foreground/10 hover:border-primary/50 transition-[color,border-color,background-color,transform] duration-300 overflow-hidden group h-full ${wide ? "lg:grid lg:grid-cols-[1.15fr_1fr] lg:items-stretch" : ""}`}>
+                <div className={`relative overflow-hidden ${wide ? "aspect-video lg:aspect-auto lg:h-full lg:min-h-[22rem]" : "aspect-video"} ${project.imageContain ? 'bg-card' : ''}`}>
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     className={`${project.imageContain ? 'object-contain p-8' : 'object-cover'} group-hover:scale-105 transition-transform duration-300`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent ${wide ? "lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-background" : ""}`} />
                   <div className="absolute top-4 left-4">
                     <span className="inline-block px-3 py-1 bg-primary/15 text-primary backdrop-blur-sm rounded-none text-sm font-medium">
                       {project.category}
@@ -106,6 +110,7 @@ export default function Portfolio() {
                   )}
                 </div>
 
+                <div className={`flex flex-col ${wide ? "lg:justify-center" : ""}`}>
                 <CardHeader>
                   <CardTitle className="text-2xl font-bold text-foreground mb-2 font-mono">{project.title}</CardTitle>
                   <CardDescription className="text-foreground/70 text-base">
@@ -113,7 +118,7 @@ export default function Portfolio() {
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent className="space-y-4">
+                <CardContent className={`mt-auto space-y-4 ${wide ? "lg:mt-4" : ""}`}>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
@@ -140,10 +145,12 @@ export default function Portfolio() {
                     </Link>
                   </div>
                 </CardContent>
+                </div>
                   </Card>
                 </AnimatedCard>
               </StaggerItem>
-            ))}
+              );
+            })}
           </StaggerContainer>
 
           {/* More Projects Coming */}

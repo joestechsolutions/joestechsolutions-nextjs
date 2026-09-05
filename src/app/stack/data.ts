@@ -148,10 +148,10 @@ export const tools = [
 ];
 
 export const stats = [
-  { label: "Live Client Deployments", value: "3" },
-  { label: "Scheduled Automations", value: "40+" },
-  { label: "Cloud Models", value: "24+" },
-  { label: "Indexed Code Nodes", value: "68K+" },
-  { label: "Active Services", value: "19" },
-  { label: "Skills Library", value: "950+" },
+  { label: "Live Client Deployments", value: "3", to: 3, suffix: "" },
+  { label: "Scheduled Automations", value: "40+", to: 40, suffix: "+" },
+  { label: "Cloud Models", value: "24+", to: 24, suffix: "+" },
+  { label: "Indexed Code Nodes", value: "68K+", to: 68, suffix: "K+" },
+  { label: "Active Services", value: "19", to: 19, suffix: "" },
+  { label: "Skills Library", value: "950+", to: 950, suffix: "+" },
 ];

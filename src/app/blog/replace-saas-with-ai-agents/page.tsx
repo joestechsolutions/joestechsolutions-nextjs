@@ -16,12 +16,12 @@ const POST = {
 };
 
 export const metadata: Metadata = {
-  title: "How 24 AI Agents Run My Entire Business — No SaaS Required | Joe's Tech Solutions",
+  title: "How AI Agents Run My Entire Business — No SaaS Required | Joe's Tech Solutions",
   description:
     "Instead of paying $285/mo for 10+ SaaS tools, I built an AI agent system that handles everything — running on a Claude subscription I already use for development.",
   alternates: { canonical: "/blog/replace-saas-with-ai-agents" },
   openGraph: {
-    title: "How 24 AI Agents Run My Entire Business — No SaaS Required",
+    title: "How AI Agents Run My Entire Business — No SaaS Required",
     description: "Instead of paying $285/mo for 10+ SaaS tools, I built an AI agent system that handles everything — running on a Claude subscription I already use for development.",
     url: "https://www.joestechsolutions.com/blog/replace-saas-with-ai-agents",
     type: "article",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "How 24 AI Agents Run My Entire Business — No SaaS Required",
+    title: "How AI Agents Run My Entire Business — No SaaS Required",
     description: "Instead of paying $285/mo for 10+ SaaS tools, I built an AI agent system that handles everything — running on a Claude subscription I already use for development.",
     images: ["/images/blog/replace-saas-og-v2.png"],
   },

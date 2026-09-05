@@ -18,11 +18,11 @@ export const SITE_OG_IMAGE_URL = "/og-image.png";
 // Dimensions recorded so we know which need resizing for 1200x630 later:
 export const SECTION_OG_IMAGES = {
   about: "/images/joe-corporate-headshot.png", // 1024x1024 1.4MB
-  agentSystem: "/images/blog/22-agent-architecture-og.png", // 2000x1776
+  agentSystem: "/images/og/agent-system.png", // 2400x1260 (1200x630 @2x)
   mapsGrowth: "/images/renfaire-hero.jpg", // 1280x720
   portfolio: "/images/client-collaboration.jpg", // 1920x1080
   privateAi: "/images/joe-launch-private-ai.png", // 1584x672
-  stack: "/images/blog/22-agent-org-chart.png", // 2000x1776
+  stack: "/images/og/stack.png", // 2400x1260 (1200x630 @2x)
   industries: "/images/joe-deploying-server.png", // 1024x1024
   contact: "/images/joe-profile.jpg", // 1920x1920
 } as const;

@@ -37,7 +37,7 @@ const securityHeaders = [
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https: https://*.google-analytics.com https://*.googletagmanager.com https://*.g.doubleclick.net;
       font-src 'self' data:;
-      connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://stats.g.doubleclick.net;
+      connect-src 'self' https://auofolcuctimbrevhiev.supabase.co https://vercel.live wss://ws-us3.pusher.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://stats.g.doubleclick.net;
       frame-src 'self' https://vercel.live;
       frame-ancestors 'none';
       base-uri 'self';

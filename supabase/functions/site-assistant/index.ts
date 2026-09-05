@@ -200,9 +200,19 @@ async function answer(question: string, history: string, siteContext: string): P
   return (Array.isArray(out) ? out.join("") : String(out ?? "")).trim();
 }
 
+// Supabase's gateway overwrites X-Forwarded-For with the real client address
+// (verified: a spoofed header did not reach the limiter), so the first entry is
+// the caller. Validate it anyway: anything that would not cast to inet is
+// bucketed together as 0.0.0.0 rather than erroring into the fail-open path.
+const IPV4 = /^(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)$/;
+const IPV6 = /^[0-9a-f:]+$/i;
 function clientIp(req: Request): string {
-  const fwd = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  return fwd || req.headers.get("cf-connecting-ip") || "0.0.0.0";
+  const raw =
+    req.headers.get("cf-connecting-ip") ||
+    req.headers.get("x-forwarded-for")?.split(",")[0] ||
+    "";
+  const ip = raw.trim();
+  return IPV4.test(ip) || (ip.includes(":") && IPV6.test(ip)) ? ip : "0.0.0.0";
 }
 
 const EMAIL_RE = /[^\s@]+@[^\s@]+\.[^\s@]{2,}/;

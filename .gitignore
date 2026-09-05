@@ -62,3 +62,4 @@ scripts/content-pipeline/venv/
 __pycache__/
 *.pyc
 public/generated/*.raw.mp4
+.next-prompt-library.html

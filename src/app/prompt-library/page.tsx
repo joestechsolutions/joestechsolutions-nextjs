@@ -17,6 +17,7 @@ import { BreadcrumbSchema } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/home/scroll/PageHero";
 import { CtaScene } from "@/components/home/scroll/CtaScene";
 import { SITE_OG_IMAGE } from "@/lib/og-images";
+import { PROMPT_LIBRARY, PROMPT_COUNT } from "@/content/prompt-library";
 
 export const metadata: Metadata = {
   title: "Free Prompt Library | Joe's Tech Solutions",
@@ -97,7 +98,7 @@ export default function PromptLibrary() {
         eyebrow="ls ~/prompts"
         title="The prompt library I actually use."
         highlight="actually"
-        subtitle="Not scraped from Twitter. These are the prompts running my agents right now — ops, sales, content, coding, and research. Free, in exchange for your email."
+        subtitle={`Not copy-pasted from Twitter. ${PROMPT_COUNT} prompts — the ones running parts of my business, plus the best patterns from operators I follow, rewritten for real work: ops, sales, content, coding, and research. Free, in exchange for your email.`}
         media={{ type: "video", src: "/generated/page-prompt-library-loop.mp4", poster: "/generated/page-prompt-library-loop-poster.jpg" }}
       />
 
@@ -110,6 +111,7 @@ export default function PromptLibrary() {
           >
             {categories.map((category) => {
               const Icon = category.icon;
+              const count = PROMPT_LIBRARY.find((c) => c.name === category.name)?.prompts.length ?? 0;
               return (
                 <StaggerItem key={category.name} className="h-full">
                   <AnimatedCard className="h-full">
@@ -120,9 +122,12 @@ export default function PromptLibrary() {
                         >
                           <Icon weight="duotone" className={`h-8 w-8 ${category.accent}`} />
                         </div>
-                        <h2 className="text-xl font-bold text-foreground font-mono">
-                          {category.name}
-                        </h2>
+                        <div className="flex items-baseline justify-between gap-3">
+                          <h2 className="text-xl font-bold text-foreground font-mono">
+                            {category.name}
+                          </h2>
+                          <span className="font-mono text-[11px] tracking-wider text-primary">{count} prompts</span>
+                        </div>
                         <p className="text-foreground/70 text-sm leading-relaxed">
                           {category.description}
                         </p>
@@ -144,8 +149,9 @@ export default function PromptLibrary() {
         <div className="mx-auto max-w-3xl px-6 lg:px-8 text-center">
           <FadeIn>
             <p className="text-lg text-foreground/60 font-light">
-              These prompts run my business — one orchestrator, 40+ scheduled automations, every day. I didn&apos;t
-              curate them from a blog post. I wrote them because I needed them.{" "}
+              Some of these run my business every day — one orchestrator, 40+ scheduled automations.
+              The rest are the best patterns from operators I follow, rewritten so they work for a real
+              small business instead of a demo. Nothing here is copy-pasted.{" "}
               <Link href="/stack" className="text-primary hover:underline">See the live stack</Link>.
             </p>
           </FadeIn>
@@ -160,8 +166,9 @@ export default function PromptLibrary() {
               Get the full library.
             </h2>
             <p className="text-lg text-foreground/70 mb-10 font-light">
-              Drop your email and I&apos;ll send you the whole thing — plus the occasional note
-              when I add new prompts. No spam, unsubscribe anytime.
+              Drop your email and the PDF is yours right away — all {PROMPT_COUNT} prompts, with
+              notes on making each one your own. Plus the occasional note when I add new ones.
+              No spam, unsubscribe anytime.
             </p>
           </FadeIn>
           <FadeIn delay={0.15}>
@@ -174,10 +181,17 @@ export default function PromptLibrary() {
                     weight="duotone"
                     className="h-10 w-10 text-primary mx-auto"
                   />
-                  <p className="text-foreground font-semibold font-mono">You&apos;re in.</p>
+                  <p className="text-foreground font-semibold font-mono">You&apos;re in. Here&apos;s the library.</p>
+                  <a
+                    href="/downloads/jts-prompt-library.pdf"
+                    download="jts-prompt-library.pdf"
+                    className="inline-flex items-center gap-2 border-2 border-foreground bg-primary px-6 py-3 font-mono text-sm font-bold text-background shadow-[4px_4px_0_var(--foreground)] transition-transform hover:-translate-y-0.5"
+                  >
+                    <DownloadSimple weight="bold" className="h-4 w-4" />
+                    Download the PDF ({PROMPT_COUNT} prompts)
+                  </a>
                   <p className="text-foreground/60 text-sm">
-                    Download coming soon — I&apos;m packaging the PDF now. You&apos;ll get it in
-                    your inbox the moment it&apos;s ready.
+                    Bookmark this page — new prompts get added here first.
                   </p>
                 </div>
               }

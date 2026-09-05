@@ -4,6 +4,7 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import { AnimatedCard } from "@/components/animations/AnimatedCard";
 import { Card, CardContent } from "@/components/ui/card";
+import { CountUp } from "@/components/animations/CountUp";
 import { Cpu, Database, Wrench, GitBranch, Brain, Cloud, Desktop, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -43,7 +44,9 @@ export default function StackPage() {
               <StaggerItem key={stat.label}>
                 <Card className="bg-card border-foreground/10 text-center">
                   <CardContent className="pt-6 pb-6">
-                    <div className="text-4xl font-bold text-primary font-mono">{stat.value}</div>
+                    <div className="text-4xl font-bold text-primary font-mono">
+                      <CountUp to={stat.to} suffix={stat.suffix} duration={1.8} />
+                    </div>
                     <div className="text-sm text-foreground/60 mt-2">{stat.label}</div>
                   </CardContent>
                 </Card>

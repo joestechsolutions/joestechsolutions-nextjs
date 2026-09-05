@@ -11,9 +11,12 @@
 // track the site without a knowledge base to maintain.
 //
 // Secrets: OLLAMA_API_KEY (chat via Ollama Cloud; REPLICATE_API_TOKEN is the
-// fallback if it is missing), RESEND_API_KEY (lead email). No OpenAI anywhere:
-// retrieval is keyword overlap over the sitemap, which is plenty for ~15 pages.
-// SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are injected by the platform.
+// fallback if it is missing), RESEND_API_KEY (lead email). Each is read from
+// the function's env first, then from Supabase Vault via public.get_secret()
+// (service-role only), so keys can be rotated in Vault without a redeploy.
+// No OpenAI anywhere: retrieval is keyword overlap over the sitemap, which is
+// plenty for ~15 pages. SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are
+// injected by the platform.
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -29,6 +32,22 @@ const RATE_WINDOW = "1 hour";
 
 // Joe's default model on his own stack (see /stack). Cheap, fast, tool-capable.
 const OLLAMA_MODEL = "glm-5.3-flash";
+
+type Admin = ReturnType<typeof createClient>;
+
+// Env first, Vault second. Cached per isolate so it is one RPC per cold start,
+// not one per message.
+const secretCache = new Map<string, string | null>();
+async function getSecret(supabase: Admin, name: string): Promise<string | null> {
+  const fromEnv = Deno.env.get(name);
+  if (fromEnv) return fromEnv;
+  if (secretCache.has(name)) return secretCache.get(name) ?? null;
+  const { data, error } = await supabase.rpc("get_secret", { p_name: name });
+  if (error) console.warn(`[secrets] vault read failed for ${name}:`, error.message);
+  const value = typeof data === "string" && data ? data : null;
+  secretCache.set(name, value);
+  return value;
+}
 
 const ALLOWED_ORIGINS = [
   "https://joestechsolutions.com",
@@ -151,7 +170,10 @@ async function answerWithOllama(prompt: string, key: string): Promise<string> {
     body: JSON.stringify({
       model: OLLAMA_MODEL,
       stream: false,
-      think: false,
+      // think:true routes the model's reasoning into message.thinking, which we
+      // drop. With think:false glm-5.3-flash narrates its reasoning inside
+      // content instead — verified — so this is the clean setting.
+      think: true,
       options: { temperature: 0.4, num_predict: 600 },
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
@@ -161,9 +183,9 @@ async function answerWithOllama(prompt: string, key: string): Promise<string> {
   });
   if (!res.ok) throw new Error(`Ollama ${res.status}: ${await res.text()}`);
   const data = await res.json();
-  const text = data?.message?.content;
-  if (typeof text !== "string" || !text.trim()) throw new Error("Ollama returned no content");
-  return text.trim();
+  const text = String(data?.message?.content ?? "").replace(/<think>[\s\S]*?<\/think>/g, "").trim();
+  if (!text) throw new Error("Ollama returned no content");
+  return text;
 }
 
 // Kept only as a fallback while OLLAMA_API_KEY is being provisioned.
@@ -187,15 +209,20 @@ async function answerWithReplicate(prompt: string, token: string): Promise<strin
   return (Array.isArray(out) ? out.join("") : String(out ?? "")).trim();
 }
 
-async function answer(question: string, history: string, siteContext: string): Promise<string> {
+async function answer(
+  supabase: Admin,
+  question: string,
+  history: string,
+  siteContext: string,
+): Promise<{ text: string; model: string }> {
   const prompt = buildUserPrompt(question, history, siteContext);
-  const ollamaKey = Deno.env.get("OLLAMA_API_KEY");
-  if (ollamaKey) return answerWithOllama(prompt, ollamaKey);
+  const ollamaKey = await getSecret(supabase, "OLLAMA_API_KEY");
+  if (ollamaKey) return { text: await answerWithOllama(prompt, ollamaKey), model: `ollama/${OLLAMA_MODEL}` };
 
-  const replicateToken = Deno.env.get("REPLICATE_API_TOKEN");
+  const replicateToken = await getSecret(supabase, "REPLICATE_API_TOKEN");
   if (!replicateToken) throw new Error("Neither OLLAMA_API_KEY nor REPLICATE_API_TOKEN is set");
   console.warn("[model] OLLAMA_API_KEY not set \u2014 falling back to Replicate");
-  return answerWithReplicate(prompt, replicateToken);
+  return { text: await answerWithReplicate(prompt, replicateToken), model: "replicate/gpt-4.1-mini" };
 }
 
 // Supabase's gateway overwrites X-Forwarded-For with the real client address
@@ -218,14 +245,14 @@ const WANTS_HUMAN =
   /\b(talk to joe|speak to joe|contact joe|reach joe|a human|real person|call me|email me|get in touch|hire|quote|proposal)\b/i;
 
 // Anyone can reach Joe — that is the whole point of the widget.
-async function notifyOwner(payload: {
+async function notifyOwner(supabase: Admin, payload: {
   email: string | null;
   message: string;
   reply: string;
   page: string;
   sessionId: string;
 }) {
-  const key = Deno.env.get("RESEND_API_KEY");
+  const key = await getSecret(supabase, "RESEND_API_KEY");
   if (!key) {
     console.warn("[lead] RESEND_API_KEY not set — lead recorded in DB only", payload.sessionId);
     return;
@@ -312,7 +339,7 @@ serve(async (req) => {
       .join("\n");
 
     const siteContext = await buildSiteContext(message);
-    const reply = await answer(message, history, siteContext);
+    const { text: reply, model } = await answer(supabase, message, history, siteContext);
 
     await supabase.from("chat_conversations").insert([
       { session_id: sessionId, type: "user", content: message, page_context: page },
@@ -332,10 +359,10 @@ serve(async (req) => {
         customer_context: { email, page, session_id: sessionId, source: "site-assistant" },
       });
       if (escalationError) console.warn("[lead] escalation insert failed:", escalationError.message);
-      await notifyOwner({ email, message, reply, page, sessionId });
+      await notifyOwner(supabase, { email, message, reply, page, sessionId });
     }
 
-    return json({ content: reply, session_id: sessionId, lead_captured: isLead });
+    return json({ content: reply, session_id: sessionId, lead_captured: isLead, model });
   } catch (error) {
     console.error("site-assistant error:", error);
     return json(

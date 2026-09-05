@@ -7,25 +7,25 @@ export const lastUpdated = "September 5, 2026";
 export const models = [
   {
     name: "Claude Opus 5",
-    role: "Heavy reasoning — flagship agentic coding + hardest problems",
+    role: "Heavy reasoning — deep development at the desk via Claude Code",
     provider: "Claude (first-party subscription)",
     capabilities: ["tools", "thinking", "vision"],
   },
   {
     name: "Fable 5.1",
-    role: "Frontier coding agent — build-and-ship pipeline, long-horizon tasks",
+    role: "Frontier coding — deep dev at the desk + remote control from the phone",
     provider: "Claude (first-party subscription)",
     capabilities: ["tools", "thinking", "vision"],
   },
   {
     name: "Fable 5",
-    role: "Agentic coding + client app builds (Archive Salon, beta loop)",
+    role: "Agentic coding + client app builds (Archive Salon, beta loop) — desk and remote",
     provider: "Claude (first-party subscription)",
     capabilities: ["tools", "thinking", "vision"],
   },
   {
     name: "GLM 5.3 Flash",
-    role: "Default — main conversation + cron fleet",
+    role: "Hermes default — desk conversations + Telegram on the phone + cron fleet",
     provider: "Ollama Cloud",
     capabilities: ["tools", "thinking"],
   },

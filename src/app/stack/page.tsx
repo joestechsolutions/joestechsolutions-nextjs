@@ -184,12 +184,12 @@ export default function StackPage() {
                 How It Actually Works
               </h2>
               <p className="text-xl text-foreground/70 font-light leading-relaxed">
-                A message comes in via Telegram. Hermes (the orchestrator) reads it, decides what to do,
-                and either handles it directly or delegates to a coding subagent. Frontier work runs on
-                Claude Opus 5 and Fable 5/5.1 through a first-party Claude Code subscription; everything else
-                routes across 24+ cloud models by task type.
-                MemPalace remembers everything across sessions. GitNexus maps the codebase so changes are
-                surgical, not guesswork. Flat subscriptions — no per-token costs.
+                At the desk: Hermes (the orchestrator) runs conversations and the cron fleet on GLM 5.3 Flash,
+                and deep development goes through Claude Code on frontier models — Opus 5 for the hardest
+                reasoning, Fable 5.1 for the build-and-ship pipeline. Away from the desk: the same stack follows
+                — Hermes answers on Telegram from the phone, and Claude Code keeps building via remote control.
+                MemPalace remembers everything across sessions and surfaces. GitNexus maps the codebase so changes are
+                surgical, not guesswork. Flat subscriptions — no per-token costs, at the desk or in your pocket.
               </p>
             </div>
           </FadeIn>

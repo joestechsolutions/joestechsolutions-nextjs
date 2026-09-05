@@ -303,7 +303,8 @@ export default function AgentSystem() {
           <FadeIn delay={0.15}>
             <div className="flex flex-wrap justify-center gap-4">
               {[
-                { name: "Telegram", icon: ChatTeardropDots, desc: "Text & voice" },
+                { name: "Telegram", icon: ChatTeardropDots, desc: "Text & voice — from the phone" },
+                { name: "Claude Code Remote", icon: Cpu, desc: "Frontier coding from anywhere" },
                 { name: "Gmail", icon: EnvelopeSimple, desc: "Read · Draft · Send" },
                 { name: "Instagram", icon: InstagramLogo, desc: "Reply · Post · Schedule" },
                 { name: "Stripe", icon: StripeLogo, desc: "Payment monitoring" },

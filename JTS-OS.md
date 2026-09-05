@@ -42,6 +42,12 @@ Joe's title: **AI Developer · Autonomous Systems Builder · Multi-Agent AI Syst
 
 Explicitly rejects "Engineer" as identity title. OK to mention n8n/CI/CD as historical tools in case studies. Do not invent roles or titles — verify with Joe first.
 
+### Working Model (how Joe actually runs this — use in copy)
+
+- **At the computer (deep development):** Claude Code on Fable 5.1 and Opus 5 for the frontier coding; Hermes (GLM-5.3-Flash) for conversation + orchestration.
+- **On the phone (away from the desk):** Telegram via the Hermes agent for everything day-to-day; Claude Code via remote control keeps builds running from anywhere.
+- Same memory (MemPalace) spans desk and phone — work started at the desk continues on the phone.
+
 ---
 
 ## 2. The Org Chart (v7)

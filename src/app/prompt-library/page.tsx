@@ -142,7 +142,7 @@ export default function PromptLibrary() {
         <div className="mx-auto max-w-3xl px-6 lg:px-8 text-center">
           <FadeIn>
             <p className="text-lg text-foreground/60 font-light">
-              These prompts run my business — 14 agents, 30 cron jobs, every day. I didn&apos;t
+              These prompts run my business — one orchestrator, 40+ scheduled automations, every day. I didn&apos;t
               curate them from a blog post. I wrote them because I needed them.{" "}
               <Link href="/stack" className="text-primary hover:underline">See the live stack</Link>.
             </p>

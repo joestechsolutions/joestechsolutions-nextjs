@@ -23,7 +23,7 @@ export const post: BlogPost = {
     "/images/blog/22-agent-workflow.png": { width: 2200, height: 3250 },
   },
   content: `
-<p><em>Editor's note (July 2026): this post is a snapshot from February. The team has since grown to 14 agents — see the live setup at <a href="/stack">/stack</a>.</em></p>
+<p><em>Editor's note (July 2026): this post is a snapshot from February. The system has since been rebuilt around one orchestrator with executive skills, VPs, and worker agents spawned on demand — see the live setup at <a href="/stack">/stack</a>.</em></p>
 
 <p class="lead">I run a one-man AI consultancy out of San Diego. No employees, no contractors, no VA. Just me.</p>
 

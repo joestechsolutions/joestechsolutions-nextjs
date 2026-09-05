@@ -133,7 +133,7 @@ export function ArchitectureDiagram() {
           <Node x={640} y={400} label="Search" color="#64748B" index={11} size="sm" />
         </svg>
       </div>
-      <p className="text-center text-foreground/40 text-sm mt-3">System architecture — one VPS, 24 agents, zero Kubernetes</p>
+      <p className="text-center text-foreground/40 text-sm mt-3">System architecture — one VPS, a team of agents, zero Kubernetes</p>
     </div>
   );
 }

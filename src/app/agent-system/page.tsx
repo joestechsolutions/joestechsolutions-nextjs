@@ -191,9 +191,9 @@ export default function AgentSystem() {
                 color: "#02a0a0",
                 items: [
                   "Orchestrator AI (CTO-level)",
-                  "6 C-Suite: CTO, Chief of Staff, CFO, COO, CMO + more",
-                  "6 VPs: Engineering, Infrastructure, Product + more",
-                  "14 specialized agents",
+                  "Executive skills: Chief of Staff, CFO, COO, CMO",
+                  "VPs for Engineering, Infrastructure, and Product",
+                  "Specialized worker agents, spawned on demand",
                 ],
               },
               {
@@ -234,7 +234,7 @@ export default function AgentSystem() {
                 title: "24/7 Automation",
                 color: "#F472B6",
                 items: [
-                  "30 cron jobs running on schedule",
+                  "40+ scheduled automations",
                   "Daily standups & briefings",
                   "Weekly reviews per department",
                   "Content posting on autopilot",
@@ -383,11 +383,11 @@ export default function AgentSystem() {
 
                 <ul className="space-y-3 mb-8">
                   {[
-                    "Multi-agent hierarchy (orchestrator + 14 agents)",
+                    "Multi-agent hierarchy (orchestrator, executive skills, VPs, workers on demand)",
                     "100+ custom skills library",
                     "Memory system (semantic search + knowledge graph)",
                     "Telegram, Gmail, Instagram, Stripe integrations",
-                    "24/7 cron automation (30 scheduled jobs)",
+                    "24/7 cron automation (40+ scheduled jobs)",
                     "Frontier Claude models (Opus 5 + Fable 5/5.1)",
                     "Ollama Cloud routing for 24+ task-fit models",
                     "Dedicated VPS with daily backups",

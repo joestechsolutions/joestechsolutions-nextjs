@@ -13,13 +13,13 @@ import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "The Stack | Joe's Tech Solutions",
-  description: "The actual AI infrastructure powering Joe's Tech Solutions — 14 AI agents, Claude Opus 5 + Fable 5/5.1 + 24 cloud models, 10 services, 68K+ indexed code nodes. Updated live.",
+  description: "The actual AI infrastructure powering Joe's Tech Solutions — Claude Opus 5 + Fable 5/5.1, 24+ cloud models, 19 active services, 40+ scheduled automations, 68K+ indexed code nodes. Updated live.",
   alternates: {
     canonical: '/stack',
   },
   openGraph: {
     title: "The Stack | Joe's Tech Solutions",
-    description: "The actual AI infrastructure powering JTS — 14 AI agents, Claude Opus 5 + Fable 5/5.1 + 24 cloud models, 10 services, 68K+ indexed code nodes.",
+    description: "The actual AI infrastructure powering JTS — Claude Opus 5 + Fable 5/5.1, 24+ cloud models, 19 active services, 40+ scheduled automations, 68K+ indexed code nodes.",
     url: 'https://www.joestechsolutions.com/stack',
   },
 };

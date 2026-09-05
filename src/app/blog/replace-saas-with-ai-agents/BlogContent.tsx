@@ -10,7 +10,7 @@ import { TableOfContents } from "@/components/blog/TableOfContents";
 import { TimelineStep } from "@/components/blog/TimelineStep";
 
 const tocItems = [
-  { id: "the-stack", label: "The Stack: Hermes + 24 Agents" },
+  { id: "the-stack", label: "The Stack: Hermes + Specialized Agents" },
   { id: "what-it-replaced", label: "What It Actually Replaced" },
   { id: "architecture", label: "The Architecture" },
   { id: "three-tier", label: "The 3-Tier Action Model" },
@@ -32,8 +32,7 @@ export function BlogContent() {
           {/* Editor's note */}
           <FadeIn delay={0.12}>
             <p className="text-gray-400 italic text-base leading-relaxed mb-6">
-              Editor&apos;s note (August 2026): this post is a snapshot from March. The team has since
-              been consolidated to 14 agents — see the live setup at <a href="/stack" className="text-primary hover:underline">/stack</a>.
+              Editor&apos;s note (August 2026): this post is a snapshot from March. The system has since been rebuilt around one orchestrator with executive skills, VPs, and worker agents spawned on demand — see the live setup at <a href="/stack" className="text-primary hover:underline">/stack</a>.
             </p>
           </FadeIn>
 
@@ -52,7 +51,7 @@ export function BlogContent() {
               and my AI has already triaged my inbox, checked my deployments, drafted a proposal for a new client,
               and reminded me that my SSL cert expires in 6 days.
             </p>
-            <p className="text-gray-200 text-lg leading-loose mb-8">So instead of buying a stack of SaaS subscriptions, I built 24 AI agents to do it all.</p>
+            <p className="text-gray-200 text-lg leading-loose mb-8">So instead of buying a stack of SaaS subscriptions, I built a team of AI agents to do it all.</p>
           </FadeIn>
 
           {/* Stats block */}
@@ -67,9 +66,9 @@ export function BlogContent() {
 
           {/* The Stack */}
           <FadeIn>
-            <h2 id="the-stack" className="pt-16 text-foreground text-3xl sm:text-4xl font-bold mb-6">The Stack: Hermes + 24 Specialized Agents</h2>
+            <h2 id="the-stack" className="pt-16 text-foreground text-3xl sm:text-4xl font-bold mb-6">The Stack: Hermes + Specialized Agents</h2>
             <p className="text-gray-200 text-lg leading-loose mb-6">
-              One orchestrator agent (Lurkr) that sits on top of 24 sub-agents. Each one has a lane:
+              One orchestrator agent (Lurkr) that sits on top of specialized sub-agents. Each one has a lane:
             </p>
           </FadeIn>
 
@@ -102,7 +101,7 @@ export function BlogContent() {
           <Callout variant="tip">
             <p className="mb-0">
               Here&apos;s the kicker: I already pay for the subscriptions my agents run on — Claude Code (frontier Opus 5 + Fable 5/5.1) and Ollama Cloud — for daily development work. 
-              The 24 agents run on those <strong>same subscriptions at zero marginal cost</strong>. So I avoided $285/mo in SaaS subscriptions with effectively $0 additional spend. Not every task needs the most powerful model — Opus 5 and Fable run the frontier work, the routed cloud models handle most sub-agents, lightweight models run checks. All included.
+              The agents run on those <strong>same subscriptions at zero marginal cost</strong>. So I avoided $285/mo in SaaS subscriptions with effectively $0 additional spend. Not every task needs the most powerful model — Opus 5 and Fable run the frontier work, the routed cloud models handle most sub-agents, lightweight models run checks. All included.
             </p>
           </Callout>
 
@@ -223,7 +222,7 @@ export function BlogContent() {
           <FadeIn>
             <h2 id="safety-guardrails" className="pt-16 text-foreground text-3xl sm:text-4xl font-bold mb-6">Safety &amp; Guardrails</h2>
             <p className="text-gray-200 text-lg leading-loose mb-10">
-              &ldquo;24 AI agents with access to your business tools&rdquo; sounds dangerous. Here&apos;s how it&apos;s not:
+              &ldquo;A team of AI agents with access to your business tools&rdquo; sounds dangerous. Here&apos;s how it&apos;s not:
             </p>
           </FadeIn>
 

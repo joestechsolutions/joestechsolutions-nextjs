@@ -21,8 +21,8 @@ const BEATS = [
   },
   {
     k: "02",
-    h: "16 agents. 24/7. My own hardware.",
-    p: "Self-hosted orchestration. No data leaves the building. I ran it on myself for a year before I let it near a client.",
+    h: "One orchestrator. 40+ automations. My own hardware.",
+    p: "Lurkr runs it as CTO — briefings, project stewards, watchdogs, weekly reviews. Self-hosted, local-first. I ran it on myself before I let it near a client.",
   },
   {
     k: "03",

@@ -25,7 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.joestechsolutions.com'),
-  title: "Joe's Tech Solutions | Boutique Development Studio",
+  title: "Joe's Tech Solutions — Custom AI & Automation for Small Business",
   description: "Mobile apps, web platforms, and private AI infrastructure for ambitious SMBs. From Olympic-level coaching apps to custom web solutions.",
   keywords: ["mobile app development", "web development", "AI infrastructure", "React Native", "Next.js", "consulting", "private AI", "custom software development", "boutique development studio"],
   alternates: {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Joe's Tech Solutions | Boutique Development Studio",
+    title: "Joe's Tech Solutions — Custom AI & Automation for Small Business",
     description: "Mobile apps, web platforms, and private AI infrastructure for ambitious SMBs.",
     url: 'https://www.joestechsolutions.com',
     siteName: "Joe's Tech Solutions",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Joe's Tech Solutions | Boutique Development Studio",
+    title: "Joe's Tech Solutions — Custom AI & Automation for Small Business",
     description: "Mobile apps, web platforms, and private AI infrastructure for ambitious SMBs.",
     images: ['/og-image.png'],
   },

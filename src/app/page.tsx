@@ -12,15 +12,15 @@ import { TIERS, type Tier } from "@/lib/tiers";
 import { SITE_OG_IMAGE } from "@/lib/og-images";
 
 export const metadata: Metadata = {
-  title: "Joe's Tech Solutions — Custom Software, Automation & AI for SMBs",
+  title: "Joe's Tech Solutions — Custom AI & Automation for Small Business",
   description:
-    "Custom software, automation, and AI — built for small businesses that just need things to work. I test everything on myself first. If it survives me, it'll survive you.",
+    "Custom software, automation, and AI for small businesses — built and battle-tested on a real 40-agent fleet. If it survives Joe, it survives you.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     images: [SITE_OG_IMAGE],
-    title: "Joe's Tech Solutions — Custom Software, Automation & AI for SMBs",
+    title: "Joe's Tech Solutions — Custom AI & Automation for Small Business",
     description:
       "Custom software, automation, and AI — built for small businesses that just need things to work. I test everything on myself first.",
     url: "https://www.joestechsolutions.com",

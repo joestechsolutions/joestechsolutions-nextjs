@@ -4,7 +4,7 @@ import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "Agent System | Joe's Tech Solutions",
-  description: "A full multi-agent AI system that runs your business 24/7. Hermes agent with sub-agents for coding, content, research, and ops. Connected to Telegram, Gmail, Instagram, Stripe.",
+  description: "A multi-agent AI system that runs your business 24/7 — coding, content, research, ops sub-agents connected to Telegram, Gmail, Instagram, Stripe.",
   alternates: {
     canonical: "/agent-system",
   },

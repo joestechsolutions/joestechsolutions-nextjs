@@ -60,7 +60,7 @@ export function TierCard({ tier }: { tier: Tier }) {
       >
         <Image
           src={tierIcon[tier.id]}
-          alt=""
+          alt={`${tier.name} tier icon`}
           width={96}
           height={96}
           className="mb-5 h-20 w-20 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:-translate-y-1"

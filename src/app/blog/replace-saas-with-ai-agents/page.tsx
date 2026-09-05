@@ -52,7 +52,7 @@ export default function ReplaceSaasPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
+            "@type": "Article",
             headline: POST.title,
             description: "Instead of paying $285/mo for 10+ SaaS tools, one developer built an AI agent system that handles everything — running on a Claude subscription already used for development.",
             image: "https://www.joestechsolutions.com/images/blog/replace-saas-og-v2.png",

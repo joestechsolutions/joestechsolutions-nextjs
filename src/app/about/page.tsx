@@ -9,8 +9,8 @@ import { CtaScene } from "@/components/home/scroll/CtaScene";
 import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
-  title: "About | Joe's Tech Solutions",
-  description: "I'm what you get when you skip the agency, skip the discovery sprint, and just hire the person who's going to build your thing. Forward Deployed Engineer — I show up where the work is.",
+  title: "About Joe Blas — Forward Deployed Engineer for Hire | JTS",
+  description: "Skip the agency. Hire Joe — forward deployed engineer building custom software, AI agents, and automation for San Diego businesses. Tested on himself first.",
   alternates: {
     canonical: '/about',
   },

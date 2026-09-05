@@ -11,7 +11,7 @@ import { PageHero } from "@/components/home/scroll/PageHero";
 import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
-  title: "Contact | Joe's Tech Solutions",
+  title: "Contact Joe — Custom Software & AI, San Diego | JTS",
   description: "No pitch, no pressure, no discovery call. Just tell me what you're dealing with and I'll tell you if I can help. If I can't, I'll tell you that too.",
   alternates: {
     canonical: '/contact',
@@ -127,7 +127,7 @@ export default async function Contact({
                   </ul>
                   <Button asChild className="w-full bg-primary hover:bg-primary/85 text-foreground mt-6 rounded-none shadow-lg shadow-primary/20">
                     <a href="mailto:joe@joestechsolutions.com?subject=Project%20Inquiry&body=Hi%20Joe%2C%0A%0AI%27m%20interested%20in%20discussing%20a%20project.%0A%0AProject%20description%3A%0A%0ATimeline%2Fbudget%3A%0A%0AQuestions%3A">
-                      <Image src="/icons/mail-dynamic/premium.png" alt="" width={16} height={16} className="mr-2 object-contain" />
+                      <Image src="/icons/mail-dynamic/premium.png" alt="Email" width={16} height={16} className="mr-2 object-contain" />
                       Send Email
                     </a>
                   </Button>
@@ -135,6 +135,61 @@ export default async function Contact({
               </Card>
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* What Happens Next */}
+      <section className="relative py-24 bg-card/30">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <FadeIn>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground font-mono mb-10">
+              What happens after you write.
+            </h2>
+          </FadeIn>
+          <StaggerContainer className="grid md:grid-cols-3 gap-6" staggerDelay={0.15}>
+            <StaggerItem>
+              <AnimatedCard>
+                <Card className="bg-card border-foreground/10 h-full">
+                  <CardContent className="pt-6">
+                    <p className="font-mono text-primary text-sm mb-3">1 — Same day</p>
+                    <h3 className="text-lg font-bold text-foreground mb-2">I read it myself.</h3>
+                    <p className="text-foreground/70 text-sm leading-relaxed">
+                      No intake form routing, no sales team. Your message lands in my inbox and
+                      I reply with a straight answer — usually the same day.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedCard>
+            </StaggerItem>
+            <StaggerItem>
+              <AnimatedCard>
+                <Card className="bg-card border-foreground/10 h-full">
+                  <CardContent className="pt-6">
+                    <p className="font-mono text-primary text-sm mb-3">2 — If I can help</p>
+                    <h3 className="text-lg font-bold text-foreground mb-2">One call, then a plan.</h3>
+                    <p className="text-foreground/70 text-sm leading-relaxed">
+                      We talk for 20 minutes about what&apos;s broken and what it&apos;s costing you.
+                      Then I send a fixed-scope plan with a real price — not a retainer trap.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedCard>
+            </StaggerItem>
+            <StaggerItem>
+              <AnimatedCard>
+                <Card className="bg-card border-foreground/10 h-full">
+                  <CardContent className="pt-6">
+                    <p className="font-mono text-primary text-sm mb-3">3 — If I can&apos;t</p>
+                    <h3 className="text-lg font-bold text-foreground mb-2">I tell you that too.</h3>
+                    <p className="text-foreground/70 text-sm leading-relaxed">
+                      If your problem isn&apos;t a fit — wrong budget, wrong problem, needs an agency —
+                      I&apos;ll say so and point you at what would actually work. Free of charge.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedCard>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 

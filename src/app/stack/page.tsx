@@ -14,7 +14,7 @@ import { SITE_OG_IMAGE, SECTION_OG_IMAGES } from "@/lib/og-images";
 
 export const metadata: Metadata = {
   title: "The Stack | Joe's Tech Solutions",
-  description: "The actual AI infrastructure powering Joe's Tech Solutions — Claude Opus 5 + Fable 5/5.1, 24+ cloud models, 19 active services, 40+ scheduled automations, 68K+ indexed code nodes. Updated live.",
+  description: "The real AI infrastructure behind Joe's Tech Solutions: Claude Opus 5, 24+ routed models, 19 active services, 68K+ indexed code nodes. Updated live.",
   alternates: {
     canonical: '/stack',
   },

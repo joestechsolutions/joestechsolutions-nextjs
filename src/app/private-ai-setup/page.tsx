@@ -40,9 +40,9 @@ function FAQItem({ question, answer, id }: { question: string; answer: string; i
         aria-controls={panelId}
         className="w-full flex items-center justify-between py-5 text-left group"
       >
-        <span className="text-lg font-medium text-foreground group-hover:text-primary transition-colors font-mono">
+        <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors font-mono">
           {question}
-        </span>
+        </h3>
         <div
           aria-hidden="true"
           style={{

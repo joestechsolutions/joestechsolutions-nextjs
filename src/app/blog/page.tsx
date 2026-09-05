@@ -9,7 +9,7 @@ import { SITE_OG_IMAGE } from "@/lib/og-images";
 
 
 export const metadata: Metadata = {
-  title: "Blog | Joe's Tech Solutions",
+  title: "AI & Automation Blog — Real Builds, No Hype | Joe's Tech Solutions",
   description:
     "Practical guides and straight talk on private AI, web development, and technology for small businesses. No hype — just things that actually work.",
   alternates: {

@@ -235,7 +235,7 @@ async function notifyOwner(payload: {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: "JTS Site Assistant <onboarding@resend.dev>",
+        from: "JTS Site Assistant <leads@subscribe.joestechsolutions.com>", // verified domain in Resend
         to: [OWNER_EMAIL],
         reply_to: payload.email ?? undefined,
         subject: payload.email

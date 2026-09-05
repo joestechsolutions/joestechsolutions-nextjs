@@ -118,9 +118,10 @@ export default function AgentSystem() {
                 <span className="text-foreground/40">Hermes gives you results.</span>
               </h2>
               <p className="text-xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                You can pay Anthropic $200/mo for Claude and hit usage caps by lunch.
-                Or you can run the same three-tier model routing on Ollama Cloud for $100/mo
-                with zero caps — and get an agent that actually does the work, not just talk about it.
+                You can pay Anthropic $200/mo for a capped Claude plan and hit usage limits by lunch.
+                I run frontier Claude models — Opus 5 and Fable 5/5.1 — on a first-party Claude Code
+                subscription, layered over Ollama Cloud routing for the rest. Frontier capability
+                without per-token metering — and an agent that actually does the work, not just talk about it.
               </p>
             </div>
           </FadeIn>
@@ -138,14 +139,16 @@ export default function AgentSystem() {
                   <p className="text-sm text-foreground/60">$200/mo · usage capped</p>
                 </div>
                 <div className="p-6 sm:p-8 bg-primary/5">
-                  <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Ollama Cloud</p>
-                  <p className="text-sm text-foreground/60">$100/mo · no caps</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">JTS Agent Stack</p>
+                  <p className="text-sm text-foreground/60">flat subscriptions · frontier + routed</p>
                 </div>
               </div>
               <div className="divide-y divide-foreground/5">
                 {[
-                  { tier: "Heavy Reasoning", anthropic: "Claude Opus", ollama: "glm-5.2:cloud" },
-                  { tier: "Balanced Coding", anthropic: "Claude Sonnet", ollama: "kimi-k2.7-code:cloud" },
+                  { tier: "Heavy Reasoning", anthropic: "Claude Opus", ollama: "Claude Opus 5 (first-party)" },
+                  { tier: "Frontier Coding", anthropic: "—", ollama: "Fable 5.1 / Fable 5 (first-party)" },
+                  { tier: "Balanced Coding", anthropic: "—", ollama: "glm-5.3:cloud" },
+                  { tier: "Sub-agents / Fleet", anthropic: "—", ollama: "kimi-k2.7-code:cloud" },
                   { tier: "Fast / Lightweight", anthropic: "Claude Haiku", ollama: "minimax-m3:cloud" },
                 ].map((row) => (
                   <div key={row.tier} className="grid grid-cols-3 divide-x divide-foreground/10">
@@ -384,7 +387,8 @@ export default function AgentSystem() {
                     "Memory system (semantic search + knowledge graph)",
                     "Telegram, Gmail, Instagram, Stripe integrations",
                     "24/7 cron automation (30 scheduled jobs)",
-                    "Ollama Cloud model routing — no usage caps",
+                    "Frontier Claude models (Opus 5 + Fable 5/5.1)",
+                    "Ollama Cloud routing for 24+ task-fit models",
                     "Dedicated VPS with daily backups",
                     "Weekly health checks + monthly updates",
                     "Priority same-day support",
@@ -399,7 +403,7 @@ export default function AgentSystem() {
                 </ul>
 
                 <p className="text-sm text-foreground/40 mb-6">
-                  Ollama Cloud subscription billed separately. VPS costs not included.
+                  Claude Code subscription + Ollama Cloud billed separately. VPS costs not included.
                 </p>
 
                 <MagneticButton strength={0.2} className="w-full">

@@ -101,8 +101,8 @@ export function BlogContent() {
 
           <Callout variant="tip">
             <p className="mb-0">
-              Here&apos;s the kicker: I already pay for Claude Max ($100/mo) for daily development work. 
-              The 24 agents run on that <strong>same subscription at zero marginal cost</strong>. So I avoided $285/mo in SaaS subscriptions with effectively $0 additional spend. Not every task needs the most powerful model — Opus runs the orchestrator, Sonnet handles most sub-agents, Haiku runs lightweight checks. All included.
+              Here&apos;s the kicker: I already pay for the subscriptions my agents run on — Claude Code (frontier Opus 5 + Fable 5/5.1) and Ollama Cloud — for daily development work. 
+              The 24 agents run on those <strong>same subscriptions at zero marginal cost</strong>. So I avoided $285/mo in SaaS subscriptions with effectively $0 additional spend. Not every task needs the most powerful model — Opus 5 and Fable run the frontier work, the routed cloud models handle most sub-agents, lightweight models run checks. All included.
             </p>
           </Callout>
 

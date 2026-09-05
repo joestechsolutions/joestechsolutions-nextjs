@@ -87,7 +87,7 @@ export function SaasComparisonTable() {
         {/* Footnote */}
         <div className="px-6 py-3 bg-foreground/[0.02] border-t border-foreground/[0.05]">
           <p className="text-foreground/40 text-xs">
-            * Agent system runs on existing Claude Max subscription ($100/mo) already used for daily development work — zero marginal cost.
+            * Agent system runs on subscriptions already used for daily work — Claude Code (frontier: Opus 5 + Fable 5/5.1) plus Ollama Cloud routing — zero marginal cost per agent.
           </p>
         </div>
       </div>
@@ -143,7 +143,7 @@ export function SaasComparisonTable() {
             </div>
           </div>
           <p className="text-foreground/40 text-xs border-t border-foreground/10 pt-2">
-            * Runs on existing Claude Max subscription already used for daily dev work
+            * Runs on subscriptions already in use — Claude Code (Opus 5 + Fable 5/5.1) + Ollama Cloud routing
           </p>
         </motion.div>
       </div>

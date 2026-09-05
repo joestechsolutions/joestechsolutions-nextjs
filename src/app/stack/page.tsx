@@ -12,13 +12,13 @@ import { CtaScene } from "@/components/home/scroll/CtaScene";
 
 export const metadata: Metadata = {
   title: "The Stack | Joe's Tech Solutions",
-  description: "The actual AI infrastructure powering Joe's Tech Solutions — 14 AI agents, 24 cloud models, 7 services, 60K+ indexed code nodes. Updated live.",
+  description: "The actual AI infrastructure powering Joe's Tech Solutions — 14 AI agents, Claude Opus 5 + Fable 5/5.1 + 24 cloud models, 10 services, 68K+ indexed code nodes. Updated live.",
   alternates: {
     canonical: '/stack',
   },
   openGraph: {
     title: "The Stack | Joe's Tech Solutions",
-    description: "The actual AI infrastructure powering JTS — 14 AI agents, 24 cloud models, 7 services, 60K+ indexed code nodes.",
+    description: "The actual AI infrastructure powering JTS — 14 AI agents, Claude Opus 5 + Fable 5/5.1 + 24 cloud models, 10 services, 68K+ indexed code nodes.",
     url: 'https://www.joestechsolutions.com/stack',
   },
 };
@@ -63,7 +63,7 @@ export default function StackPage() {
               </div>
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground font-mono">Models</h2>
-                <p className="text-foreground/60 mt-1">24 cloud models, routed by task type</p>
+                <p className="text-foreground/60 mt-1">Claude Opus 5 + Fable 5/5.1 lead; 24+ models routed by task type</p>
               </div>
             </div>
           </FadeIn>
@@ -185,9 +185,11 @@ export default function StackPage() {
               </h2>
               <p className="text-xl text-foreground/70 font-light leading-relaxed">
                 A message comes in via Telegram. Hermes (the orchestrator) reads it, decides what to do,
-                and either handles it directly or delegates to a coding subagent running through the FCC proxy.
+                and either handles it directly or delegates to a coding subagent. Frontier work runs on
+                Claude Opus 5 and Fable 5/5.1 through a first-party Claude Code subscription; everything else
+                routes across 24+ cloud models by task type.
                 MemPalace remembers everything across sessions. GitNexus maps the codebase so changes are
-                surgical, not guesswork. All inference runs through cloud models — 24 models, no per-token costs.
+                surgical, not guesswork. Flat subscriptions — no per-token costs.
               </p>
             </div>
           </FadeIn>

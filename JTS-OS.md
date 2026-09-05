@@ -50,7 +50,7 @@ Explicitly rejects "Engineer" as identity title. OK to mention n8n/CI/CD as hist
 Joe Blas (CEO / Owner / Founder)
   └── Lurkr / Hermes Agent (CTO · Runs the whole operation)
         ├── VP AI/ML — model evaluation, stack optimization [NEW]
-        │     ├── model-evaluator (glm-5.2:cloud)
+        │     ├── model-evaluator (glm-5.3:cloud)
         │     └── stack-optimizer (deepseek-v4-pro:cloud)
         │
         ├── Chief of Staff — daily cadence, priorities, briefings
@@ -76,42 +76,42 @@ Joe Blas (CEO / Owner / Founder)
         ├── Chief Revenue Officer (CRO) — OWNS THE FUNNEL [NEW]
         │     ├── cold-email-sender (5/day · himalaya)
         │     ├── cold-email-reply-check (cron daily)
-        │     ├── lead-qualifier (glm-5.2:cloud)
+        │     ├── lead-qualifier (glm-5.3:cloud)
         │     └── pipeline-tracker (Notion CRM)
         │
         ├── Chief Customer Officer (CCO) — OWNS RETENTION [NEW]
         │     ├── success-tracker (Notion CRM)
         │     ├── weekly-success-report (cron weekly)
-        │     ├── onboarding-agent (glm-5.2:cloud)
+        │     ├── onboarding-agent (glm-5.3:cloud)
         │     └── case-study-builder (qwen3.5:cloud)
         │
         ├── VP Engineering — coding pipeline, code quality
-        │     ├── code-architect (glm-5.2:cloud)
+        │     ├── code-architect (glm-5.3:cloud)
         │     ├── code-implementer (kimi-k2.7-code:cloud)
         │     ├── code-reviewer (qwen3-coder:cloud)
-        │     ├── debugger (glm-5.2:cloud)
+        │     ├── debugger (glm-5.3:cloud)
         │     ├── test-runner (devstral-small-2:24b)
         │     └── fcc / Claude CLI (proxy :8082)
         │
         ├── VP Infrastructure — uptime, security, deployments
         │     ├── sre (deepseek-v4-pro:cloud)
         │     ├── monitoring-specialist (gpt-oss:20b:cloud)
-        │     ├── security-auditor (glm-5.2:cloud)
+        │     ├── security-auditor (glm-5.3:cloud)
         │     ├── skillspector (cron weekly Mon)
         │     └── config-sync (cron weekly Mon)
         │
         ├── VP Product — roadmap, client scoping
-        │     ├── product-manager (glm-5.2:cloud)
+        │     ├── product-manager (glm-5.3:cloud)
         │     ├── ux-researcher (qwen3.5:cloud)
         │     └── sales-outreach (PARKED → moved to CRO)
         │
         ├── VP Sales — outreach execution [NEW]
-        │     ├── outreach-optimizer (glm-5.2:cloud)
+        │     ├── outreach-optimizer (glm-5.3:cloud)
         │     ├── template-tester (minimax-m3:cloud)
         │     └── reply-responder (qwen3.5:cloud)
         │
         └── VP Customer Success — retention execution [NEW]
-              ├── retention-monitor (glm-5.2:cloud)
+              ├── retention-monitor (glm-5.3:cloud)
               ├── health-scorer (minimax-m3:cloud)
               └── expansion-finder (qwen3.5:cloud)
 ```
@@ -152,15 +152,19 @@ These are the repeatable, productized services that compound monthly revenue:
 
 **$50K/mo** via retainer compounding. Each productized solution adds sticky MRR. The path: sell setup → deliver value → upsell retainer → compound.
 
-### Model Routing (Cost Advantage)
+### Model Routing (Frontier + Routed)
 
-| Tier | Anthropic Equivalent | Our Model | Cost |
-|---|---|---|---|
-| Heavy reasoning | Claude Opus | glm-5.2:cloud (Ollama Cloud) | $100/mo total |
-| Balanced coding | Claude Sonnet | kimi-k2.7-code:cloud | (included) |
-| Fast / lightweight | Claude Haiku | minimax-m3:cloud | (included) |
+| Tier | Model | Provider |
+|---|---|---|
+| Heavy reasoning | Claude Opus 5 | Claude Code (first-party subscription) |
+| Frontier coding | Fable 5.1 / Fable 5 | Claude Code (first-party subscription) |
+| Balanced coding / Opus-tier cloud fallback | glm-5.3:cloud | Ollama Cloud |
+| Sub-agents / delegation fleet | kimi-k2.7-code:cloud | Ollama Cloud |
+| Fast / lightweight | minimax-m3:cloud | Ollama Cloud |
+| Vision + judge | gemma4:cloud | Ollama Cloud |
+| Offline / emergency | Granite 4.1 | Ollama Local |
 
-**The pitch:** Same 3-tier routing as Claude. Half the cost. No usage caps. $100/mo flat.
+**The pitch:** Frontier Claude models where it counts, task-routed cloud models everywhere else. Flat subscriptions, no per-token costs, no usage caps.
 
 ### Lead Magnet
 
@@ -239,9 +243,9 @@ Cold Email (5/day via himalaya)
 
 - Proxy: `http://127.0.0.1:8082`
 - Binary: `~/.hermes/node/bin/claude`
-- Config: `~/free-claude-code/.env`
+- Config: `~/ai-stack/02-routing/fcc.env` (routing) + Claude Code first-party auth
 - Service: `free-claude-code.service` (systemd user)
-- Model mapping: glm-5.2:cloud (Opus tier), kimi-k2.7-code:cloud (Sonnet tier)
+- Model mapping: claude-opus-5 + claude-fable-5/5.1 (first-party subscription), glm-5.3:cloud (Opus-tier cloud fallback), kimi-k2.7-code:cloud (Sonnet tier)
 - Parallel: spawn via `delegate_task` with terminal toolset
 - Restart: `systemctl --user restart free-claude-code.service`
 
